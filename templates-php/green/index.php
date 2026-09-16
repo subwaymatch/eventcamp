@@ -1,8 +1,8 @@
 <!DOCTYPE html>
-<!--[if lt IE 7 ]><html class="ie ie6" lang="en"> <![endif]-->
-<!--[if IE 7 ]><html class="ie ie7" lang="en"> <![endif]-->
-<!--[if IE 8 ]><html class="ie ie8" lang="en"> <![endif]-->
-<!--[if (gte IE 9)|!(IE)]><!--><html lang="en"> <!--<![endif]-->
+
+
+
+<html lang="en">
 <head>
 
 	<!-- Basic Page Needs
@@ -14,7 +14,7 @@
 	
 	<!-- Mobile Specific Metas
 	================================================== -->
-	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
 	
 	<!-- CSS Files
 
@@ -23,15 +23,11 @@
 	* style.css					- Most of the css is here
 	* responsive_custom			- CSS override for responsive layout
 	================================================== -->
-	<link rel="stylesheet" type="text/css" href="http://yui.yahooapis.com/3.8.0/build/cssreset/cssreset-min.css">
 	<link rel="stylesheet" href="css/alpha_background.css">
 	<link rel="stylesheet" href="css/grid.css">
 	<link rel="stylesheet" href="css/style.css">
 	<link rel="stylesheet" href="css/responsive_custom.css">
 	
-	<!--[if lt IE 9]>
-		<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
-	<![endif]-->
 
 	<!-- Favicons
 	================================================== -->
@@ -44,7 +40,7 @@
 
 	* This template uses 'PT Serif' and 'Open Sans'
 	================================================== -->
-	<link href='http://fonts.googleapis.com/css?family=PT+Serif:400,700,400italic,700italic|Open+Sans:400italic,700italic,400,700' rel='stylesheet' type='text/css'>
+	<link href='https://fonts.googleapis.com/css?family=PT+Serif:400,700,400italic,700italic|Open+Sans:400italic,700italic,400,700' rel='stylesheet' type='text/css'>
 
 </head>
 <body data-spy="scroll" data-target="#section-topbar">
@@ -340,19 +336,19 @@
 			</div><!-- // .four -->
 
 			<div class="three columns">
-				<a href="http://www.yejoopark.com/" title=""><img src="images/sponsor_01.png" alt="" /></a>
+				<a href="https://www.yejoopark.com/" title=""><img src="images/sponsor_01.png" alt="" /></a>
 			</div><!-- // .three -->
 
 			<div class="three columns">
-				<a href="http://www.yejoopark.com/" title=""><img src="images/sponsor_02.png" alt="" /></a>
+				<a href="https://www.yejoopark.com/" title=""><img src="images/sponsor_02.png" alt="" /></a>
 			</div><!-- // .three -->
 
 			<div class="three columns">
-				<a href="http://www.yejoopark.com/" title=""><img src="images/sponsor_03.png" alt="" /></a>
+				<a href="https://www.yejoopark.com/" title=""><img src="images/sponsor_03.png" alt="" /></a>
 			</div><!-- // .three -->
 
 			<div class="three columns">
-				<a href="http://www.yejoopark.com/" title=""><img src="images/sponsor_04.png" alt="" /></a>
+				<a href="https://www.yejoopark.com/" title=""><img src="images/sponsor_04.png" alt="" /></a>
 			</div><!-- // .three -->
 
 			<div class="clear"></div>
@@ -366,14 +362,14 @@
 	<div id="section-footer">
 		<div class="container">
 			<div class="eight columns">
-				<p id="copytext">Copyright &copy; <a href="http://www.yejoopark.com/" title="">Eventcamp</a> 2013</p>
+				<p id="copytext">Copyright &copy; <a href="https://www.yejoopark.com/" title="">Eventcamp</a> 2013</p>
 			</div><!-- // .eight -->
 
 			<div class="eight columns">
 				<ul id="social">
-					<li><a href="http://www.facebook.com" title=""><img src="images/icons/icon_facebook.png" alt="Facebook" /></a></li>
-					<li><a href="http://www.twitter.com" title=""><img src="images/icons/icon_twitter.png" alt="Twitter" /></a></li>
-					<li><a href="http://www.youtube.com" title=""><img src="images/icons/icon_youtube.png" alt="Youtube" /></a></li>
+					<li><a href="https://www.facebook.com" title=""><img src="images/icons/icon_facebook.png" alt="Facebook" /></a></li>
+					<li><a href="https://www.twitter.com" title=""><img src="images/icons/icon_twitter.png" alt="Twitter" /></a></li>
+					<li><a href="https://www.youtube.com" title=""><img src="images/icons/icon_youtube.png" alt="Youtube" /></a></li>
 				</ul><!-- // ul#social -->
 			</div><!-- // .eight -->
 
@@ -385,7 +381,7 @@
 
 	<!-- Javascript files
 	================================================== -->
-	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+	<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
 	
 	<script src="js/selectnav.min.js"></script>
 	<script src="js/bootstrap-scrollspy.js"></script>

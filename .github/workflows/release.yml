@@ -1,0 +1,36 @@
+name: Package templates
+
+on:
+  push:
+    tags:
+      - "v*.*.*"
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    name: Build release archives
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out source
+        uses: actions/checkout@v4
+
+      - name: Create archives
+        run: |
+          mkdir -p dist
+          for theme in green red yellow; do
+            mkdir -p "dist/html/$theme" "dist/php/$theme"
+            cp -R "templates-html/$theme/." "dist/html/$theme/"
+            cp -R "templates-php/$theme/." "dist/php/$theme/"
+          done
+          (cd dist/html && zip -rq "../../dist/eventcamp-html-${GITHUB_REF_NAME}.zip" .)
+          (cd dist/php && zip -rq "../../dist/eventcamp-php-${GITHUB_REF_NAME}.zip" .)
+
+      - name: Publish GitHub release
+        uses: softprops/action-gh-release@v2
+        with:
+          generate_release_notes: true
+          files: |
+            dist/eventcamp-html-${{ github.ref_name }}.zip
+            dist/eventcamp-php-${{ github.ref_name }}.zip
