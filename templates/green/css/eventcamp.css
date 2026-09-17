@@ -1,0 +1,1599 @@
+/* =========================================================================
+   Eventcamp — shared stylesheet
+
+   One file, no build step, no dependencies. Every colour, font and spacing
+   value is a custom property declared in css/theme.css, so a theme is a
+   short list of variables rather than a forked stylesheet.
+
+   Contents
+     1.  Fonts
+     2.  Design tokens
+     3.  Reset & base elements
+     4.  Layout primitives
+     5.  Site header & navigation
+     6.  Hero
+     7.  Generic sections
+     8.  Content components
+     9.  Forms
+     10. Map
+     11. Sponsors & footer
+     12. Utilities, motion & print
+   ========================================================================= */
+
+/* -------------------------------------------------------------------------
+   1. Fonts
+
+   Self-hosted so a page renders identically offline and makes no
+   third-party requests. Swap these for your own by replacing the files in
+   fonts/ and editing the family names in theme.css.
+   ------------------------------------------------------------------------- */
+
+@font-face {
+  font-family: 'Open Sans';
+  font-style: normal;
+  font-weight: 400 700;
+  font-display: swap;
+  src: url('../fonts/open-sans-400-700-normal.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'Open Sans';
+  font-style: italic;
+  font-weight: 400 700;
+  font-display: swap;
+  src: url('../fonts/open-sans-400-700-italic.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'PT Serif';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('../fonts/pt-serif-400-normal.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'PT Serif';
+  font-style: italic;
+  font-weight: 400;
+  font-display: swap;
+  src: url('../fonts/pt-serif-400-italic.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'PT Serif';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url('../fonts/pt-serif-700-normal.woff2') format('woff2');
+}
+
+/* -------------------------------------------------------------------------
+   2. Design tokens
+
+   Defaults only — css/theme.css overrides the handful that differ per
+   theme. --ec-accent-ink is the accent darkened enough to pass WCAG AA as
+   body text on a light surface; --ec-accent stays the display colour used
+   for fills, rules and large headings.
+   ------------------------------------------------------------------------- */
+
+:root {
+  color-scheme: light dark;
+
+  /* Brand — four roles, because one hex cannot serve them all and stay
+     readable. --ec-accent is the display hue (decoration, and text on dark
+     surfaces); --ec-accent-ink is it darkened enough to be body text on a
+     light surface; --ec-accent-surface is the fill used *behind* text; and
+     --ec-accent-contrast is what sits on that fill. scripts/check-contrast.mjs
+     asserts every pairing against WCAG AA. */
+  --ec-accent: #77aa44;
+  --ec-accent-ink: #4f7629;
+  --ec-accent-surface: #4f7629;
+  --ec-accent-contrast: #fff;
+
+  /* Accent text on the dark sections. Most hues are already legible there
+     and simply reuse --ec-accent; a theme overrides this only when its
+     accent is too dark against near-black. */
+  --ec-accent-on-dark: var(--ec-accent);
+
+  /* Neutrals — light mode */
+  --ec-ink: #333;
+  --ec-ink-strong: #111;
+  --ec-ink-muted: #666;
+  --ec-surface: #fff;
+  --ec-surface-alt: #fafafa;
+  --ec-border: #e6e6e6;
+
+  /* Neutrals — always dark, regardless of colour scheme */
+  --ec-dark: #111;
+  --ec-darker: #000;
+  --ec-dark-alt: #161616;
+  --ec-dark-raised: #222;
+  --ec-on-dark: #fff;
+  --ec-on-dark-muted: #999;
+  --ec-on-dark-border: #262626;
+
+  /* Feedback */
+  --ec-danger: #c62828;
+  --ec-success: #2e7d32;
+
+  /* Type */
+  --ec-font-sans:
+    'Open Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
+    'Helvetica Neue', Arial, sans-serif;
+  --ec-font-serif: 'PT Serif', Georgia, 'Times New Roman', serif;
+
+  --ec-text-xs: 0.6875rem; /* 11px */
+  --ec-text-sm: 0.8125rem; /* 13px */
+  --ec-text-base: 0.875rem; /* 14px */
+  --ec-text-md: 1rem; /* 16px */
+  --ec-text-lg: 1.125rem; /* 18px */
+  --ec-text-xl: 1.5rem; /* 24px */
+
+  /* Fluid display sizes: never overflow a 320px phone, never bloat on 4K */
+  --ec-text-section: clamp(1.375rem, 1rem + 1.6vw, 2.25rem);
+  --ec-text-hero: clamp(2.5rem, 1rem + 7.6vw, 5.9375rem);
+  --ec-text-price: clamp(2.75rem, 1.8rem + 3.2vw, 4.375rem);
+
+  /* Space */
+  --ec-gutter: 1.25rem;
+  --ec-gap: 2.5rem;
+  --ec-section-y: clamp(2.5rem, 1.5rem + 4vw, 3.75rem);
+  --ec-container: 60rem; /* 960px, matching the original fixed grid */
+
+  /* Chrome */
+  --ec-header-h: 2.5rem;
+  --ec-radius: 3px;
+  --ec-focus: 3px;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-ec-scheme='light']) {
+    --ec-ink: #d6d6d6;
+    --ec-ink-strong: #f2f2f2;
+    --ec-ink-muted: #9a9a9a;
+    --ec-surface: #121212;
+    --ec-surface-alt: #0d0d0d;
+    --ec-border: #2a2a2a;
+    --ec-accent-ink: var(--ec-accent);
+  }
+}
+
+:root[data-ec-scheme='dark'] {
+  --ec-ink: #d6d6d6;
+  --ec-ink-strong: #f2f2f2;
+  --ec-ink-muted: #9a9a9a;
+  --ec-surface: #121212;
+  --ec-surface-alt: #0d0d0d;
+  --ec-border: #2a2a2a;
+  --ec-accent-ink: var(--ec-accent);
+}
+
+/* -------------------------------------------------------------------------
+   3. Reset & base elements
+   ------------------------------------------------------------------------- */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+* {
+  margin: 0;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+  scroll-behavior: smooth;
+  /* Keep anchored sections clear of the fixed header. */
+  scroll-padding-top: var(--ec-header-h);
+}
+
+body {
+  margin: 0;
+  color: var(--ec-ink);
+  background: var(--ec-surface);
+  font-family: var(--ec-font-sans);
+  font-size: var(--ec-text-md);
+  font-weight: 400;
+  line-height: 1.75;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: 700;
+  line-height: 1.25;
+  text-wrap: balance;
+}
+
+p {
+  text-wrap: pretty;
+}
+
+a {
+  color: inherit;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.2em;
+}
+
+img,
+picture,
+svg,
+iframe {
+  display: block;
+  max-width: 100%;
+}
+
+/* Author-level type selectors outrank the UA stylesheet's [hidden] rule,
+   so restate it after them — otherwise the inline icon sprite and the
+   collapsed nav panel would both render. */
+[hidden] {
+  display: none !important;
+}
+
+img {
+  height: auto;
+}
+
+ul,
+ol {
+  padding: 0;
+  list-style: none;
+}
+
+button,
+input,
+select,
+textarea {
+  font: inherit;
+  color: inherit;
+}
+
+:target {
+  scroll-margin-top: var(--ec-header-h);
+}
+
+/* One visible, consistent focus ring everywhere. */
+:focus-visible {
+  outline: var(--ec-focus) solid var(--ec-accent);
+  outline-offset: 2px;
+}
+
+.ec-skip-link {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 100;
+  padding: 0.75rem 1.25rem;
+  color: var(--ec-accent-contrast);
+  background: var(--ec-accent-surface);
+  font-size: var(--ec-text-sm);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  transform: translateY(-120%);
+}
+
+.ec-skip-link:focus {
+  transform: translateY(0);
+}
+
+/* Visible to screen readers only. */
+.ec-visually-hidden {
+  position: absolute !important;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* -------------------------------------------------------------------------
+   4. Layout primitives
+
+   Replaces the old 960px float grid (Skeleton) and its .clear divs. Column
+   counts are maximums: every helper collapses on its own once the columns
+   would get narrower than their min track.
+   ------------------------------------------------------------------------- */
+
+.ec-container {
+  width: min(100% - (2 * var(--ec-gutter)), var(--ec-container));
+  margin-inline: auto;
+}
+
+.ec-grid {
+  display: grid;
+  gap: var(--ec-gap);
+}
+
+/* Explicit counts rather than auto-fit: auto-fit derives the column count
+   from the available width, so the same class produced two columns with two
+   children and three with four, which is not what a layout named "cols-2"
+   should do. */
+.ec-cols-2,
+.ec-cols-3,
+.ec-cols-4 {
+  grid-template-columns: minmax(0, 1fr);
+}
+
+@media (min-width: 34em) {
+  .ec-cols-3,
+  .ec-cols-4 {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 40em) {
+  .ec-cols-2 {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 52em) {
+  .ec-cols-3 {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .ec-cols-4 {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}
+
+/* A narrow label column beside a wider content column. */
+.ec-split {
+  grid-template-columns: 1fr;
+}
+
+@media (min-width: 48em) {
+  .ec-split {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 2.2fr);
+  }
+}
+
+.ec-stack > * + * {
+  margin-block-start: var(--ec-flow, 1.875rem);
+}
+
+/* -------------------------------------------------------------------------
+   5. Site header & navigation
+
+   The old build swapped the <ul> for a <select> with selectnav.js. Here the
+   same list stays in the DOM at every width and turns into a disclosure
+   panel on small screens, so it keeps its semantics and keyboard behaviour.
+   ------------------------------------------------------------------------- */
+
+.ec-header {
+  position: fixed;
+  inset: 0 0 auto;
+  z-index: 50;
+  background: rgb(0 0 0 / 0.5);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+}
+
+.ec-header__inner {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  justify-content: flex-end;
+  min-height: var(--ec-header-h);
+}
+
+.ec-nav__list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  margin: 0;
+}
+
+.ec-nav__link {
+  display: block;
+  padding: 0.625rem 1.25rem 0.9375rem;
+  color: var(--ec-on-dark);
+  border-top: 3px solid transparent;
+  font-size: var(--ec-text-xs);
+  line-height: 1.6;
+  text-transform: uppercase;
+  text-decoration: none;
+  letter-spacing: 0.04em;
+  transition:
+    border-color 0.15s ease,
+    color 0.15s ease;
+}
+
+.ec-nav__link:hover,
+.ec-nav__link:focus-visible {
+  border-top-color: var(--ec-accent);
+}
+
+/* Set by js/eventcamp.js as the reader scrolls. */
+.ec-nav__link[aria-current='true'] {
+  border-top-color: var(--ec-accent);
+}
+
+.ec-nav__toggle {
+  display: none;
+  gap: 0.5rem;
+  align-items: center;
+  padding: 0.5rem 0.75rem;
+  color: var(--ec-on-dark);
+  background: transparent;
+  border: 1px solid rgb(255 255 255 / 0.35);
+  border-radius: var(--ec-radius);
+  font-size: var(--ec-text-xs);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  cursor: pointer;
+}
+
+.ec-nav__toggle:hover {
+  border-color: var(--ec-accent);
+}
+
+.ec-nav__toggle-bars,
+.ec-nav__toggle-bars::before,
+.ec-nav__toggle-bars::after {
+  display: block;
+  width: 1rem;
+  height: 2px;
+  background: currentColor;
+  content: '';
+}
+
+.ec-nav__toggle-bars {
+  position: relative;
+}
+
+.ec-nav__toggle-bars::before {
+  position: absolute;
+  top: -5px;
+}
+
+.ec-nav__toggle-bars::after {
+  position: absolute;
+  top: 5px;
+}
+
+@media (max-width: 47.99em) {
+  .ec-header__inner {
+    justify-content: space-between;
+    padding-block: 0.375rem;
+  }
+
+  .ec-nav__toggle {
+    display: inline-flex;
+  }
+
+  .ec-nav__list {
+    position: absolute;
+    inset: 100% 0 auto;
+    flex-direction: column;
+    justify-content: flex-start;
+    padding: 0.5rem 0;
+    background: rgb(0 0 0 / 0.92);
+  }
+
+  /* Closed by default; js/eventcamp.js flips the hidden attribute. */
+  .ec-nav__list[hidden] {
+    display: none;
+  }
+
+  .ec-nav__link {
+    padding: 0.75rem var(--ec-gutter);
+    border-top: 0;
+    border-left: 3px solid transparent;
+    font-size: var(--ec-text-sm);
+  }
+
+  .ec-nav__link:hover,
+  .ec-nav__link:focus-visible,
+  .ec-nav__link[aria-current='true'] {
+    border-left-color: var(--ec-accent);
+  }
+}
+
+/* Without JavaScript the panel can never be opened, so show the list inline
+   and drop the toggle that would do nothing. */
+@media (max-width: 47.99em) {
+  html:not(.ec-js) .ec-nav__toggle {
+    display: none;
+  }
+
+  html:not(.ec-js) .ec-nav__list {
+    position: static;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    padding: 0;
+    background: transparent;
+  }
+
+  html:not(.ec-js) .ec-nav__link {
+    padding: 0.5rem 0.75rem;
+    border-left: 0;
+    border-top: 3px solid transparent;
+    font-size: var(--ec-text-xs);
+  }
+}
+
+/* -------------------------------------------------------------------------
+   6. Hero
+   ------------------------------------------------------------------------- */
+
+.ec-hero {
+  color: var(--ec-on-dark);
+  background-color: var(--ec-dark);
+  background-image: var(--ec-hero-image, none);
+  background-repeat: no-repeat;
+  background-position: center top;
+  background-size: cover;
+}
+
+.ec-hero__body {
+  padding-block: clamp(6rem, 3rem + 12vw, 11.25rem)
+    clamp(3rem, 1rem + 8vw, 6.25rem);
+}
+
+.ec-hero__body.ec-grid {
+  align-items: end;
+}
+
+.ec-hero__title {
+  font-size: var(--ec-text-hero);
+  font-weight: 700;
+  line-height: 1.1;
+  text-transform: uppercase;
+  letter-spacing: var(--ec-hero-tracking, 0);
+}
+
+.ec-hero__title a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.ec-hero__title a:hover {
+  color: var(--ec-accent);
+}
+
+.ec-hero__title img {
+  width: auto;
+  max-width: 100%;
+}
+
+/* A smaller wordmark that sits beside body copy rather than filling the
+   viewport, used by themes whose hero is a two-column split. */
+.ec-hero__title--compact img {
+  max-width: min(100%, 26rem);
+}
+
+.ec-hero__marks {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  margin-block-end: 1.5rem;
+}
+
+.ec-hero__mark {
+  width: 3rem;
+  height: 3rem;
+  color: var(--ec-on-dark);
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.25;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+/* Optional: all three shipped themes bake their strapline into the logo
+   artwork, so nothing uses this by default. Drop a
+   <p class="ec-hero__tagline"> under the <h1> if your wordmark is text, or
+   an image without one. */
+.ec-hero__tagline {
+  margin-block-start: 0.75rem;
+  color: var(--ec-on-dark);
+  font-size: var(--ec-text-base);
+  text-transform: uppercase;
+  letter-spacing: 0.35em;
+}
+
+.ec-hero__intro {
+  max-width: 34rem;
+  font-size: var(--ec-text-base);
+  line-height: 1.85;
+}
+
+.ec-hero__intro strong {
+  color: var(--ec-accent-on-dark);
+}
+
+/* Event details strip along the bottom of the hero. */
+.ec-factbar {
+  padding-block: 1.875rem;
+  background: rgb(0 0 0 / 0.3);
+}
+
+.ec-factbar__heading {
+  align-self: center;
+  color: var(--ec-on-dark);
+  font-size: var(--ec-text-md);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.ec-fact {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 0 1rem;
+  align-items: start;
+}
+
+.ec-fact__icon {
+  width: 2.5rem;
+  height: 2.5rem;
+  grid-row: span 2;
+  color: var(--ec-on-dark);
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.ec-fact__label {
+  color: var(--ec-on-dark);
+  font-size: var(--ec-text-sm);
+  font-weight: 700;
+  line-height: 1.75;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+}
+
+.ec-fact__value {
+  color: var(--ec-on-dark);
+  font-size: var(--ec-text-sm);
+  line-height: 1.75;
+}
+
+/* -------------------------------------------------------------------------
+   7. Generic sections
+
+   A section picks one surface modifier. Anything nested inherits sensible
+   colours from it, so components do not need per-section overrides.
+   ------------------------------------------------------------------------- */
+
+.ec-section {
+  padding-block: var(--ec-section-y);
+}
+
+.ec-section--light {
+  color: var(--ec-ink);
+  background: var(--ec-surface);
+}
+
+.ec-section--muted {
+  color: var(--ec-ink);
+  background: var(--ec-surface-alt);
+  border-top: 1px solid var(--ec-border);
+}
+
+.ec-section--accent {
+  color: var(--ec-accent-contrast);
+  background: var(--ec-accent-surface);
+}
+
+.ec-section--dark {
+  color: var(--ec-on-dark);
+  background: var(--ec-dark);
+}
+
+.ec-section--darker {
+  color: var(--ec-on-dark);
+  background: var(--ec-dark-alt);
+}
+
+/* Repeating texture behind a light section. A theme opts in by setting
+   --ec-section-pattern; the image is dropped in dark mode, where a paper
+   texture would read as noise. */
+.ec-section--pattern {
+  color: var(--ec-ink);
+  background-color: var(--ec-surface);
+  background-image: var(--ec-section-pattern, none);
+  border-top: 1px solid var(--ec-border);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-ec-scheme='light']) .ec-section--pattern {
+    background-image: none;
+    background-color: var(--ec-surface-alt);
+  }
+}
+
+:root[data-ec-scheme='dark'] .ec-section--pattern {
+  background-image: none;
+  background-color: var(--ec-surface-alt);
+}
+
+/* Radial wash that stood in for images/bg_gradient.jpg. */
+.ec-section--spotlight {
+  color: var(--ec-on-dark);
+  background: radial-gradient(
+    ellipse 80% 60% at 50% 50%,
+    var(--ec-dark-raised) 0%,
+    var(--ec-dark) 60%,
+    var(--ec-darker) 100%
+  );
+}
+
+.ec-section__title {
+  font-size: var(--ec-text-section);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.01em;
+}
+
+.ec-section__lead {
+  margin-block-start: 0.3125rem;
+  font-size: var(--ec-text-base);
+  line-height: 1.85;
+}
+
+.ec-section__header {
+  margin-block-end: var(--ec-gap);
+}
+
+/* Lead colour follows the surface it sits on. */
+.ec-section--light .ec-section__lead,
+.ec-section--muted .ec-section__lead,
+.ec-section--pattern .ec-section__lead {
+  color: var(--ec-accent-ink);
+}
+
+.ec-section--dark .ec-section__lead,
+.ec-section--darker .ec-section__lead,
+.ec-section--spotlight .ec-section__lead {
+  color: var(--ec-accent-on-dark);
+}
+
+.ec-section--accent .ec-section__lead {
+  color: var(--ec-accent-contrast);
+}
+
+.ec-section--light .ec-section__title,
+.ec-section--muted .ec-section__title,
+.ec-section--pattern .ec-section__title {
+  color: var(--ec-ink-strong);
+}
+
+.ec-section--dark .ec-section__title,
+.ec-section--darker .ec-section__title,
+.ec-section--spotlight .ec-section__title {
+  color: var(--ec-on-dark);
+}
+
+/* -------------------------------------------------------------------------
+   8. Content components
+   ------------------------------------------------------------------------- */
+
+/* --- Prose ------------------------------------------------------------- */
+
+.ec-prose {
+  font-size: var(--ec-text-base);
+  line-height: 1.85;
+}
+
+.ec-prose > * + * {
+  margin-block-start: 1.875rem;
+}
+
+.ec-prose--lg {
+  font-size: var(--ec-text-lg);
+  line-height: 1.7;
+}
+
+.ec-prose em {
+  font-style: italic;
+}
+
+.ec-prose strong {
+  font-weight: 700;
+}
+
+.ec-lede {
+  color: var(--ec-ink-muted);
+  font-family: var(--ec-font-serif);
+  font-size: var(--ec-text-xl);
+  font-style: italic;
+  line-height: 1.5;
+}
+
+.ec-section--accent .ec-lede,
+.ec-section--dark .ec-lede,
+.ec-section--darker .ec-lede {
+  color: inherit;
+}
+
+/* Article figures that the text wraps around on wide screens and stacks
+   under on narrow ones. */
+.ec-figure {
+  margin: 0 0 0.625rem;
+  padding: 4px;
+  background: var(--ec-surface);
+  border: 1px solid var(--ec-border);
+}
+
+@media (min-width: 40em) {
+  .ec-figure {
+    float: left;
+    margin-inline-end: 1.25rem;
+    max-width: 45%;
+  }
+
+  .ec-figure--end {
+    float: right;
+    margin-inline: 1.25rem 0;
+  }
+}
+
+/* --- Price / fee cards -------------------------------------------------- */
+
+.ec-price-card {
+  padding: 1.25rem 1.5625rem;
+  color: var(--ec-on-dark);
+  background: var(--ec-dark);
+  height: 100%;
+}
+
+.ec-price-card__amount {
+  display: block;
+  padding-block-end: 0.625rem;
+  margin-block-end: 0.625rem;
+  color: var(--ec-on-dark);
+  border-bottom: 1px solid var(--ec-on-dark-border);
+  font-size: var(--ec-text-price);
+  font-weight: 700;
+  line-height: 1.15;
+}
+
+.ec-price-card__terms {
+  display: block;
+  margin-block-end: 0.625rem;
+  color: var(--ec-accent-on-dark);
+  font-size: 0.9375rem;
+  line-height: 1.85;
+}
+
+.ec-price-card__note {
+  color: var(--ec-on-dark-muted);
+  font-size: var(--ec-text-sm);
+  line-height: 2;
+}
+
+.ec-price-card .ec-button {
+  margin-block-start: 1.25rem;
+}
+
+/* --- People (speakers / performers) ------------------------------------- */
+
+.ec-person__photo {
+  width: 100%;
+  margin-block-end: 0.9375rem;
+  filter: grayscale(1);
+  transition: filter 0.25s ease;
+}
+
+.ec-person:hover .ec-person__photo,
+.ec-person:focus-within .ec-person__photo {
+  filter: grayscale(0);
+}
+
+.ec-person__name {
+  font-size: var(--ec-text-lg);
+  font-weight: 400;
+  line-height: 1.5;
+}
+
+.ec-person__role {
+  display: block;
+  color: var(--ec-accent-ink);
+  font-size: var(--ec-text-sm);
+}
+
+.ec-section--dark .ec-person__role,
+.ec-section--darker .ec-person__role {
+  color: var(--ec-accent-on-dark);
+}
+
+.ec-person__bio {
+  margin-block-start: 0.625rem;
+  font-size: var(--ec-text-sm);
+  line-height: 1.9;
+}
+
+/* --- Topic grid --------------------------------------------------------- */
+
+.ec-topic {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 0 1rem;
+}
+
+.ec-topic__icon {
+  width: 2.25rem;
+  height: 2.25rem;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.ec-topic__text {
+  font-size: var(--ec-text-sm);
+  line-height: 1.85;
+}
+
+/* --- Testimonials ------------------------------------------------------- */
+
+.ec-quote {
+  display: grid;
+  gap: 0.9375rem;
+  margin: 0;
+}
+
+.ec-quote__text {
+  position: relative;
+  padding: 1.25rem;
+  color: var(--ec-ink);
+  background: var(--ec-surface);
+  font-size: var(--ec-text-sm);
+  line-height: 1.85;
+}
+
+/* Speech-bubble tail. */
+.ec-quote__text::after {
+  position: absolute;
+  top: 100%;
+  left: 2rem;
+  width: 0;
+  height: 0;
+  border: 0.75rem solid transparent;
+  border-top-color: var(--ec-surface);
+  border-bottom: 0;
+  content: '';
+}
+
+.ec-quote__cite {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 0 0.75rem;
+  align-items: center;
+  font-style: normal;
+}
+
+.ec-quote__avatar {
+  width: 3rem;
+  height: 3rem;
+  grid-row: span 2;
+  object-fit: cover;
+}
+
+.ec-quote__name {
+  font-size: var(--ec-text-base);
+  font-weight: 700;
+}
+
+.ec-quote__role {
+  color: var(--ec-accent-on-dark);
+  font-size: var(--ec-text-sm);
+}
+
+/* --- FAQ ---------------------------------------------------------------- */
+
+.ec-faq__group-title {
+  display: inline-block;
+  margin-block-end: 1.5625rem;
+  padding: 0.625rem 0.9375rem;
+  color: var(--ec-accent-contrast);
+  background: var(--ec-accent-surface);
+  font-size: 1.0625rem;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.ec-faq__item {
+  border-bottom: 1px solid var(--ec-border);
+}
+
+.ec-faq__item + .ec-faq__item {
+  margin-block-start: 0.5rem;
+}
+
+/* <details>/<summary> gives open/close for free — no JS, and findable by
+   the browser's in-page search when closed in supporting engines. */
+.ec-faq__question {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 1rem;
+  align-items: center;
+  padding-block: 0.75rem;
+  color: var(--ec-ink-strong);
+  font-size: var(--ec-text-lg);
+  line-height: 1.6;
+  cursor: pointer;
+  list-style: none;
+}
+
+.ec-faq__question::-webkit-details-marker {
+  display: none;
+}
+
+.ec-faq__question::after {
+  width: 0.75rem;
+  height: 0.75rem;
+  border-right: 2px solid var(--ec-accent-ink);
+  border-bottom: 2px solid var(--ec-accent-ink);
+  transform: rotate(45deg) translate(-2px, -2px);
+  transition: transform 0.2s ease;
+  content: '';
+}
+
+.ec-faq__item[open] .ec-faq__question::after {
+  transform: rotate(225deg) translate(-2px, -2px);
+}
+
+.ec-faq__answer {
+  padding-block-end: 1.25rem;
+  color: var(--ec-ink);
+  font-size: var(--ec-text-sm);
+  line-height: 1.9;
+}
+
+/* --- Concert programme --------------------------------------------------
+
+   A list of composer/work pairs is a description list: each composer is the
+   term, the pieces are its description. */
+
+.ec-program {
+  margin: 0;
+}
+
+.ec-program__row {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0 var(--ec-gap);
+  padding-block: 1.125rem;
+  border-bottom: 1px solid var(--ec-on-dark-border);
+}
+
+@media (min-width: 40em) {
+  .ec-program__row {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1.4fr);
+  }
+}
+
+.ec-program__composer {
+  margin: 0;
+  color: var(--ec-on-dark-muted);
+  font-family: var(--ec-font-serif);
+  font-size: var(--ec-text-base);
+  font-style: italic;
+}
+
+.ec-program__works {
+  margin: 0;
+  color: var(--ec-on-dark);
+  font-family: var(--ec-font-serif);
+  font-size: var(--ec-text-base);
+}
+
+/* --- Schedule ----------------------------------------------------------- */
+
+.ec-schedule {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: var(--ec-text-sm);
+  text-align: left;
+}
+
+.ec-schedule caption {
+  margin-block-end: 1rem;
+  color: var(--ec-ink-muted);
+  font-size: var(--ec-text-sm);
+  text-align: left;
+}
+
+.ec-schedule th {
+  padding: 0.75rem 1rem;
+  color: var(--ec-accent-ink);
+  border-bottom: 1px solid var(--ec-border);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.ec-schedule td {
+  padding: 0.9375rem 1rem;
+  border-bottom: 1px solid var(--ec-border);
+  vertical-align: top;
+}
+
+.ec-section--dark .ec-schedule th,
+.ec-section--darker .ec-schedule th {
+  color: var(--ec-accent-on-dark);
+  border-bottom-color: var(--ec-on-dark-border);
+}
+
+.ec-section--dark .ec-schedule td,
+.ec-section--darker .ec-schedule td {
+  border-bottom-color: var(--ec-on-dark-border);
+}
+
+.ec-schedule__time {
+  white-space: nowrap;
+  font-family: var(--ec-font-serif);
+  font-style: italic;
+}
+
+.ec-schedule__footer {
+  margin-block-start: 1.25rem;
+  padding: 1.25rem;
+  background: var(--ec-surface-alt);
+  font-size: var(--ec-text-sm);
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+}
+
+/* --- Buttons & links ---------------------------------------------------- */
+
+.ec-button {
+  display: inline-block;
+  padding: 1.25rem 1.75rem;
+  color: var(--ec-accent-contrast);
+  background: var(--ec-accent-surface);
+  border: 0;
+  border-radius: var(--ec-radius);
+  font-size: 1.25rem;
+  font-weight: 700;
+  line-height: 1.5;
+  text-align: center;
+  text-decoration: none;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  cursor: pointer;
+  transition:
+    color 0.15s ease,
+    background-color 0.15s ease;
+}
+
+.ec-button:hover {
+  color: var(--ec-accent-ink);
+  background: var(--ec-on-dark);
+}
+
+.ec-button--sm {
+  padding: 0.75rem 1.25rem;
+  font-size: var(--ec-text-base);
+  letter-spacing: 0.15em;
+}
+
+/* Download link with a document glyph, replacing images/icons/icon_pdf.png. */
+.ec-download {
+  display: inline-grid;
+  grid-template-columns: auto 1fr;
+  gap: 0 0.875rem;
+  align-items: center;
+  color: var(--ec-accent-on-dark);
+  font-size: var(--ec-text-md);
+  font-weight: 700;
+  line-height: 1.5;
+  text-decoration: none;
+  text-transform: uppercase;
+}
+
+.ec-download__icon {
+  width: 2.75rem;
+  height: 2.75rem;
+  grid-row: span 2;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.ec-download span:not(.ec-download__icon) {
+  padding: 3px 6px;
+  color: var(--ec-dark);
+  background: var(--ec-on-dark);
+}
+
+.ec-download:hover span:not(.ec-download__icon) {
+  color: var(--ec-on-dark);
+  background: var(--ec-darker);
+}
+
+/* --- Contact block ------------------------------------------------------ */
+
+.ec-contact-block h3 {
+  margin-block-end: 0.9375rem;
+  color: var(--ec-accent-on-dark);
+  font-size: 0.9375rem;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.ec-contact-block address {
+  margin-block-end: 2.5rem;
+  color: #aaa;
+  font-size: var(--ec-text-base);
+  font-style: normal;
+  line-height: 1.8;
+}
+
+.ec-contact-block__email {
+  color: var(--ec-on-dark);
+  font-size: 1.1875rem;
+  text-decoration: none;
+  overflow-wrap: anywhere;
+}
+
+.ec-contact-block__email:hover {
+  color: var(--ec-accent-on-dark);
+}
+
+/* -------------------------------------------------------------------------
+   9. Forms
+
+   Label beside the field on wide screens (as in the original), stacked on
+   narrow ones. Errors are rendered next to the field they belong to and
+   announced through the summary at the top of the form.
+   ------------------------------------------------------------------------- */
+
+.ec-form {
+  margin-block-end: 2.5rem;
+}
+
+.ec-form fieldset {
+  padding: 0;
+  margin: 0;
+  border: 0;
+}
+
+.ec-form legend {
+  padding: 0;
+  margin-block-end: 1.25rem;
+  font-size: 0.9375rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.ec-field {
+  display: grid;
+  gap: 0.25rem 1rem;
+  margin-block-end: 1.25rem;
+}
+
+@media (min-width: 40em) {
+  .ec-field {
+    grid-template-columns: 9.6875rem minmax(0, 17.5rem);
+    align-items: start;
+  }
+
+  .ec-field__error {
+    grid-column: 2;
+  }
+}
+
+.ec-field__label {
+  padding-block-start: 0.875rem;
+  font-size: 0.9375rem;
+  line-height: 1.55;
+}
+
+.ec-field__control {
+  width: 100%;
+  padding: 0.875rem 1.25rem;
+  color: #eee;
+  background: #333;
+  border: 1px solid transparent;
+  border-radius: 0;
+  outline: none;
+}
+
+.ec-field__control::placeholder {
+  color: #8d8d8d;
+  opacity: 1;
+}
+
+.ec-field__control:hover {
+  border-color: #4a4a4a;
+}
+
+.ec-field__control:focus-visible {
+  color: var(--ec-on-dark);
+  background: #3d3d3d;
+  outline: var(--ec-focus) solid var(--ec-accent);
+  outline-offset: 1px;
+}
+
+textarea.ec-field__control {
+  min-height: 8rem;
+  resize: vertical;
+}
+
+.ec-field__required {
+  color: var(--ec-accent-on-dark);
+  font-size: var(--ec-text-sm);
+}
+
+.ec-field__error {
+  color: #ff9d9d;
+  font-size: var(--ec-text-sm);
+  line-height: 1.6;
+}
+
+.ec-field__error:empty {
+  display: none;
+}
+
+.ec-field__control[aria-invalid='true'] {
+  border-color: #ff6b6b;
+}
+
+/* Bot trap: a real field that people never see and never tab into. If it
+   arrives filled in, the submission is almost certainly automated. */
+.ec-form__trap {
+  position: absolute;
+  left: -9999px;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+
+.ec-form__status {
+  padding: 1.25rem 1.5625rem;
+  margin-block-end: 1.875rem;
+  font-size: var(--ec-text-base);
+  line-height: 1.7;
+}
+
+.ec-form__status:empty {
+  display: none;
+}
+
+.ec-form__status--error {
+  color: var(--ec-on-dark);
+  background: var(--ec-danger);
+}
+
+.ec-form__status--success {
+  color: var(--ec-accent-on-dark);
+  background: var(--ec-dark);
+}
+
+.ec-form__status ul {
+  margin-block-start: 0.5rem;
+  padding-inline-start: 1.25rem;
+  list-style: disc;
+}
+
+.ec-form__status a {
+  color: inherit;
+}
+
+/* -------------------------------------------------------------------------
+   10. Map
+   ------------------------------------------------------------------------- */
+
+.ec-map {
+  position: relative;
+  overflow: hidden;
+  background: var(--ec-surface-alt);
+}
+
+.ec-map__header {
+  position: absolute;
+  z-index: 10;
+  top: 1.875rem;
+  left: 0;
+  right: 0;
+  pointer-events: none;
+}
+
+.ec-map__header .ec-section__title {
+  color: var(--ec-ink-strong);
+}
+
+.ec-map__frame {
+  width: 100%;
+  height: clamp(18rem, 45vh, 31.25rem);
+  border: 0;
+}
+
+/* -------------------------------------------------------------------------
+   11. Sponsors & footer
+   ------------------------------------------------------------------------- */
+
+.ec-sponsors {
+  padding-block: var(--ec-section-y) 2.5rem;
+  color: var(--ec-on-dark);
+  background: var(--ec-dark);
+}
+
+.ec-sponsors__title {
+  align-self: center;
+  color: var(--ec-ink);
+  font-size: 1.5rem;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.ec-sponsors__list {
+  display: flex;
+  flex-wrap: wrap;
+  /* Tight enough that four 140px marks stay on one row inside the
+     narrower of the two columns. */
+  gap: 1.5rem;
+  align-items: center;
+}
+
+.ec-sponsors__list li {
+  flex: 0 1 auto;
+}
+
+.ec-sponsors__list img {
+  width: 8.75rem;
+  max-width: 100%;
+}
+
+.ec-footer {
+  display: grid;
+  gap: 0;
+  color: var(--ec-on-dark);
+  background: var(--ec-darker);
+  font-size: var(--ec-text-sm);
+  line-height: 2;
+}
+
+.ec-footer__inner {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.ec-footer__copy {
+  color: #777;
+  margin-block: 2.1875rem;
+}
+
+.ec-footer__copy a {
+  color: var(--ec-accent-on-dark);
+}
+
+.ec-footer__copy a:hover {
+  color: #eee;
+}
+
+.ec-social {
+  display: flex;
+  flex-wrap: wrap;
+  border-left: 1px solid var(--ec-dark);
+}
+
+.ec-social__link {
+  display: block;
+  padding: 1.875rem;
+  color: var(--ec-on-dark);
+  border-right: 1px solid var(--ec-dark);
+  transition: background-color 0.15s ease;
+}
+
+.ec-social__link:hover {
+  background: var(--ec-accent-surface);
+}
+
+.ec-social__icon {
+  width: 1.25rem;
+  height: 1.25rem;
+  fill: currentColor;
+}
+
+@media (max-width: 47.99em) {
+  .ec-footer__inner {
+    justify-content: flex-start;
+  }
+
+  .ec-social {
+    border-left: 0;
+  }
+
+  .ec-social__link {
+    padding: 1.125rem;
+    background: var(--ec-dark);
+    border-right: 1px solid var(--ec-darker);
+  }
+}
+
+/* -------------------------------------------------------------------------
+   12. Utilities, motion & print
+   ------------------------------------------------------------------------- */
+
+.ec-highlight {
+  color: var(--ec-on-dark);
+}
+
+.ec-underline {
+  border-bottom: 1px solid var(--ec-accent);
+}
+
+.ec-clamp-40 {
+  max-width: 40ch;
+}
+
+.ec-mt {
+  margin-block-start: 1.875rem;
+}
+
+.ec-mt-lg {
+  margin-block-start: 2.5rem;
+}
+
+/* Respect the reader's motion preference: no smooth scroll, no transitions,
+   no photo cross-fades. */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+@media print {
+  .ec-header,
+  .ec-skip-link,
+  .ec-map,
+  .ec-form,
+  .ec-social {
+    display: none !important;
+  }
+
+  body {
+    color: #000;
+    background: #fff;
+  }
+
+  .ec-section,
+  .ec-hero,
+  .ec-sponsors,
+  .ec-footer {
+    color: #000 !important;
+    background: none !important;
+  }
+
+  a[href^='http']::after {
+    content: ' (' attr(href) ')';
+    font-size: 0.75em;
+    word-break: break-all;
+  }
+}

@@ -1,0 +1,24 @@
+/* -------------------------------------------------------------------------
+   Eventcamp — green theme
+
+   Everything that makes this theme "green" lives here. eventcamp.css is
+   byte-identical across all three themes, so restyling is a matter of
+   editing the values below rather than forking a stylesheet.
+   ------------------------------------------------------------------------- */
+
+:root {
+  /* The display hue, unchanged from the original template. */
+  --ec-accent: #77aa44;
+
+  /* Darkened for text roles. The original used #77aa44 everywhere, which
+     is 2.76:1 on white — below the 4.5:1 WCAG AA needs for body text, and
+     below even the 3:1 for large text. Set both of the next two back to
+     #77aa44 if you would rather have the original colour than the
+     contrast; `npm run check:contrast` will then fail, by design. */
+  --ec-accent-ink: #4f7629;
+  --ec-accent-surface: #4f7629;
+  --ec-accent-contrast: #fff;
+
+  /* Hero artwork. Swap the file, keep the declaration. */
+  --ec-hero-image: url('../images/bg_eventcamp.jpg');
+}

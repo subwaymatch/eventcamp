@@ -1,0 +1,858 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Eventcamp 2026 — a one-day web development conference</title>
+    <meta
+      name="description"
+      content="Eventcamp is a one-day conference covering modern web development techniques to impact you and your apps. 27 March 2026, Hotel Energy, Chicago."
+    />
+    <meta name="color-scheme" content="light dark" />
+    <meta name="theme-color" content="#dd3333" />
+
+    <!-- Social sharing. Replace the URLs with your own before publishing. -->
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Eventcamp 2026" />
+    <meta
+      property="og:description"
+      content="A one-day conference covering modern web development techniques."
+    />
+    <meta property="og:image" content="images/bg_eventcamp.jpg" />
+    <meta name="twitter:card" content="summary_large_image" />
+
+    <link rel="icon" href="images/favicon.ico" sizes="any" />
+    <link rel="apple-touch-icon" href="images/apple-touch-icon.png" />
+
+    <link
+      rel="preload"
+      href="fonts/open-sans-400-700-normal.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin
+    />
+
+    <link rel="stylesheet" href="css/eventcamp.css" />
+    <link rel="stylesheet" href="css/theme.css" />
+
+    <script>
+      document.documentElement.classList.add('ec-js');
+    </script>
+  </head>
+
+  <body>
+    <a class="ec-skip-link" href="#main">Skip to content</a>
+
+    <!-- Icon sprite. Inline so the icons inherit currentColor and the page
+         still works when opened straight from disk. -->
+    <svg xmlns="http://www.w3.org/2000/svg" hidden aria-hidden="true">
+      <symbol id="ec-i-date" viewBox="0 0 24 24">
+        <rect x="3" y="5" width="18" height="16" rx="2" />
+        <path d="M3 10h18M8 3v4M16 3v4" />
+      </symbol>
+      <symbol id="ec-i-time" viewBox="0 0 24 24">
+        <circle cx="12" cy="12" r="9" />
+        <path d="M12 7v5l3.5 2" />
+      </symbol>
+      <symbol id="ec-i-place" viewBox="0 0 24 24">
+        <path d="M12 21s7-5.5 7-11a7 7 0 1 0-14 0c0 5.5 7 11 7 11Z" />
+        <circle cx="12" cy="10" r="2.5" />
+      </symbol>
+      <symbol id="ec-i-download" viewBox="0 0 24 24">
+        <path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8Z" />
+        <path d="M14 3v5h5" />
+        <path d="M12 11v6m0 0-2.5-2.5M12 17l2.5-2.5" />
+      </symbol>
+
+      <!-- Hero marks, replacing images/desc_image.png -->
+      <symbol id="ec-i-chart" viewBox="0 0 24 24">
+        <path d="M3 21h18M6 21V10M11 21V4M16 21v-7M21 21V8" />
+      </symbol>
+      <symbol id="ec-i-laptop" viewBox="0 0 24 24">
+        <rect x="4" y="5" width="16" height="11" rx="1.5" />
+        <path d="M2 19h20" />
+      </symbol>
+      <symbol id="ec-i-data" viewBox="0 0 24 24">
+        <ellipse cx="12" cy="6" rx="8" ry="3" />
+        <path d="M4 6v6c0 1.66 3.58 3 8 3s8-1.34 8-3V6" />
+        <path d="M4 12v6c0 1.66 3.58 3 8 3s8-1.34 8-3v-6" />
+      </symbol>
+
+      <!-- Topic marks, replacing images/icons/icon1–8.png -->
+      <symbol id="ec-i-cloud" viewBox="0 0 24 24">
+        <path d="M7 19a4 4 0 0 1-.4-7.98A6 6 0 0 1 18 10.5a3.75 3.75 0 0 1-.5 8.5Z" />
+      </symbol>
+      <symbol id="ec-i-atom" viewBox="0 0 24 24">
+        <circle cx="12" cy="12" r="2" />
+        <ellipse cx="12" cy="12" rx="10" ry="4.5" />
+        <ellipse cx="12" cy="12" rx="10" ry="4.5" transform="rotate(60 12 12)" />
+        <ellipse cx="12" cy="12" rx="10" ry="4.5" transform="rotate(120 12 12)" />
+      </symbol>
+      <symbol id="ec-i-chat" viewBox="0 0 24 24">
+        <path d="M21 12a8 8 0 0 1-8 8H7l-4 3v-6.5A8 8 0 1 1 21 12Z" />
+        <path d="M8.5 11h7M8.5 14.5h4" />
+      </symbol>
+      <symbol id="ec-i-search" viewBox="0 0 24 24">
+        <circle cx="10.5" cy="10.5" r="6.5" />
+        <path d="m15.5 15.5 5 5" />
+      </symbol>
+      <symbol id="ec-i-books" viewBox="0 0 24 24">
+        <rect x="3" y="4" width="5" height="16" rx="1" />
+        <rect x="10" y="4" width="5" height="16" rx="1" />
+        <path d="m17.5 6 3.5 13.5-1.5.4L16 6.4Z" />
+      </symbol>
+      <symbol id="ec-i-code" viewBox="0 0 24 24">
+        <path d="m8 7-5 5 5 5M16 7l5 5-5 5M13.5 4l-3 16" />
+      </symbol>
+      <symbol id="ec-i-layers" viewBox="0 0 24 24">
+        <path d="m12 3 9 5-9 5-9-5Z" />
+        <path d="m3 13 9 5 9-5" />
+      </symbol>
+      <symbol id="ec-i-globe" viewBox="0 0 24 24">
+        <circle cx="12" cy="12" r="9" />
+        <path d="M3 12h18M12 3a15 15 0 0 1 0 18 15 15 0 0 1 0-18Z" />
+      </symbol>
+
+      <symbol id="ec-i-facebook" viewBox="0 0 24 24">
+        <path
+          d="M13.5 22v-8h2.7l.4-3.1h-3.1V8.9c0-.9.25-1.5 1.54-1.5h1.65V4.6c-.29-.04-1.27-.13-2.4-.13-2.38 0-4.01 1.45-4.01 4.12v2.3H7.5V14h2.78v8h3.22Z"
+        />
+      </symbol>
+      <symbol id="ec-i-x" viewBox="0 0 24 24">
+        <path
+          d="M17.53 3h3.04l-6.64 7.59L21.75 21h-6.12l-4.79-6.26L5.35 21H2.3l7.1-8.11L2.25 3h6.27l4.33 5.72L17.53 3Zm-1.07 16.17h1.69L7.62 4.74H5.81l10.65 14.43Z"
+        />
+      </symbol>
+      <symbol id="ec-i-youtube" viewBox="0 0 24 24">
+        <path
+          d="M21.58 7.19a2.5 2.5 0 0 0-1.76-1.77C18.25 5 12 5 12 5s-6.25 0-7.82.42A2.5 2.5 0 0 0 2.42 7.2 26.2 26.2 0 0 0 2 12a26.2 26.2 0 0 0 .42 4.81 2.5 2.5 0 0 0 1.76 1.77C5.75 19 12 19 12 19s6.25 0 7.82-.42a2.5 2.5 0 0 0 1.76-1.77A26.2 26.2 0 0 0 22 12a26.2 26.2 0 0 0-.42-4.81ZM10 15.02V8.98L15.2 12 10 15.02Z"
+        />
+      </symbol>
+    </svg>
+
+    <header class="ec-header">
+      <nav class="ec-container ec-header__inner" aria-label="Primary">
+        <button
+          class="ec-nav__toggle"
+          type="button"
+          data-ec-nav-toggle
+          aria-expanded="false"
+          aria-controls="ec-nav-list"
+        >
+          <span class="ec-nav__toggle-bars"></span>
+          Menu
+        </button>
+
+        <ul class="ec-nav__list" id="ec-nav-list" data-ec-nav-list>
+          <li><a class="ec-nav__link" href="#event">Home</a></li>
+          <li><a class="ec-nav__link" href="#speakers">Speakers</a></li>
+          <li><a class="ec-nav__link" href="#topics">Topics</a></li>
+          <li><a class="ec-nav__link" href="#testimonials">Testimonials</a></li>
+          <li><a class="ec-nav__link" href="#news">News</a></li>
+          <li><a class="ec-nav__link" href="#timeline">Programs</a></li>
+          <li><a class="ec-nav__link" href="#register">Registration</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main id="main">
+      <!-- Hero ------------------------------------------------------------ -->
+      <section class="ec-hero" id="event" aria-labelledby="event-title">
+        <div class="ec-container ec-hero__body ec-grid ec-cols-2">
+          <div>
+            <h1 class="ec-hero__title ec-hero__title--compact" id="event-title">
+              <img
+                src="images/logo_eventcamp.png"
+                alt="Eventcamp"
+                width="960"
+                height="200"
+                fetchpriority="high"
+              />
+            </h1>
+          </div>
+
+          <div>
+            <ul class="ec-hero__marks">
+              <li>
+                <svg class="ec-hero__mark" aria-hidden="true">
+                  <use href="#ec-i-chart" />
+                </svg>
+              </li>
+              <li>
+                <svg class="ec-hero__mark" aria-hidden="true">
+                  <use href="#ec-i-laptop" />
+                </svg>
+              </li>
+              <li>
+                <svg class="ec-hero__mark" aria-hidden="true">
+                  <use href="#ec-i-data" />
+                </svg>
+              </li>
+            </ul>
+            <p class="ec-hero__intro">
+              <strong>Eventcamp</strong> is a one-day conference covering modern web development
+              techniques to impact you and your apps.
+            </p>
+          </div>
+        </div>
+
+        <div class="ec-factbar">
+          <div class="ec-container ec-grid ec-cols-4">
+            <h2 class="ec-factbar__heading">Event details</h2>
+
+            <div class="ec-fact">
+              <svg class="ec-fact__icon" aria-hidden="true">
+                <use href="#ec-i-date" />
+              </svg>
+              <span class="ec-fact__label">Date</span>
+              <p class="ec-fact__value">
+                <time datetime="2026-03-27">Friday, 27 March 2026</time>
+              </p>
+            </div>
+
+            <div class="ec-fact">
+              <svg class="ec-fact__icon" aria-hidden="true">
+                <use href="#ec-i-time" />
+              </svg>
+              <span class="ec-fact__label">Time</span>
+              <p class="ec-fact__value">
+                <time datetime="10:00">10:00</time> –
+                <time datetime="16:30">16:30</time>
+              </p>
+            </div>
+
+            <div class="ec-fact">
+              <svg class="ec-fact__icon" aria-hidden="true">
+                <use href="#ec-i-place" />
+              </svg>
+              <span class="ec-fact__label">Location</span>
+              <p class="ec-fact__value">Hotel Energy<br />Chicago, IL</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Speakers -------------------------------------------------------- -->
+      <section class="ec-section ec-section--light" id="speakers" aria-labelledby="speakers-title">
+        <div class="ec-container ec-grid ec-cols-2">
+          <div>
+            <header class="ec-section__header">
+              <h2 class="ec-section__title" id="speakers-title">Speakers</h2>
+              <p class="ec-section__lead">Featuring the best innovators</p>
+            </header>
+            <p class="ec-prose">
+              Nunc dapibus, nibh a tincidunt cursus, diam leo ornare risus, egestas molestie massa
+              nisi non ipsum. Sed venenatis ligula sit amet ante cursus eget ultrices magna ornare.
+              Donec magna ligula, quis arcu.
+            </p>
+          </div>
+
+          <article class="ec-person">
+            <img
+              class="ec-person__photo"
+              src="images/speaker1.jpg"
+              alt="Namq"
+              width="440"
+              height="220"
+              loading="lazy"
+            />
+            <h3 class="ec-person__name">
+              Namq
+              <span class="ec-person__role">Founder, Eventcamp</span>
+            </h3>
+            <p class="ec-person__bio">
+              Aenean quis nisl eros. Suspendisse potenti. Phasellus at ligula nec leo accumsan
+              eleifend.
+            </p>
+          </article>
+
+          <article class="ec-person">
+            <img
+              class="ec-person__photo"
+              src="images/speaker2.jpg"
+              alt="Leah Kim"
+              width="440"
+              height="220"
+              loading="lazy"
+            />
+            <h3 class="ec-person__name">
+              Leah Kim
+              <span class="ec-person__role">Co-founder, Husky HTML</span>
+            </h3>
+            <p class="ec-person__bio">
+              Aenean quis nisl eros. Suspendisse potenti. Phasellus at ligula nec leo accumsan
+              eleifend.
+            </p>
+          </article>
+
+          <article class="ec-person">
+            <img
+              class="ec-person__photo"
+              src="images/speaker3.jpg"
+              alt="Atom Husky"
+              width="440"
+              height="220"
+              loading="lazy"
+            />
+            <h3 class="ec-person__name">
+              Atom Husky
+              <span class="ec-person__role">Designer, Boring CSS</span>
+            </h3>
+            <p class="ec-person__bio">
+              Aenean quis nisl eros. Suspendisse potenti. Phasellus at ligula nec leo accumsan
+              eleifend.
+            </p>
+          </article>
+        </div>
+      </section>
+
+      <!-- Topics ---------------------------------------------------------- -->
+      <section class="ec-section ec-section--accent" id="topics" aria-labelledby="topics-title">
+        <div class="ec-container">
+          <header class="ec-section__header">
+            <h2 class="ec-section__title" id="topics-title">Topics</h2>
+            <p class="ec-section__lead">The topics being covered include the following:</p>
+          </header>
+
+          <ul class="ec-grid ec-cols-4">
+            <li class="ec-topic">
+              <svg class="ec-topic__icon" aria-hidden="true">
+                <use href="#ec-i-cloud" />
+              </svg>
+              <p class="ec-topic__text">
+                Vitae diam nisi. Quisque sit amet dolor elit. Cras vehicula nec libero. Praesent ac
+                nunc lorem, lobortis volutpat nisi.
+              </p>
+            </li>
+            <li class="ec-topic">
+              <svg class="ec-topic__icon" aria-hidden="true">
+                <use href="#ec-i-atom" />
+              </svg>
+              <p class="ec-topic__text">
+                Quisque vitae diam nis amet dolor elit. Cras dui ipsum, vehicula nec libero.
+                Praesent ac nunc lorem, lobortis volutpat.
+              </p>
+            </li>
+            <li class="ec-topic">
+              <svg class="ec-topic__icon" aria-hidden="true">
+                <use href="#ec-i-chat" />
+              </svg>
+              <p class="ec-topic__text">
+                Diam nisi. Quisque sit amet dolor elit. Cras dui ipsum, hendrerit, vehicula nec
+                libero.
+              </p>
+            </li>
+            <li class="ec-topic">
+              <svg class="ec-topic__icon" aria-hidden="true">
+                <use href="#ec-i-search" />
+              </svg>
+              <p class="ec-topic__text">
+                Sque vitae diam nisi. Cras dui ipsum, hendrerit, vehicula nec libero. Praesent ac
+                nunc lorem, lobortis.
+              </p>
+            </li>
+            <li class="ec-topic">
+              <svg class="ec-topic__icon" aria-hidden="true">
+                <use href="#ec-i-books" />
+              </svg>
+              <p class="ec-topic__text">
+                Quisque vitae diam nisi. Quisque sit amet dolor elit. Cras dui ipsum, hendrerit,
+                vehicula nec libero.
+              </p>
+            </li>
+            <li class="ec-topic">
+              <svg class="ec-topic__icon" aria-hidden="true">
+                <use href="#ec-i-code" />
+              </svg>
+              <p class="ec-topic__text">
+                Quisque vitae diam nisi. Quisque sit amet dolor elit. Cras dui ipsum, hendrerit,
+                vehicula nec libero.
+              </p>
+            </li>
+            <li class="ec-topic">
+              <svg class="ec-topic__icon" aria-hidden="true">
+                <use href="#ec-i-layers" />
+              </svg>
+              <p class="ec-topic__text">
+                Quisque vitae diam nisi. Quisque sit amet dolor elit. Cras dui ipsum, hendrerit,
+                vehicula nec libero.
+              </p>
+            </li>
+            <li class="ec-topic">
+              <svg class="ec-topic__icon" aria-hidden="true">
+                <use href="#ec-i-globe" />
+              </svg>
+              <p class="ec-topic__text">
+                Quisque vitae diam nisi. Quisque sit amet dolor elit. Cras dui ipsum, hendrerit,
+                vehicula nec libero.
+              </p>
+            </li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- Testimonials ---------------------------------------------------- -->
+      <section
+        class="ec-section ec-section--dark"
+        id="testimonials"
+        aria-labelledby="testimonials-title"
+      >
+        <div class="ec-container ec-grid ec-cols-3">
+          <header class="ec-section__header">
+            <h2 class="ec-section__title" id="testimonials-title">Testimonials</h2>
+            <p class="ec-section__lead">What participants from Eventcamp 2025 say</p>
+          </header>
+
+          <figure class="ec-quote">
+            <figcaption class="ec-quote__cite">
+              <img
+                class="ec-quote__avatar"
+                src="images/thumb_example1.jpg"
+                alt=""
+                width="120"
+                height="120"
+                loading="lazy"
+              />
+              <span class="ec-quote__name">Antoine de Saint-Exupéry</span>
+              <span class="ec-quote__role">Designer</span>
+            </figcaption>
+            <blockquote class="ec-quote__text">
+              <p>
+                Perfection is achieved, not when there is nothing left to add, but when there is
+                nothing left to remove.
+              </p>
+            </blockquote>
+          </figure>
+
+          <figure class="ec-quote">
+            <figcaption class="ec-quote__cite">
+              <img
+                class="ec-quote__avatar"
+                src="images/thumb_example2.jpg"
+                alt=""
+                width="120"
+                height="120"
+                loading="lazy"
+              />
+              <span class="ec-quote__name">David Craib</span>
+              <span class="ec-quote__role">Developer</span>
+            </figcaption>
+            <blockquote class="ec-quote__text">
+              <p>Design should never say, “Look at me.” It should always say, “Look at this.”</p>
+            </blockquote>
+          </figure>
+        </div>
+      </section>
+
+      <!-- News ------------------------------------------------------------ -->
+      <section class="ec-section ec-section--light" id="news" aria-labelledby="news-title">
+        <div class="ec-container">
+          <header class="ec-section__header">
+            <h2 class="ec-section__title" id="news-title">News</h2>
+            <p class="ec-section__lead">From the <em>Chicago Weekly</em></p>
+          </header>
+
+          <div class="ec-grid ec-cols-2">
+            <article class="ec-prose">
+              <p class="ec-lede">
+                The conference “Modern Web Development Techniques” will take place from 10:00 at the
+                Hotel Energy in Chicago, IL on 27 March 2026.
+              </p>
+              <p>
+                <img
+                  class="ec-figure"
+                  src="images/news_01.jpg"
+                  alt=""
+                  width="120"
+                  height="120"
+                  loading="lazy"
+                />
+                Aliquam pretium pulvinar venenatis. Proin mi felis, scelerisque a suscipit a, ornare
+                vel magna. Fusce convallis convallis imperdiet. Nulla facilisi. Nullam accumsan
+                laoreet urna, in hendrerit magna sagittis ut.
+              </p>
+              <p>
+                <img
+                  class="ec-figure ec-figure--end"
+                  src="images/news_02.jpg"
+                  alt=""
+                  width="80"
+                  height="80"
+                  loading="lazy"
+                />
+                Lacinia placerat magna in ullamcorper. Donec condimentum lobortis elit tincidunt
+                viverra. Sed sagittis lobortis velit, eget dictum libero dapibus quis.
+              </p>
+            </article>
+
+            <article class="ec-prose">
+              <p>
+                <img
+                  class="ec-figure"
+                  src="images/news_03.jpg"
+                  alt=""
+                  width="80"
+                  height="80"
+                  loading="lazy"
+                />
+                Cras lacinia placerat magna in ullamcorper. Donec condimentum lobortis elit
+                tincidunt viverra. Sed sagittis lobortis velit, eget dictum libero dapibus quis.
+                Vivamus metus neque, commodo in lobortis ac, pellentesque ac eros.
+              </p>
+              <p>
+                Quisque vel justo ipsum. Class aptent taciti sociosqu ad litora torquent per conubia
+                nostra, per inceptos himenaeos. Duis rutrum risus quis est faucibus a consequat
+                massa sagittis.
+              </p>
+              <p>
+                Duis congue, elit non dapibus pellentesque, tortor elit tempor odio, non
+                sollicitudin elit tortor nec felis. In a urna erat. Cras odio nisl, adipiscing
+                auctor mollis nec, lacinia et elit.
+              </p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- Timeline -------------------------------------------------------- -->
+      <section
+        class="ec-section ec-section--pattern"
+        id="timeline"
+        aria-labelledby="timeline-title"
+      >
+        <div class="ec-container">
+          <header class="ec-section__header">
+            <h2 class="ec-section__title" id="timeline-title">Timeline</h2>
+          </header>
+
+          <!-- A schedule is tabular data, so it is a table: screen readers
+               announce the row and column headers as you move through it. -->
+          <table class="ec-schedule">
+            <caption>
+              Programme for 27 March 2026. All times are local to Chicago.
+            </caption>
+            <thead>
+              <tr>
+                <th scope="col">Time</th>
+                <th scope="col">Programme</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="ec-schedule__time">09:00 –</td>
+                <td>Registration</td>
+              </tr>
+              <tr>
+                <td class="ec-schedule__time">10:00 – 10:20</td>
+                <td>Welcome</td>
+              </tr>
+              <tr>
+                <td class="ec-schedule__time">10:20 – 12:00</td>
+                <td>Research trends in HTML</td>
+              </tr>
+              <tr>
+                <td class="ec-schedule__time">12:00 – 13:30</td>
+                <td>Lunch</td>
+              </tr>
+              <tr>
+                <td class="ec-schedule__time">13:30 – 14:30</td>
+                <td>(Invited talk) What is CSS?</td>
+              </tr>
+              <tr>
+                <td class="ec-schedule__time">14:30 – 15:00</td>
+                <td>Introduction to Eventcamp</td>
+              </tr>
+              <tr>
+                <td class="ec-schedule__time">15:00 – 15:20</td>
+                <td>Coffee break</td>
+              </tr>
+              <tr>
+                <td class="ec-schedule__time">15:20 – 16:30</td>
+                <td>
+                  Application case of HTML<br />
+                  Demonstration of the canvas API
+                </td>
+              </tr>
+              <tr>
+                <td class="ec-schedule__time">16:30 –</td>
+                <td>Q&amp;A</td>
+              </tr>
+            </tbody>
+          </table>
+
+          <p class="ec-schedule__footer">Sponsored by <a href="#">Energy Camp</a></p>
+        </div>
+      </section>
+
+      <!-- Map -------------------------------------------------------------- -->
+      <section class="ec-map" id="map" aria-labelledby="map-title">
+        <div class="ec-map__header">
+          <div class="ec-container">
+            <h2 class="ec-section__title" id="map-title">Map</h2>
+          </div>
+        </div>
+
+        <!--
+          OpenStreetMap needs no API key and sets no tracking cookies. For a
+          Google map instead, swap the src for:
+          https://www.google.com/maps?q=Chicago,+IL&output=embed
+        -->
+        <iframe
+          class="ec-map__frame"
+          title="Map showing the conference venue in Chicago, Illinois"
+          src="https://www.openstreetmap.org/export/embed.html?bbox=-87.6387%2C41.8747%2C-87.6147%2C41.8887&amp;layer=mapnik&amp;marker=41.8817%2C-87.6267"
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"
+        ></iframe>
+      </section>
+
+      <!-- Registration ----------------------------------------------------- -->
+      <section class="ec-section ec-section--darker" id="register" aria-labelledby="register-title">
+        <div class="ec-container ec-grid ec-cols-2">
+          <div>
+            <header class="ec-section__header">
+              <h2 class="ec-section__title" id="register-title">Register</h2>
+              <p class="ec-section__lead">Join now to receive exclusive benefits</p>
+            </header>
+
+            <!--
+              This template ships without a backend. `data-ec-demo` makes the
+              script say so instead of silently doing nothing.
+
+              To collect real registrations: point `action` at your own
+              handler — a form service, a serverless function, whatever you
+              run — and delete `data-ec-demo`. Validation, the honeypot and
+              the error summary keep working either way, and the form still
+              submits with JavaScript turned off.
+            -->
+            <form
+              class="ec-form"
+              id="register-form"
+              method="post"
+              action="#"
+              data-ec-form
+              data-ec-demo
+              novalidate
+            >
+              <div
+                class="ec-form__status"
+                data-ec-form-status
+                role="status"
+                aria-live="polite"
+              ></div>
+
+              <fieldset>
+                <legend class="ec-visually-hidden">Your details</legend>
+
+                <div class="ec-field">
+                  <label class="ec-field__label" for="reg-name">
+                    Name <span class="ec-field__required" aria-hidden="true">*</span>
+                  </label>
+                  <input
+                    class="ec-field__control"
+                    id="reg-name"
+                    name="name"
+                    type="text"
+                    autocomplete="name"
+                    required
+                    aria-describedby="reg-name-error"
+                  />
+                  <p class="ec-field__error" id="reg-name-error"></p>
+                </div>
+
+                <div class="ec-field">
+                  <label class="ec-field__label" for="reg-title">Title</label>
+                  <input
+                    class="ec-field__control"
+                    id="reg-title"
+                    name="title"
+                    type="text"
+                    autocomplete="organization-title"
+                    aria-describedby="reg-title-error"
+                  />
+                  <p class="ec-field__error" id="reg-title-error"></p>
+                </div>
+
+                <div class="ec-field">
+                  <label class="ec-field__label" for="reg-company">Company</label>
+                  <input
+                    class="ec-field__control"
+                    id="reg-company"
+                    name="company"
+                    type="text"
+                    autocomplete="organization"
+                    aria-describedby="reg-company-error"
+                  />
+                  <p class="ec-field__error" id="reg-company-error"></p>
+                </div>
+
+                <div class="ec-field">
+                  <label class="ec-field__label" for="reg-email">
+                    Email <span class="ec-field__required" aria-hidden="true">*</span>
+                  </label>
+                  <input
+                    class="ec-field__control"
+                    id="reg-email"
+                    name="email"
+                    type="email"
+                    autocomplete="email"
+                    required
+                    aria-describedby="reg-email-error"
+                  />
+                  <p class="ec-field__error" id="reg-email-error"></p>
+                </div>
+
+                <div class="ec-field">
+                  <label class="ec-field__label" for="reg-phone">Phone</label>
+                  <input
+                    class="ec-field__control"
+                    id="reg-phone"
+                    name="phone"
+                    type="tel"
+                    autocomplete="tel"
+                    aria-describedby="reg-phone-error"
+                  />
+                  <p class="ec-field__error" id="reg-phone-error"></p>
+                </div>
+
+                <!-- Bot trap, replacing the old arithmetic captcha whose
+                     answer shipped in a hidden field next to the question. -->
+                <div class="ec-form__trap" aria-hidden="true">
+                  <label for="reg-website">Leave this field empty</label>
+                  <input
+                    id="reg-website"
+                    name="website"
+                    type="text"
+                    tabindex="-1"
+                    autocomplete="off"
+                  />
+                </div>
+
+                <div class="ec-field">
+                  <span class="ec-field__label" aria-hidden="true"></span>
+                  <button class="ec-button" type="submit">Submit</button>
+                </div>
+              </fieldset>
+            </form>
+          </div>
+
+          <div class="ec-contact-block">
+            <h3>Address and phone</h3>
+            <address>
+              <strong class="ec-highlight ec-underline">John Doe</strong><br />
+              Event Camp, Inc.<br />
+              110 E John Ave STE 305<br />
+              Normandy, IL 61820, US<br />
+              <a class="ec-contact-block__email" href="tel:+11234567890"> (123) 456-7890 </a>
+            </address>
+
+            <h3>Email</h3>
+            <a class="ec-contact-block__email" href="mailto:register@example.com">
+              register@example.com
+            </a>
+
+            <p class="ec-mt-lg">
+              <a class="ec-download" href="#" download>
+                <svg class="ec-download__icon" aria-hidden="true">
+                  <use href="#ec-i-download" />
+                </svg>
+                <span>Download</span>
+                <span>invitation</span>
+              </a>
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Sponsors --------------------------------------------------------- -->
+      <section class="ec-sponsors" aria-labelledby="sponsors-title">
+        <div class="ec-container ec-grid ec-split">
+          <h2 class="ec-sponsors__title" id="sponsors-title">Sponsors</h2>
+
+          <ul class="ec-sponsors__list">
+            <li>
+              <a href="#">
+                <img
+                  src="images/sponsor_01.png"
+                  alt="Sponsor United"
+                  width="440"
+                  height="124"
+                  loading="lazy"
+                />
+              </a>
+            </li>
+            <li>
+              <a href="#">
+                <img
+                  src="images/sponsor_02.png"
+                  alt="Evergreen"
+                  width="440"
+                  height="124"
+                  loading="lazy"
+                />
+              </a>
+            </li>
+            <li>
+              <a href="#">
+                <img
+                  src="images/sponsor_03.png"
+                  alt="Gold Diggers"
+                  width="440"
+                  height="124"
+                  loading="lazy"
+                />
+              </a>
+            </li>
+            <li>
+              <a href="#">
+                <img
+                  src="images/sponsor_04.png"
+                  alt="Redy"
+                  width="440"
+                  height="124"
+                  loading="lazy"
+                />
+              </a>
+            </li>
+          </ul>
+        </div>
+      </section>
+    </main>
+
+    <footer class="ec-footer">
+      <div class="ec-container ec-footer__inner">
+        <p class="ec-footer__copy">Copyright © <a href="#">Eventcamp</a> 2026</p>
+
+        <ul class="ec-social">
+          <li>
+            <a class="ec-social__link" href="https://www.facebook.com">
+              <svg class="ec-social__icon" aria-hidden="true">
+                <use href="#ec-i-facebook" />
+              </svg>
+              <span class="ec-visually-hidden">Facebook</span>
+            </a>
+          </li>
+          <li>
+            <a class="ec-social__link" href="https://x.com">
+              <svg class="ec-social__icon" aria-hidden="true">
+                <use href="#ec-i-x" />
+              </svg>
+              <span class="ec-visually-hidden">X</span>
+            </a>
+          </li>
+          <li>
+            <a class="ec-social__link" href="https://www.youtube.com">
+              <svg class="ec-social__icon" aria-hidden="true">
+                <use href="#ec-i-youtube" />
+              </svg>
+              <span class="ec-visually-hidden">YouTube</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </footer>
+
+    <script src="js/eventcamp.js" defer></script>
+  </body>
+</html>

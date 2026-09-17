@@ -3,7 +3,7 @@ name: Package templates
 on:
   push:
     tags:
-      - "v*.*.*"
+      - 'v*.*.*'
 
 permissions:
   contents: write
@@ -13,24 +13,37 @@ jobs:
     name: Build release archives
     runs-on: ubuntu-latest
     steps:
-      - name: Check out source
-        uses: actions/checkout@v4
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - run: npm ci
+
+      # Ship only what passes the checks.
+      - name: Verify
+        run: npm test
 
       - name: Create archives
         run: |
+          set -euo pipefail
           mkdir -p dist
-          for theme in green red yellow; do
-            mkdir -p "dist/html/$theme" "dist/php/$theme"
-            cp -R "templates-html/$theme/." "dist/html/$theme/"
-            cp -R "templates-php/$theme/." "dist/php/$theme/"
+
+          # One archive per theme, each a self-contained site, plus a
+          # combined archive holding all three.
+          for theme in templates/*/; do
+            name="$(basename "$theme")"
+            (cd templates && zip -rq "../dist/eventcamp-${name}-${GITHUB_REF_NAME}.zip" "$name")
           done
-          (cd dist/html && zip -rq "../../dist/eventcamp-html-${GITHUB_REF_NAME}.zip" .)
-          (cd dist/php && zip -rq "../../dist/eventcamp-php-${GITHUB_REF_NAME}.zip" .)
+
+          (cd templates && zip -rq "../dist/eventcamp-all-themes-${GITHUB_REF_NAME}.zip" .)
+
+          ls -lh dist
 
       - name: Publish GitHub release
         uses: softprops/action-gh-release@v2
         with:
           generate_release_notes: true
-          files: |
-            dist/eventcamp-html-${{ github.ref_name }}.zip
-            dist/eventcamp-php-${{ github.ref_name }}.zip
+          files: dist/*.zip

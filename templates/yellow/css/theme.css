@@ -1,0 +1,26 @@
+/* -------------------------------------------------------------------------
+   Eventcamp — yellow theme
+
+   Everything that makes this theme "yellow" lives here. eventcamp.css is
+   byte-identical across all three themes, so restyling is a matter of
+   editing the values below rather than forking a stylesheet.
+   ------------------------------------------------------------------------- */
+
+:root {
+  /* The display hue, unchanged from the original template. */
+  --ec-accent: #ddaa44;
+
+  /* Gold is too light to carry white text, so the accent band and buttons
+     keep the bright fill and put near-black on it (8.91:1) — which is what
+     the original design already did for its buttons. Accent text on light
+     surfaces uses a deep gold instead. */
+  --ec-accent-ink: #7a5d0c;
+  --ec-accent-surface: #ddaa44;
+  --ec-accent-contrast: #111;
+
+  /* Hero artwork. Swap the file, keep the declaration. */
+  --ec-hero-image: url('../images/bg_eventcamp.jpg');
+
+  /* The Trio leans on the serif for display type. */
+  --ec-hero-tracking: 0.08em;
+}

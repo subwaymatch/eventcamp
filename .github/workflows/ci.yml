@@ -1,0 +1,40 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  check:
+    name: Lint and validate
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - run: npm ci
+
+      # Each theme carries its own copy of the shared CSS/JS/fonts so the
+      # folder is self-contained; this fails if a copy drifts from shared/.
+      - name: Check theme copies are in sync
+        run: npm run sync:check
+
+      - name: Validate HTML
+        run: npm run check:html
+
+      - name: Check colour contrast
+        run: npm run check:contrast
+
+      - name: Check formatting
+        run: npm run check:format
+
+      - name: Build the demo site
+        run: npm run build

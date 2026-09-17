@@ -1,0 +1,685 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Loopathon 2026 — a relay run for cancer research</title>
+    <meta
+      name="description"
+      content="Loopathon is an annual series of relay runs raising awareness and funds for cancer research. Join us on 16 May 2026 at Lakeshore, Chicago."
+    />
+    <meta name="color-scheme" content="light dark" />
+    <meta name="theme-color" content="#77aa44" />
+
+    <!-- Social sharing. Replace the URLs with your own before publishing. -->
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Loopathon 2026" />
+    <meta
+      property="og:description"
+      content="An annual series of relay runs raising awareness and funds for cancer research."
+    />
+    <meta property="og:image" content="images/bg_eventcamp.jpg" />
+    <meta name="twitter:card" content="summary_large_image" />
+
+    <link rel="icon" href="images/favicon.ico" sizes="any" />
+    <link rel="apple-touch-icon" href="images/apple-touch-icon.png" />
+
+    <!-- Fetch the body face alongside the CSS rather than after it. -->
+    <link
+      rel="preload"
+      href="fonts/open-sans-400-700-normal.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin
+    />
+
+    <link rel="stylesheet" href="css/eventcamp.css" />
+    <link rel="stylesheet" href="css/theme.css" />
+
+    <!-- Marks that scripting is available before first paint, so the mobile
+         navigation does not flash open on its way to becoming a menu. -->
+    <script>
+      document.documentElement.classList.add('ec-js');
+    </script>
+  </head>
+
+  <body>
+    <a class="ec-skip-link" href="#main">Skip to content</a>
+
+    <!-- Icon sprite. Inline so the icons inherit currentColor and the page
+         still works when opened straight from disk. -->
+    <svg xmlns="http://www.w3.org/2000/svg" hidden aria-hidden="true">
+      <symbol id="ec-i-date" viewBox="0 0 24 24">
+        <rect x="3" y="5" width="18" height="16" rx="2" />
+        <path d="M3 10h18M8 3v4M16 3v4" />
+      </symbol>
+      <symbol id="ec-i-time" viewBox="0 0 24 24">
+        <circle cx="12" cy="12" r="9" />
+        <path d="M12 7v5l3.5 2" />
+      </symbol>
+      <symbol id="ec-i-place" viewBox="0 0 24 24">
+        <path d="M12 21s7-5.5 7-11a7 7 0 1 0-14 0c0 5.5 7 11 7 11Z" />
+        <circle cx="12" cy="10" r="2.5" />
+      </symbol>
+      <symbol id="ec-i-download" viewBox="0 0 24 24">
+        <path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8Z" />
+        <path d="M14 3v5h5" />
+        <path d="M12 11v6m0 0-2.5-2.5M12 17l2.5-2.5" />
+      </symbol>
+      <symbol id="ec-i-facebook" viewBox="0 0 24 24">
+        <path
+          d="M13.5 22v-8h2.7l.4-3.1h-3.1V8.9c0-.9.25-1.5 1.54-1.5h1.65V4.6c-.29-.04-1.27-.13-2.4-.13-2.38 0-4.01 1.45-4.01 4.12v2.3H7.5V14h2.78v8h3.22Z"
+        />
+      </symbol>
+      <symbol id="ec-i-x" viewBox="0 0 24 24">
+        <path
+          d="M17.53 3h3.04l-6.64 7.59L21.75 21h-6.12l-4.79-6.26L5.35 21H2.3l7.1-8.11L2.25 3h6.27l4.33 5.72L17.53 3Zm-1.07 16.17h1.69L7.62 4.74H5.81l10.65 14.43Z"
+        />
+      </symbol>
+      <symbol id="ec-i-youtube" viewBox="0 0 24 24">
+        <path
+          d="M21.58 7.19a2.5 2.5 0 0 0-1.76-1.77C18.25 5 12 5 12 5s-6.25 0-7.82.42A2.5 2.5 0 0 0 2.42 7.2 26.2 26.2 0 0 0 2 12a26.2 26.2 0 0 0 .42 4.81 2.5 2.5 0 0 0 1.76 1.77C5.75 19 12 19 12 19s6.25 0 7.82-.42a2.5 2.5 0 0 0 1.76-1.77A26.2 26.2 0 0 0 22 12a26.2 26.2 0 0 0-.42-4.81ZM10 15.02V8.98L15.2 12 10 15.02Z"
+        />
+      </symbol>
+    </svg>
+
+    <!-- Fixed navigation. The list is the same at every width; below 768px
+         it becomes a disclosure panel driven by js/eventcamp.js. -->
+    <header class="ec-header">
+      <nav class="ec-container ec-header__inner" aria-label="Primary">
+        <button
+          class="ec-nav__toggle"
+          type="button"
+          data-ec-nav-toggle
+          aria-expanded="false"
+          aria-controls="ec-nav-list"
+        >
+          <span class="ec-nav__toggle-bars"></span>
+          Menu
+        </button>
+
+        <ul class="ec-nav__list" id="ec-nav-list" data-ec-nav-list>
+          <li><a class="ec-nav__link" href="#event">Home</a></li>
+          <li><a class="ec-nav__link" href="#about">About</a></li>
+          <li><a class="ec-nav__link" href="#fees">Fees</a></li>
+          <li><a class="ec-nav__link" href="#news">News</a></li>
+          <li><a class="ec-nav__link" href="#faq">FAQs</a></li>
+          <li><a class="ec-nav__link" href="#register">Registration</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main id="main">
+      <!-- Hero ------------------------------------------------------------ -->
+      <section class="ec-hero" id="event" aria-labelledby="event-title">
+        <div class="ec-container ec-hero__body">
+          <h1 class="ec-hero__title" id="event-title">
+            <img
+              src="images/logo_eventcamp.png"
+              alt="Loopathon — relay for life"
+              width="960"
+              height="200"
+              fetchpriority="high"
+            />
+          </h1>
+        </div>
+
+        <div class="ec-factbar">
+          <div class="ec-container ec-grid ec-cols-4">
+            <h2 class="ec-factbar__heading">Event details</h2>
+
+            <div class="ec-fact">
+              <svg class="ec-fact__icon" aria-hidden="true">
+                <use href="#ec-i-date" />
+              </svg>
+              <span class="ec-fact__label">Date</span>
+              <p class="ec-fact__value">
+                <time datetime="2026-05-16">Saturday, 16 May 2026</time>
+              </p>
+            </div>
+
+            <div class="ec-fact">
+              <svg class="ec-fact__icon" aria-hidden="true">
+                <use href="#ec-i-time" />
+              </svg>
+              <span class="ec-fact__label">Time</span>
+              <p class="ec-fact__value">
+                <time datetime="10:00">10:00</time> –
+                <time datetime="16:30">16:30</time>
+              </p>
+            </div>
+
+            <div class="ec-fact">
+              <svg class="ec-fact__icon" aria-hidden="true">
+                <use href="#ec-i-place" />
+              </svg>
+              <span class="ec-fact__label">Location</span>
+              <p class="ec-fact__value">Lakeshore<br />Chicago, IL</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- About ----------------------------------------------------------- -->
+      <section class="ec-section ec-section--accent" id="about" aria-labelledby="about-title">
+        <div class="ec-container ec-grid ec-split">
+          <div>
+            <h2 class="ec-visually-hidden" id="about-title">About Loopathon</h2>
+            <p class="ec-prose ec-clamp-40">
+              Loopathon is an annual series of relay runs to raise awareness for cancer.
+            </p>
+            <img
+              src="images/loop.png"
+              alt=""
+              width="100"
+              height="51"
+              loading="lazy"
+              class="ec-mt"
+            />
+          </div>
+
+          <div class="ec-prose ec-prose--lg">
+            <p>
+              Phasellus sem lorem, mollis ac sodales non, iaculis at orci. Nam felis erat, ornare eu
+              feugiat non, accumsan vitae felis. In ornare metus vitae lectus convallis porttitor.
+              Donec vel elit vel lorem pharetra facilisis interdum at dui. Praesent mattis
+              consectetur lobortis.
+            </p>
+            <p>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent quis elit tortor.
+              Etiam accumsan, ligula vel fringilla malesuada, quam neque convallis enim, id
+              vestibulum est lectus sit amet velit. Nunc et sapien mauris.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Fees ------------------------------------------------------------ -->
+      <section class="ec-section ec-section--spotlight" id="fees" aria-labelledby="fees-title">
+        <div class="ec-container">
+          <header class="ec-section__header">
+            <h2 class="ec-section__title" id="fees-title">Fees</h2>
+            <p class="ec-section__lead">Reserve your spot in early spring</p>
+          </header>
+
+          <ul class="ec-grid ec-cols-3">
+            <li>
+              <div class="ec-price-card">
+                <span class="ec-price-card__amount">$40</span>
+                <span class="ec-price-card__terms">
+                  if registered by
+                  <span class="ec-highlight">14 January</span>
+                </span>
+                <p class="ec-price-card__note">
+                  Aenean quis nisl eros. Suspendisse potenti. Phasellus at ligula nec leo accumsan
+                  eleifend.
+                </p>
+              </div>
+            </li>
+            <li>
+              <div class="ec-price-card">
+                <span class="ec-price-card__amount">$50</span>
+                <span class="ec-price-card__terms">
+                  if registered between
+                  <span class="ec-highlight">15 January</span> and
+                  <span class="ec-highlight">15 February</span>
+                </span>
+                <p class="ec-price-card__note">Aenean quis nisl eros.</p>
+              </div>
+            </li>
+            <li>
+              <div class="ec-price-card">
+                <span class="ec-price-card__amount">$55</span>
+                <span class="ec-price-card__terms">
+                  if registered between
+                  <span class="ec-highlight">15 February</span> and
+                  <span class="ec-highlight">15 March</span>
+                </span>
+                <p class="ec-price-card__note">Aenean quis nisl eros.</p>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- News ------------------------------------------------------------ -->
+      <section class="ec-section ec-section--light" id="news" aria-labelledby="news-title">
+        <div class="ec-container">
+          <header class="ec-section__header">
+            <h2 class="ec-section__title" id="news-title">News</h2>
+            <p class="ec-section__lead">From the <em>Chicago Weekly</em></p>
+          </header>
+
+          <div class="ec-grid ec-cols-2">
+            <article class="ec-prose">
+              <p class="ec-lede">
+                “Loopathon”, a one-day fundraising event for Camp Clinic, will take place on 16 May
+                2026 in Chicago.
+              </p>
+              <p>
+                <img
+                  class="ec-figure"
+                  src="images/news_01.jpg"
+                  alt=""
+                  width="120"
+                  height="120"
+                  loading="lazy"
+                />
+                Aliquam pretium pulvinar venenatis. Proin mi felis, scelerisque a suscipit a, ornare
+                vel magna. Fusce convallis convallis imperdiet. Nulla facilisi. Nullam accumsan
+                laoreet urna, in hendrerit magna sagittis ut. Pellentesque sollicitudin convallis
+                magna, at tempus felis commodo et.
+              </p>
+              <p>
+                <img
+                  class="ec-figure ec-figure--end"
+                  src="images/news_02.jpg"
+                  alt=""
+                  width="80"
+                  height="80"
+                  loading="lazy"
+                />
+                Lacinia placerat magna in ullamcorper. Donec condimentum lobortis elit tincidunt
+                viverra. Sed sagittis lobortis velit, eget dictum libero dapibus quis. Aliquam id
+                orci diam, eget ullamcorper tellus.
+              </p>
+            </article>
+
+            <article class="ec-prose">
+              <p>
+                <img
+                  class="ec-figure"
+                  src="images/news_03.jpg"
+                  alt=""
+                  width="80"
+                  height="80"
+                  loading="lazy"
+                />
+                Cras lacinia placerat magna in ullamcorper. Donec condimentum lobortis elit
+                tincidunt viverra. Sed sagittis lobortis velit, eget dictum libero dapibus quis.
+                Vivamus metus neque, commodo in lobortis ac, pellentesque ac eros.
+              </p>
+              <p>
+                Quisque vel justo ipsum. Class aptent taciti sociosqu ad litora torquent per conubia
+                nostra, per inceptos himenaeos. Duis rutrum risus quis est faucibus a consequat
+                massa sagittis. Cras bibendum elit id felis dapibus volutpat.
+              </p>
+              <p>
+                Duis congue, elit non dapibus pellentesque, tortor elit tempor odio, non
+                sollicitudin elit tortor nec felis. In a urna erat. Cras odio nisl, adipiscing
+                auctor mollis nec, lacinia et elit.
+              </p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- FAQs ------------------------------------------------------------ -->
+      <section class="ec-section ec-section--muted" id="faq" aria-labelledby="faq-title">
+        <div class="ec-container">
+          <header class="ec-section__header">
+            <h2 class="ec-section__title" id="faq-title">FAQs</h2>
+            <p class="ec-section__lead">Frequently asked questions</p>
+          </header>
+
+          <div class="ec-grid ec-cols-2">
+            <div>
+              <h3 class="ec-faq__group-title">Event information</h3>
+
+              <!-- <details>/<summary> gives keyboard and screen-reader
+                   behaviour without a line of JavaScript. -->
+              <details class="ec-faq__item">
+                <summary class="ec-faq__question">Where do the registration fees go?</summary>
+                <div class="ec-faq__answer">
+                  <p>
+                    Nullam volutpat porttitor commodo. Nunc semper lobortis vestibulum. Nulla
+                    molestie sapien eget sapien imperdiet ornare. Aenean et libero tincidunt dolor
+                    vestibulum sodales id in nunc.
+                  </p>
+                </div>
+              </details>
+
+              <details class="ec-faq__item">
+                <summary class="ec-faq__question">Can I register on-site?</summary>
+                <div class="ec-faq__answer">
+                  <p>
+                    Proin accumsan auctor magna vitae auctor. Donec blandit lacinia congue.
+                    Phasellus vitae quam ultrices neque consequat iaculis. Phasellus venenatis nunc
+                    accumsan sapien aliquam ac semper felis mattis.
+                  </p>
+                </div>
+              </details>
+
+              <details class="ec-faq__item">
+                <summary class="ec-faq__question">Where can groups register?</summary>
+                <div class="ec-faq__answer">
+                  <p>
+                    Fusce et enim sapien. Maecenas vitae vehicula leo. Nullam volutpat porttitor
+                    commodo. Nunc semper lobortis vestibulum.
+                  </p>
+                </div>
+              </details>
+            </div>
+
+            <div>
+              <h3 class="ec-faq__group-title">Running</h3>
+
+              <details class="ec-faq__item">
+                <summary class="ec-faq__question">When should I run through pain?</summary>
+                <div class="ec-faq__answer">
+                  <p>
+                    Curabitur vehicula sapien sed enim feugiat scelerisque. Sed posuere, felis vel
+                    accumsan tincidunt, lorem sapien consectetur urna, sollicitudin blandit justo
+                    lectus ac lectus.
+                  </p>
+                </div>
+              </details>
+
+              <details class="ec-faq__item">
+                <summary class="ec-faq__question">Should I eat before a run?</summary>
+                <div class="ec-faq__answer">
+                  <p>
+                    Pellentesque fringilla tempus nulla, nec auctor sapien congue in. Integer vitae
+                    est velit, ac commodo tellus.
+                  </p>
+                </div>
+              </details>
+
+              <details class="ec-faq__item">
+                <summary class="ec-faq__question">
+                  Should I carry my own fluids or use the water stops?
+                </summary>
+                <div class="ec-faq__answer">
+                  <p>
+                    Curabitur vehicula sapien sed enim feugiat scelerisque. Sed posuere, felis vel
+                    accumsan tincidunt, lorem sapien consectetur urna.
+                  </p>
+                </div>
+              </details>
+
+              <details class="ec-faq__item">
+                <summary class="ec-faq__question">Can I listen to music during runs?</summary>
+                <div class="ec-faq__answer">
+                  <p>
+                    Sollicitudin blandit justo lectus ac lectus. Pellentesque fringilla tempus
+                    nulla, nec auctor sapien congue in.
+                  </p>
+                </div>
+              </details>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Map -------------------------------------------------------------- -->
+      <section class="ec-map" id="map" aria-labelledby="map-title">
+        <div class="ec-map__header">
+          <div class="ec-container">
+            <h2 class="ec-section__title" id="map-title">Map</h2>
+          </div>
+        </div>
+
+        <!--
+          OpenStreetMap needs no API key and sets no tracking cookies. For a
+          Google map instead, swap the src for:
+          https://www.google.com/maps?q=McCormick+Place,+Chicago,+IL&output=embed
+        -->
+        <iframe
+          class="ec-map__frame"
+          title="Map showing the event location in Chicago, Illinois"
+          src="https://www.openstreetmap.org/export/embed.html?bbox=-87.6247%2C41.8477%2C-87.6087%2C41.8557&amp;layer=mapnik&amp;marker=41.8517%2C-87.6167"
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"
+        ></iframe>
+      </section>
+
+      <!-- Registration ----------------------------------------------------- -->
+      <section class="ec-section ec-section--darker" id="register" aria-labelledby="register-title">
+        <div class="ec-container ec-grid ec-cols-2">
+          <div>
+            <header class="ec-section__header">
+              <h2 class="ec-section__title" id="register-title">Register</h2>
+              <p class="ec-section__lead">Join now to receive exclusive benefits</p>
+            </header>
+
+            <!--
+              This template ships without a backend. `data-ec-demo` makes the
+              script say so instead of silently doing nothing.
+
+              To collect real registrations: point `action` at your own
+              handler — a form service, a serverless function, whatever you
+              run — and delete `data-ec-demo`. Validation, the honeypot and
+              the error summary keep working either way, and the form still
+              submits with JavaScript turned off.
+            -->
+            <form
+              class="ec-form"
+              id="register-form"
+              method="post"
+              action="#"
+              data-ec-form
+              data-ec-demo
+              novalidate
+            >
+              <div
+                class="ec-form__status"
+                data-ec-form-status
+                role="status"
+                aria-live="polite"
+              ></div>
+
+              <fieldset>
+                <legend class="ec-visually-hidden">Your details</legend>
+
+                <div class="ec-field">
+                  <label class="ec-field__label" for="reg-name">
+                    Name <span class="ec-field__required" aria-hidden="true">*</span>
+                  </label>
+                  <input
+                    class="ec-field__control"
+                    id="reg-name"
+                    name="name"
+                    type="text"
+                    autocomplete="name"
+                    required
+                    aria-describedby="reg-name-error"
+                  />
+                  <p class="ec-field__error" id="reg-name-error"></p>
+                </div>
+
+                <div class="ec-field">
+                  <label class="ec-field__label" for="reg-title">Title</label>
+                  <input
+                    class="ec-field__control"
+                    id="reg-title"
+                    name="title"
+                    type="text"
+                    autocomplete="organization-title"
+                    aria-describedby="reg-title-error"
+                  />
+                  <p class="ec-field__error" id="reg-title-error"></p>
+                </div>
+
+                <div class="ec-field">
+                  <label class="ec-field__label" for="reg-company">Company</label>
+                  <input
+                    class="ec-field__control"
+                    id="reg-company"
+                    name="company"
+                    type="text"
+                    autocomplete="organization"
+                    aria-describedby="reg-company-error"
+                  />
+                  <p class="ec-field__error" id="reg-company-error"></p>
+                </div>
+
+                <div class="ec-field">
+                  <label class="ec-field__label" for="reg-email">
+                    Email <span class="ec-field__required" aria-hidden="true">*</span>
+                  </label>
+                  <input
+                    class="ec-field__control"
+                    id="reg-email"
+                    name="email"
+                    type="email"
+                    autocomplete="email"
+                    required
+                    aria-describedby="reg-email-error"
+                  />
+                  <p class="ec-field__error" id="reg-email-error"></p>
+                </div>
+
+                <div class="ec-field">
+                  <label class="ec-field__label" for="reg-phone">Phone</label>
+                  <input
+                    class="ec-field__control"
+                    id="reg-phone"
+                    name="phone"
+                    type="tel"
+                    autocomplete="tel"
+                    aria-describedby="reg-phone-error"
+                  />
+                  <p class="ec-field__error" id="reg-phone-error"></p>
+                </div>
+
+                <!-- Bot trap, replacing the old arithmetic captcha whose
+                     answer shipped in a hidden field next to the question. -->
+                <div class="ec-form__trap" aria-hidden="true">
+                  <label for="reg-website">Leave this field empty</label>
+                  <input
+                    id="reg-website"
+                    name="website"
+                    type="text"
+                    tabindex="-1"
+                    autocomplete="off"
+                  />
+                </div>
+
+                <div class="ec-field">
+                  <span class="ec-field__label" aria-hidden="true"></span>
+                  <button class="ec-button" type="submit">Submit</button>
+                </div>
+              </fieldset>
+            </form>
+          </div>
+
+          <div class="ec-contact-block">
+            <h3>Address and phone</h3>
+            <address>
+              <strong class="ec-highlight ec-underline">John Doe</strong><br />
+              Event Camp, Inc.<br />
+              110 E John Ave STE 305<br />
+              Normandy, IL 61820, US<br />
+              <a class="ec-contact-block__email" href="tel:+11234567890"> (123) 456-7890 </a>
+            </address>
+
+            <h3>Email</h3>
+            <a class="ec-contact-block__email" href="mailto:register@example.com">
+              register@example.com
+            </a>
+
+            <p class="ec-mt-lg">
+              <a class="ec-download" href="#" download>
+                <svg class="ec-download__icon" aria-hidden="true">
+                  <use href="#ec-i-download" />
+                </svg>
+                <span>Download</span>
+                <span>brochure</span>
+              </a>
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Sponsors --------------------------------------------------------- -->
+      <section class="ec-sponsors" aria-labelledby="sponsors-title">
+        <div class="ec-container ec-grid ec-split">
+          <h2 class="ec-sponsors__title" id="sponsors-title">Sponsors</h2>
+
+          <ul class="ec-sponsors__list">
+            <li>
+              <a href="#">
+                <img
+                  src="images/sponsor_01.png"
+                  alt="Sponsor United"
+                  width="440"
+                  height="124"
+                  loading="lazy"
+                />
+              </a>
+            </li>
+            <li>
+              <a href="#">
+                <img
+                  src="images/sponsor_02.png"
+                  alt="Evergreen"
+                  width="440"
+                  height="124"
+                  loading="lazy"
+                />
+              </a>
+            </li>
+            <li>
+              <a href="#">
+                <img
+                  src="images/sponsor_03.png"
+                  alt="Gold Diggers"
+                  width="440"
+                  height="124"
+                  loading="lazy"
+                />
+              </a>
+            </li>
+            <li>
+              <a href="#">
+                <img
+                  src="images/sponsor_04.png"
+                  alt="Redy"
+                  width="440"
+                  height="124"
+                  loading="lazy"
+                />
+              </a>
+            </li>
+          </ul>
+        </div>
+      </section>
+    </main>
+
+    <footer class="ec-footer">
+      <div class="ec-container ec-footer__inner">
+        <p class="ec-footer__copy">Copyright © <a href="#">Loopathon</a> 2026</p>
+
+        <ul class="ec-social">
+          <li>
+            <a class="ec-social__link" href="https://www.facebook.com">
+              <svg class="ec-social__icon" aria-hidden="true">
+                <use href="#ec-i-facebook" />
+              </svg>
+              <span class="ec-visually-hidden">Facebook</span>
+            </a>
+          </li>
+          <li>
+            <a class="ec-social__link" href="https://x.com">
+              <svg class="ec-social__icon" aria-hidden="true">
+                <use href="#ec-i-x" />
+              </svg>
+              <span class="ec-visually-hidden">X</span>
+            </a>
+          </li>
+          <li>
+            <a class="ec-social__link" href="https://www.youtube.com">
+              <svg class="ec-social__icon" aria-hidden="true">
+                <use href="#ec-i-youtube" />
+              </svg>
+              <span class="ec-visually-hidden">YouTube</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </footer>
+
+    <script src="js/eventcamp.js" defer></script>
+  </body>
+</html>
