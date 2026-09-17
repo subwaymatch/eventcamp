@@ -28,7 +28,7 @@
     <!-- Fetch the body face alongside the CSS rather than after it. -->
     <link
       rel="preload"
-      href="fonts/open-sans-400-700-normal.woff2"
+      href="fonts/inter-100-900-normal.woff2"
       as="font"
       type="font/woff2"
       crossorigin
@@ -51,21 +51,34 @@
          still works when opened straight from disk. -->
     <svg xmlns="http://www.w3.org/2000/svg" hidden aria-hidden="true">
       <symbol id="ec-i-date" viewBox="0 0 24 24">
-        <rect x="3" y="5" width="18" height="16" rx="2" />
-        <path d="M3 10h18M8 3v4M16 3v4" />
+        <path d="M8 2v3" />
+        <path d="M16 2v3" />
+        <rect x="3" y="3" width="18" height="18" rx="2" />
+        <path d="M3 9h18" />
+        <path d="M8 13h.01" />
+        <path d="M12 13h.01" />
+        <path d="M16 13h.01" />
+        <path d="M8 17h.01" />
+        <path d="M12 17h.01" />
+        <path d="M16 17h.01" />
       </symbol>
       <symbol id="ec-i-time" viewBox="0 0 24 24">
-        <circle cx="12" cy="12" r="9" />
-        <path d="M12 7v5l3.5 2" />
+        <circle cx="12" cy="12" r="10" />
+        <path d="M12 6v6l4 2" />
       </symbol>
       <symbol id="ec-i-place" viewBox="0 0 24 24">
-        <path d="M12 21s7-5.5 7-11a7 7 0 1 0-14 0c0 5.5 7 11 7 11Z" />
-        <circle cx="12" cy="10" r="2.5" />
+        <path
+          d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0"
+        />
+        <circle cx="12" cy="10" r="3" />
       </symbol>
       <symbol id="ec-i-download" viewBox="0 0 24 24">
-        <path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8Z" />
-        <path d="M14 3v5h5" />
-        <path d="M12 11v6m0 0-2.5-2.5M12 17l2.5-2.5" />
+        <path
+          d="M6 22a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h8a2.4 2.4 0 0 1 1.704.706l3.588 3.588A2.4 2.4 0 0 1 20 8v12a2 2 0 0 1-2 2z"
+        />
+        <path d="M14 2v5a1 1 0 0 0 1 1h5" />
+        <path d="M12 18v-6" />
+        <path d="m9 15 3 3 3-3" />
       </symbol>
       <symbol id="ec-i-facebook" viewBox="0 0 24 24">
         <path
@@ -181,15 +194,16 @@
 
           <div class="ec-prose ec-prose--lg">
             <p>
-              Phasellus sem lorem, mollis ac sodales non, iaculis at orci. Nam felis erat, ornare eu
-              feugiat non, accumsan vitae felis. In ornare metus vitae lectus convallis porttitor.
-              Donec vel elit vel lorem pharetra facilisis interdum at dui. Praesent mattis
-              consectetur lobortis.
+              Loopathon is a six-hour relay. Teams of four take turns on a 2.4-kilometre loop of the
+              lakefront path, handing over a slap band at the pavilion each time round, so the
+              course is never empty between ten in the morning and half past four. A few teams are
+              chasing a distance. Most are chasing the team in front of them.
             </p>
             <p>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent quis elit tortor.
-              Etiam accumsan, ligula vel fringilla malesuada, quam neque convallis enim, id
-              vestibulum est lectus sit amet velit. Nunc et sapien mauris.
+              Every dollar of every entry fee goes to Camp Clinic, which funds paediatric oncology
+              fellowships at three Chicago hospitals and the family housing that goes with them. The
+              2025 run raised $184,000 from 311 teams — enough for four full fellowships, and the
+              first year the run has covered one outright.
             </p>
           </div>
         </div>
@@ -212,8 +226,8 @@
                   <span class="ec-highlight">14 January</span>
                 </span>
                 <p class="ec-price-card__note">
-                  Aenean quis nisl eros. Suspendisse potenti. Phasellus at ligula nec leo accumsan
-                  eleifend.
+                  Chip timing, a numbered bib for every leg, the finisher's medal and lunch at the
+                  pavilion. One captain enters all four runners at once.
                 </p>
               </div>
             </li>
@@ -225,7 +239,9 @@
                   <span class="ec-highlight">15 January</span> and
                   <span class="ec-highlight">15 February</span>
                 </span>
-                <p class="ec-price-card__note">Aenean quis nisl eros.</p>
+                <p class="ec-price-card__note">
+                  The same package. Shirt sizes are only guaranteed while stock lasts.
+                </p>
               </div>
             </li>
             <li>
@@ -236,7 +252,10 @@
                   <span class="ec-highlight">15 February</span> and
                   <span class="ec-highlight">15 March</span>
                 </span>
-                <p class="ec-price-card__note">Aenean quis nisl eros.</p>
+                <p class="ec-price-card__note">
+                  The last window. Entries close at midnight on 15 March and there is none on the
+                  day.
+                </p>
               </div>
             </li>
           </ul>
@@ -266,10 +285,10 @@
                   height="120"
                   loading="lazy"
                 />
-                Aliquam pretium pulvinar venenatis. Proin mi felis, scelerisque a suscipit a, ornare
-                vel magna. Fusce convallis convallis imperdiet. Nulla facilisi. Nullam accumsan
-                laoreet urna, in hendrerit magna sagittis ut. Pellentesque sollicitudin convallis
-                magna, at tempus felis commodo et.
+                Organisers expect 320 teams this year, up from 311 in 2025. The course runs south
+                from the Lakeshore pavilion, turns at the boat house and comes back along the water
+                — 2.4 kilometres, flat, and closed to traffic for the day. “People assume a relay is
+                the easy option,” says race director Ama Boateng. “Then they run their fourth leg.”
               </p>
               <p>
                 <img
@@ -280,9 +299,9 @@
                   height="80"
                   loading="lazy"
                 />
-                Lacinia placerat magna in ullamcorper. Donec condimentum lobortis elit tincidunt
-                viverra. Sed sagittis lobortis velit, eget dictum libero dapibus quis. Aliquam id
-                orci diam, eget ullamcorper tellus.
+                The run started in 2014 with eleven teams from a single hospital staff room. It has
+                been held every May since, apart from 2020, and has raised a little over $900,000 in
+                total.
               </p>
             </article>
 
@@ -296,19 +315,19 @@
                   height="80"
                   loading="lazy"
                 />
-                Cras lacinia placerat magna in ullamcorper. Donec condimentum lobortis elit
-                tincidunt viverra. Sed sagittis lobortis velit, eget dictum libero dapibus quis.
-                Vivamus metus neque, commodo in lobortis ac, pellentesque ac eros.
+                Registration opened in November and the early window closes on 14 January. Teams of
+                four are the standard entry, though the organisers take pairs running double legs,
+                and a small number of solo runners who cover the whole six hours themselves.
               </p>
               <p>
-                Quisque vel justo ipsum. Class aptent taciti sociosqu ad litora torquent per conubia
-                nostra, per inceptos himenaeos. Duis rutrum risus quis est faucibus a consequat
-                massa sagittis. Cras bibendum elit id felis dapibus volutpat.
+                Volunteers are wanted for the water stops, the handover zone and the finish line.
+                Shifts are three hours and come with the same lunch the runners get; the sign-up
+                form is on the event site from the first week of February.
               </p>
               <p>
-                Duis congue, elit non dapibus pellentesque, tortor elit tempor odio, non
-                sollicitudin elit tortor nec felis. In a urna erat. Cras odio nisl, adipiscing
-                auctor mollis nec, lacinia et elit.
+                Spectators are welcome anywhere on the loop. Parking at the pavilion fills by nine,
+                so the organisers point people at the Red Line and at the bike racks by the boat
+                house.
               </p>
             </article>
           </div>
@@ -333,9 +352,9 @@
                 <summary class="ec-faq__question">Where do the registration fees go?</summary>
                 <div class="ec-faq__answer">
                   <p>
-                    Nullam volutpat porttitor commodo. Nunc semper lobortis vestibulum. Nulla
-                    molestie sapien eget sapien imperdiet ornare. Aenean et libero tincidunt dolor
-                    vestibulum sodales id in nunc.
+                    To Camp Clinic, in full. Timing, medical cover and the pavilion hire are paid
+                    for out of sponsorship, so no part of an entry fee is spent on putting the event
+                    on. Camp Clinic publishes an audited breakdown each October.
                   </p>
                 </div>
               </details>
@@ -344,9 +363,9 @@
                 <summary class="ec-faq__question">Can I register on-site?</summary>
                 <div class="ec-faq__answer">
                   <p>
-                    Proin accumsan auctor magna vitae auctor. Donec blandit lacinia congue.
-                    Phasellus vitae quam ultrices neque consequat iaculis. Phasellus venenatis nunc
-                    accumsan sapien aliquam ac semper felis mattis.
+                    No. Entries close at midnight on 15 March so that bibs and timing chips can be
+                    prepared in advance. If a team withdraws after that, its place goes to the
+                    waiting list rather than on sale at the pavilion.
                   </p>
                 </div>
               </details>
@@ -355,8 +374,10 @@
                 <summary class="ec-faq__question">Where can groups register?</summary>
                 <div class="ec-faq__answer">
                   <p>
-                    Fusce et enim sapien. Maecenas vitae vehicula leo. Nullam volutpat porttitor
-                    commodo. Nunc semper lobortis vestibulum.
+                    A captain registers the whole team and pays once; the other three runners get an
+                    email asking for their details and shirt size. Workplaces entering more than
+                    five teams should write to the organisers first — there is a group rate and a
+                    shared start pen.
                   </p>
                 </div>
               </details>
@@ -369,9 +390,10 @@
                 <summary class="ec-faq__question">When should I run through pain?</summary>
                 <div class="ec-faq__answer">
                   <p>
-                    Curabitur vehicula sapien sed enim feugiat scelerisque. Sed posuere, felis vel
-                    accumsan tincidunt, lorem sapien consectetur urna, sollicitudin blandit justo
-                    lectus ac lectus.
+                    Ordinary muscle soreness usually settles once you are warm, and running through
+                    it is fine. Sharp pain in a joint, pain that makes you limp, or pain that gets
+                    worse the longer you run means stop and find the medical tent at the handover
+                    zone. No relay leg is worth a stress fracture.
                   </p>
                 </div>
               </details>
@@ -380,8 +402,9 @@
                 <summary class="ec-faq__question">Should I eat before a run?</summary>
                 <div class="ec-faq__answer">
                   <p>
-                    Pellentesque fringilla tempus nulla, nec auctor sapien congue in. Integer vitae
-                    est velit, ac commodo tellus.
+                    Something small and mostly carbohydrate about ninety minutes before your leg —
+                    toast, a banana, a handful of dates. A full meal any later than that tends to
+                    come back to visit you at the turn.
                   </p>
                 </div>
               </details>
@@ -392,8 +415,9 @@
                 </summary>
                 <div class="ec-faq__answer">
                   <p>
-                    Curabitur vehicula sapien sed enim feugiat scelerisque. Sed posuere, felis vel
-                    accumsan tincidunt, lorem sapien consectetur urna.
+                    There are two water stops on the loop, at the boat house and at the pavilion,
+                    which is plenty over 2.4 kilometres. Carry your own only if you drink to a fixed
+                    schedule, or if you are one of the solo runners.
                   </p>
                 </div>
               </details>
@@ -402,8 +426,9 @@
                 <summary class="ec-faq__question">Can I listen to music during runs?</summary>
                 <div class="ec-faq__answer">
                   <p>
-                    Sollicitudin blandit justo lectus ac lectus. Pellentesque fringilla tempus
-                    nulla, nec auctor sapien congue in.
+                    Yes, but keep one ear free. The loop is shared with cyclists and with runners
+                    coming through on a handover sprint, and marshals need to be able to warn you.
+                    One earbud, or bone-conduction headphones, is the usual compromise.
                   </p>
                 </div>
               </details>
@@ -567,11 +592,12 @@
           <div class="ec-contact-block">
             <h3>Address and phone</h3>
             <address>
-              <strong class="ec-highlight ec-underline">John Doe</strong><br />
-              Event Camp, Inc.<br />
-              110 E John Ave STE 305<br />
-              Normandy, IL 61820, US<br />
-              <a class="ec-contact-block__email" href="tel:+11234567890"> (123) 456-7890 </a>
+              <strong class="ec-highlight ec-underline">Ama Boateng</strong><br />Loopathon, c/o
+              Camp Clinic<br />1400 S Lakeshore Path<br />Chicago, IL 60653<br /><a
+                class="ec-contact-block__email"
+                href="tel:+13125550143"
+                >(312) 555-0143</a
+              >
             </address>
 
             <h3>Email</h3>

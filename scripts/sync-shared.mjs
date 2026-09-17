@@ -9,7 +9,7 @@
  *   npm run sync         write the copies
  *   npm run sync:check   fail if any copy is out of date (used by CI)
  */
-import { readFile, writeFile, readdir, mkdir } from 'node:fs/promises';
+import { readFile, writeFile, readdir, mkdir, rm } from 'node:fs/promises';
 import { join, dirname } from 'node:path';
 
 const SHARED = 'shared';
@@ -35,7 +35,9 @@ if (!themes.length) {
 }
 
 const stale = [];
+const orphans = [];
 let written = 0;
+let removed = 0;
 
 async function place(sourcePath, destPath) {
   const source = await readFile(sourcePath);
@@ -58,33 +60,78 @@ async function place(sourcePath, destPath) {
   written++;
 }
 
+/**
+ * Deletes anything in a theme's fonts/ that shared/fonts/ no longer has.
+ * Without this, dropping a face leaves every theme carrying the old file —
+ * still shipped, still in the release archives, and invisible to the check
+ * above, which only compares the files shared/ does have.
+ */
+async function prune(dir, keep) {
+  let present;
+  try {
+    present = await readdir(dir);
+  } catch {
+    return; // the theme has no fonts/ yet
+  }
+
+  for (const name of present) {
+    if (keep.has(name)) continue;
+    const path = join(dir, name);
+    if (check) {
+      orphans.push(path);
+      continue;
+    }
+    await rm(path);
+    removed++;
+  }
+}
+
+const fonts = await readdir(join(SHARED, FONT_DIR));
+
 for (const theme of themes) {
   for (const [from, to] of FILES) {
     await place(join(SHARED, from), join(THEMES_DIR, theme, to));
   }
 
-  const fonts = await readdir(join(SHARED, FONT_DIR));
   for (const font of fonts) {
     await place(
       join(SHARED, FONT_DIR, font),
       join(THEMES_DIR, theme, FONT_DIR, font),
     );
   }
+
+  await prune(join(THEMES_DIR, theme, FONT_DIR), new Set(fonts));
 }
 
 if (check) {
-  if (stale.length) {
-    console.error(
-      'These copies are out of date with shared/. Run `npm run sync`:\n' +
-        stale.map((f) => `  ${f}`).join('\n'),
-    );
+  if (stale.length || orphans.length) {
+    const lines = [];
+    if (stale.length) {
+      lines.push(
+        'These copies are out of date with shared/:',
+        ...stale.map((f) => `  ${f}`),
+      );
+    }
+    if (orphans.length) {
+      lines.push(
+        'These files are no longer in shared/ and should go:',
+        ...orphans.map((f) => `  ${f}`),
+      );
+    }
+    lines.push('Run `npm run sync`.');
+    console.error(lines.join('\n'));
     process.exit(1);
   }
   console.log(`All theme copies are in sync with ${SHARED}/.`);
 } else {
+  const changes = [
+    written && `synced ${written} file(s)`,
+    removed && `removed ${removed} stale file(s)`,
+  ].filter(Boolean);
+
   console.log(
-    written
-      ? `Synced ${written} file(s) into ${themes.length} theme(s).`
+    changes.length
+      ? `${changes.join(', ')} across ${themes.length} theme(s).`
       : `Already up to date across ${themes.length} theme(s).`,
   );
 }

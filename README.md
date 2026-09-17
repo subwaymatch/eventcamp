@@ -42,7 +42,7 @@ templates/green/
 │   ├── eventcamp.css   shared stylesheet (identical in every theme)
 │   └── theme.css       this theme's colours and hero image
 ├── js/eventcamp.js     shared script (identical in every theme)
-├── fonts/              Open Sans and PT Serif, Latin subset, WOFF2
+├── fonts/              Inter and PT Serif, Latin subset, WOFF2
 └── images/
 ```
 
