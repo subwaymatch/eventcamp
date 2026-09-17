@@ -18,7 +18,7 @@
     "build": "node scripts/build-site.mjs",
     "dev": "node scripts/build-site.mjs --serve",
     "check:contrast": "node scripts/check-contrast.mjs",
-    "check:html": "html-validate \"templates/*/index.html\" \"site/*.html\"",
+    "check:html": "html-validate \"templates/*/index.html\" \"site/**/*.html\"",
     "check:format": "prettier --check .",
     "format": "prettier --write .",
     "test": "npm run sync:check && npm run check:html && npm run check:contrast && npm run check:format",

@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Red theme — live preview — Eventcamp</title>
+    <meta
+      name="description"
+      content="A live preview of the red Eventcamp theme: a one-day conference. Switch between desktop, tablet and phone widths."
+    />
+    <meta name="color-scheme" content="light dark" />
+
+    <link rel="icon" href="../../red/images/favicon.ico" sizes="any" />
+    <link rel="stylesheet" href="../../style.css" />
+  </head>
+
+  <body class="preview">
+    <header class="bar">
+      <p class="bar__brand"><a href="../../">Eventcamp</a></p>
+
+      <nav class="bar__themes" aria-label="Themes">
+        <ul>
+          <li>
+            <a href="../green/">Green</a>
+          </li>
+          <li>
+            <a href="../red/" aria-current="page">Red</a>
+          </li>
+          <li>
+            <a href="../yellow/">Yellow</a>
+          </li>
+        </ul>
+      </nav>
+
+      <p class="bar__open">
+        <a href="../../red/">Open the page on its own</a>
+      </p>
+    </header>
+
+    <main class="stage">
+      <h1 class="visually-hidden">Live preview of the red theme — Eventcamp 2026</h1>
+
+      <!--
+        The width switcher is three radio buttons rather than a script: the
+        checked one sizes the frame through a sibling selector, so the
+        control works with JavaScript disabled. The inputs sit here, ahead
+        of the frame, because that is what the ~ combinator needs; their
+        labels are the visible buttons below.
+      -->
+      <input class="stage__width" type="radio" name="width" id="width-desktop" checked />
+      <input class="stage__width" type="radio" name="width" id="width-tablet" />
+      <input class="stage__width" type="radio" name="width" id="width-phone" />
+
+      <div class="stage__bar">
+        <p class="stage__caption">
+          <strong>Eventcamp 2026</strong>
+          <span>Speakers, topics, testimonials, a timetable table and a registration form.</span>
+        </p>
+
+        <div class="widths">
+          <label for="width-desktop">Desktop</label>
+          <label for="width-tablet">Tablet</label>
+          <label for="width-phone">Phone</label>
+        </div>
+      </div>
+
+      <!--
+        The preview is the template itself, served from ../../red/ — the
+        same files a release archive contains. Narrowing the frame narrows
+        the iframe's viewport, so the layout reflows exactly as it would on
+        a device rather than being a scaled picture of a wide page.
+      -->
+      <div class="stage__frame">
+        <iframe src="../../red/" title="The red Eventcamp theme, running"></iframe>
+      </div>
+    </main>
+  </body>
+</html>
