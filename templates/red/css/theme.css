@@ -1,0 +1,29 @@
+/* -------------------------------------------------------------------------
+   Eventcamp — red theme
+
+   Everything that makes this theme "red" lives here. eventcamp.css is
+   byte-identical across all three themes, so restyling is a matter of
+   editing the values below rather than forking a stylesheet.
+   ------------------------------------------------------------------------- */
+
+:root {
+  /* The display hue, unchanged from the original template. */
+  --ec-accent: #dd3333;
+
+  /* White on #dd3333 is 4.57:1, so the accent band and buttons keep the
+     original colour. Accent *text* on white is only 4.52:1 — technically a
+     pass, but with no headroom — so it is darkened a step. */
+  --ec-accent-ink: #c62828;
+  --ec-accent-surface: #dd3333;
+  --ec-accent-contrast: #fff;
+
+  /* #dd3333 is only 4.13:1 against the near-black sections, so accent text
+     there is lifted to a lighter red. Fills and rules keep --ec-accent. */
+  --ec-accent-on-dark: #e85c5c;
+
+  /* Hero artwork. Swap the file, keep the declaration. */
+  --ec-hero-image: url('../images/bg_eventcamp.jpg');
+
+  /* Repeating texture behind the timeline, as in the original design. */
+  --ec-section-pattern: url('../images/bg_patterns.jpg');
+}

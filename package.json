@@ -1,0 +1,32 @@
+{
+  "name": "eventcamp",
+  "version": "2.0.0",
+  "private": true,
+  "description": "A responsive, dependency-free event and conference website template in three themes.",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/subwaymatch/eventcamp.git"
+  },
+  "type": "module",
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "sync": "node scripts/sync-shared.mjs",
+    "sync:check": "node scripts/sync-shared.mjs --check",
+    "build": "node scripts/build-site.mjs",
+    "dev": "node scripts/build-site.mjs --serve",
+    "check:contrast": "node scripts/check-contrast.mjs",
+    "check:html": "html-validate \"templates/*/index.html\" \"site/*.html\"",
+    "check:format": "prettier --check .",
+    "format": "prettier --write .",
+    "test": "npm run sync:check && npm run check:html && npm run check:contrast && npm run check:format",
+    "deploy:cloudflare": "npm run build && wrangler deploy"
+  },
+  "devDependencies": {
+    "html-validate": "^11.16.0",
+    "prettier": "^3.9.7",
+    "wrangler": "^4.0.0"
+  }
+}

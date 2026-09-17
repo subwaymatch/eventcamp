@@ -1,0 +1,589 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>The Trio — classical jazz improvisations, live in Chicago</title>
+    <meta
+      name="description"
+      content="The Trio, one of the leading modern jazz ensembles in Europe, plays the Central Arts Center in Chicago on 27 March 2026."
+    />
+    <meta name="color-scheme" content="light dark" />
+    <meta name="theme-color" content="#ddaa44" />
+
+    <!-- Social sharing. Replace the URLs with your own before publishing. -->
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="The Trio — live in Chicago" />
+    <meta property="og:description" content="Classical jazz improvisations straight from Europe." />
+    <meta property="og:image" content="images/bg_eventcamp.jpg" />
+    <meta name="twitter:card" content="summary_large_image" />
+
+    <link rel="icon" href="images/favicon.ico" sizes="any" />
+    <link rel="apple-touch-icon" href="images/apple-touch-icon.png" />
+
+    <link
+      rel="preload"
+      href="fonts/open-sans-400-700-normal.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin
+    />
+
+    <link rel="stylesheet" href="css/eventcamp.css" />
+    <link rel="stylesheet" href="css/theme.css" />
+
+    <script>
+      document.documentElement.classList.add('ec-js');
+    </script>
+  </head>
+
+  <body>
+    <a class="ec-skip-link" href="#main">Skip to content</a>
+
+    <!-- Icon sprite. Inline so the icons inherit currentColor and the page
+         still works when opened straight from disk. -->
+    <svg xmlns="http://www.w3.org/2000/svg" hidden aria-hidden="true">
+      <symbol id="ec-i-date" viewBox="0 0 24 24">
+        <rect x="3" y="5" width="18" height="16" rx="2" />
+        <path d="M3 10h18M8 3v4M16 3v4" />
+      </symbol>
+      <symbol id="ec-i-time" viewBox="0 0 24 24">
+        <circle cx="12" cy="12" r="9" />
+        <path d="M12 7v5l3.5 2" />
+      </symbol>
+      <symbol id="ec-i-place" viewBox="0 0 24 24">
+        <path d="M12 21s7-5.5 7-11a7 7 0 1 0-14 0c0 5.5 7 11 7 11Z" />
+        <circle cx="12" cy="10" r="2.5" />
+      </symbol>
+      <symbol id="ec-i-download" viewBox="0 0 24 24">
+        <path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8Z" />
+        <path d="M14 3v5h5" />
+        <path d="M12 11v6m0 0-2.5-2.5M12 17l2.5-2.5" />
+      </symbol>
+      <symbol id="ec-i-facebook" viewBox="0 0 24 24">
+        <path
+          d="M13.5 22v-8h2.7l.4-3.1h-3.1V8.9c0-.9.25-1.5 1.54-1.5h1.65V4.6c-.29-.04-1.27-.13-2.4-.13-2.38 0-4.01 1.45-4.01 4.12v2.3H7.5V14h2.78v8h3.22Z"
+        />
+      </symbol>
+      <symbol id="ec-i-x" viewBox="0 0 24 24">
+        <path
+          d="M17.53 3h3.04l-6.64 7.59L21.75 21h-6.12l-4.79-6.26L5.35 21H2.3l7.1-8.11L2.25 3h6.27l4.33 5.72L17.53 3Zm-1.07 16.17h1.69L7.62 4.74H5.81l10.65 14.43Z"
+        />
+      </symbol>
+      <symbol id="ec-i-youtube" viewBox="0 0 24 24">
+        <path
+          d="M21.58 7.19a2.5 2.5 0 0 0-1.76-1.77C18.25 5 12 5 12 5s-6.25 0-7.82.42A2.5 2.5 0 0 0 2.42 7.2 26.2 26.2 0 0 0 2 12a26.2 26.2 0 0 0 .42 4.81 2.5 2.5 0 0 0 1.76 1.77C5.75 19 12 19 12 19s6.25 0 7.82-.42a2.5 2.5 0 0 0 1.76-1.77A26.2 26.2 0 0 0 22 12a26.2 26.2 0 0 0-.42-4.81ZM10 15.02V8.98L15.2 12 10 15.02Z"
+        />
+      </symbol>
+    </svg>
+
+    <header class="ec-header">
+      <nav class="ec-container ec-header__inner" aria-label="Primary">
+        <button
+          class="ec-nav__toggle"
+          type="button"
+          data-ec-nav-toggle
+          aria-expanded="false"
+          aria-controls="ec-nav-list"
+        >
+          <span class="ec-nav__toggle-bars"></span>
+          Menu
+        </button>
+
+        <ul class="ec-nav__list" id="ec-nav-list" data-ec-nav-list>
+          <li><a class="ec-nav__link" href="#event">Home</a></li>
+          <li><a class="ec-nav__link" href="#invitation">Invitation</a></li>
+          <li><a class="ec-nav__link" href="#performers">The Trio</a></li>
+          <li><a class="ec-nav__link" href="#programme">Programme</a></li>
+          <li><a class="ec-nav__link" href="#tickets">Tickets</a></li>
+          <li><a class="ec-nav__link" href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main id="main">
+      <!-- Hero ------------------------------------------------------------ -->
+      <section class="ec-hero" id="event" aria-labelledby="event-title">
+        <div class="ec-container ec-hero__body">
+          <h1 class="ec-hero__title" id="event-title">
+            <img
+              src="images/logo_eventcamp.png"
+              alt="The Trio — classical jazz improvisations straight from Europe"
+              width="960"
+              height="230"
+              fetchpriority="high"
+            />
+          </h1>
+        </div>
+
+        <div class="ec-factbar">
+          <div class="ec-container ec-grid ec-cols-4">
+            <h2 class="ec-factbar__heading">Event details</h2>
+
+            <div class="ec-fact">
+              <svg class="ec-fact__icon" aria-hidden="true">
+                <use href="#ec-i-date" />
+              </svg>
+              <span class="ec-fact__label">Date</span>
+              <p class="ec-fact__value">
+                <time datetime="2026-03-27">Friday, 27 March 2026</time>
+              </p>
+            </div>
+
+            <div class="ec-fact">
+              <svg class="ec-fact__icon" aria-hidden="true">
+                <use href="#ec-i-time" />
+              </svg>
+              <span class="ec-fact__label">Time</span>
+              <p class="ec-fact__value">
+                <time datetime="19:30">19:30</time> –
+                <time datetime="22:00">22:00</time>
+              </p>
+            </div>
+
+            <div class="ec-fact">
+              <svg class="ec-fact__icon" aria-hidden="true">
+                <use href="#ec-i-place" />
+              </svg>
+              <span class="ec-fact__label">Location</span>
+              <p class="ec-fact__value">Central Arts Center<br />Chicago, IL</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Invitation ------------------------------------------------------ -->
+      <section
+        class="ec-section ec-section--accent"
+        id="invitation"
+        aria-labelledby="invitation-title"
+      >
+        <div class="ec-container">
+          <header class="ec-section__header">
+            <h2 class="ec-section__title" id="invitation-title">Invitation</h2>
+          </header>
+
+          <p class="ec-lede ec-clamp-40">
+            The Trio, known as one of the leading modern jazz revolutionists, are coming to Chicago
+            on 27 March.
+          </p>
+
+          <p class="ec-prose ec-mt">
+            Quisque vel justo ipsum. Class aptent taciti sociosqu ad litora torquent per conubia
+            nostra, per inceptos himenaeos. Duis rutrum risus quis est faucibus a consequat massa
+            sagittis. Cras bibendum elit id felis dapibus volutpat. Cras gravida neque eget tortor
+            laoreet a vestibulum lectus adipiscing. Ut elementum, velit ac tincidunt scelerisque,
+            urna lorem varius diam, id ornare nunc turpis ac mi. Duis congue, elit non dapibus
+            pellentesque, tortor elit tempor odio, non sollicitudin elit tortor nec felis. In a urna
+            erat. Cras odio nisl, adipiscing auctor mollis nec, lacinia et elit.
+          </p>
+        </div>
+      </section>
+
+      <!-- Performers ------------------------------------------------------ -->
+      <section
+        class="ec-section ec-section--light"
+        id="performers"
+        aria-labelledby="performers-title"
+      >
+        <div class="ec-container ec-grid ec-cols-2">
+          <div>
+            <header class="ec-section__header">
+              <h2 class="ec-section__title" id="performers-title">Performers</h2>
+              <p class="ec-section__lead">Featuring the jazz revolutionists from Europe</p>
+            </header>
+            <p class="ec-prose">
+              Cras odio nisl, adipiscing auctor mollis nec, lacinia et elit. Ut eu lectus eu nulla
+              lacinia dapibus ut nec diam. Vivamus interdum tellus ut tellus varius ac accumsan nunc
+              porta. Sed semper elit eget ipsum venenatis tempus. Proin euismod gravida quam at
+              bibendum.
+            </p>
+          </div>
+
+          <article class="ec-person">
+            <img
+              class="ec-person__photo"
+              src="images/player1.jpg"
+              alt="George Vyola"
+              width="460"
+              height="366"
+              loading="lazy"
+            />
+            <h3 class="ec-person__name">
+              George Vyola
+              <span class="ec-person__role">Viola</span>
+            </h3>
+            <p class="ec-person__bio">
+              George Vyola consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut
+              laoreet dolore magna aliquam erat volutpat.
+            </p>
+          </article>
+
+          <article class="ec-person">
+            <img
+              class="ec-person__photo"
+              src="images/player2.jpg"
+              alt="Rachel Violyn"
+              width="460"
+              height="366"
+              loading="lazy"
+            />
+            <h3 class="ec-person__name">
+              Rachel Violyn
+              <span class="ec-person__role">Violin</span>
+            </h3>
+            <p class="ec-person__bio">
+              Rachel Violyn is a violinist from the National Arts Center of Romania. Vivamus
+              interdum tellus ut tellus varius ac.
+            </p>
+          </article>
+
+          <article class="ec-person">
+            <img
+              class="ec-person__photo"
+              src="images/player3.jpg"
+              alt="John Celloski"
+              width="460"
+              height="366"
+              loading="lazy"
+            />
+            <h3 class="ec-person__name">
+              John Celloski
+              <span class="ec-person__role">Cello</span>
+            </h3>
+            <p class="ec-person__bio">
+              John Celloski is a cellist from Canada. Sed semper elit eget ipsum venenatis tempus.
+              Proin euismod gravida quam at bibendum.
+            </p>
+          </article>
+        </div>
+      </section>
+
+      <!-- Concert programme ----------------------------------------------- -->
+      <section class="ec-section ec-section--dark" id="programme" aria-labelledby="programme-title">
+        <div class="ec-container">
+          <header class="ec-section__header">
+            <h2 class="ec-section__title" id="programme-title">Concert programme</h2>
+          </header>
+
+          <dl class="ec-program">
+            <div class="ec-program__row">
+              <dt class="ec-program__composer">Hodges &amp; Strayhorn</dt>
+              <dd class="ec-program__works">Early Morning Rock</dd>
+            </div>
+            <div class="ec-program__row">
+              <dt class="ec-program__composer">Bellson / Hayes</dt>
+              <dd class="ec-program__works">It’s That Time</dd>
+            </div>
+            <div class="ec-program__row">
+              <dt class="ec-program__composer">Tapper</dt>
+              <dd class="ec-program__works">
+                Ethiopian Summer<br />
+                Why Don’t We<br />
+                Jazzy Tiger
+              </dd>
+            </div>
+            <div class="ec-program__row">
+              <dt class="ec-program__composer">Mintzer</dt>
+              <dd class="ec-program__works">Good News</dd>
+            </div>
+            <div class="ec-program__row">
+              <dt class="ec-program__composer">Rollins</dt>
+              <dd class="ec-program__works">St. Thomas</dd>
+            </div>
+            <div class="ec-program__row">
+              <dt class="ec-program__composer">Wilson</dt>
+              <dd class="ec-program__works">Basically Blues</dd>
+            </div>
+          </dl>
+        </div>
+      </section>
+
+      <!-- Tickets ---------------------------------------------------------- -->
+      <section class="ec-section ec-section--dark" id="tickets" aria-labelledby="tickets-title">
+        <div class="ec-container">
+          <header class="ec-section__header">
+            <h2 class="ec-section__title" id="tickets-title">Tickets</h2>
+            <p class="ec-section__lead">Reserve your spot</p>
+          </header>
+
+          <ul class="ec-grid ec-cols-2">
+            <li>
+              <div class="ec-price-card">
+                <span class="ec-price-card__amount">$60</span>
+                <span class="ec-price-card__terms">
+                  Standard <span class="ec-highlight">tickets</span>
+                </span>
+                <p class="ec-price-card__note">
+                  Aenean quis nisl eros. Suspendisse potenti. Phasellus at ligula nec leo accumsan
+                  eleifend.
+                </p>
+                <a class="ec-button ec-button--sm" href="#">Buy now</a>
+              </div>
+            </li>
+            <li>
+              <div class="ec-price-card">
+                <span class="ec-price-card__amount">$30</span>
+                <span class="ec-price-card__terms">
+                  For <span class="ec-highlight">Art Center members only</span>
+                </span>
+                <p class="ec-price-card__note">Aenean quis nisl eros.</p>
+                <a class="ec-button ec-button--sm" href="#">Buy now</a>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- Map -------------------------------------------------------------- -->
+      <section class="ec-map" id="map" aria-labelledby="map-title">
+        <div class="ec-map__header">
+          <div class="ec-container">
+            <h2 class="ec-section__title" id="map-title">Map</h2>
+          </div>
+        </div>
+
+        <!--
+          OpenStreetMap needs no API key and sets no tracking cookies. For a
+          Google map instead, swap the src for:
+          https://www.google.com/maps?q=Chicago,+IL&output=embed
+        -->
+        <iframe
+          class="ec-map__frame"
+          title="Map showing the concert venue in Chicago, Illinois"
+          src="https://www.openstreetmap.org/export/embed.html?bbox=-87.6307%2C41.8757%2C-87.6147%2C41.8837&amp;layer=mapnik&amp;marker=41.8797%2C-87.6227"
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"
+        ></iframe>
+      </section>
+
+      <!-- Contact ---------------------------------------------------------- -->
+      <section class="ec-section ec-section--darker" id="contact" aria-labelledby="contact-title">
+        <div class="ec-container ec-grid ec-cols-2">
+          <div>
+            <header class="ec-section__header">
+              <h2 class="ec-section__title" id="contact-title">Contact</h2>
+              <p class="ec-section__lead">Feel free to email us if you have any questions</p>
+            </header>
+
+            <!--
+              This template ships without a backend. `data-ec-demo` makes the
+              script say so instead of silently doing nothing.
+
+              To receive real messages: point `action` at your own handler — a
+              form service, a serverless function, whatever you run — and
+              delete `data-ec-demo`. Validation, the honeypot and the error
+              summary keep working either way, and the form still submits with
+              JavaScript turned off.
+            -->
+            <form
+              class="ec-form"
+              id="contact-form"
+              method="post"
+              action="#"
+              data-ec-form
+              data-ec-demo
+              novalidate
+            >
+              <div
+                class="ec-form__status"
+                data-ec-form-status
+                role="status"
+                aria-live="polite"
+              ></div>
+
+              <fieldset>
+                <legend class="ec-visually-hidden">Your message</legend>
+
+                <div class="ec-field">
+                  <label class="ec-field__label" for="contact-name">
+                    Name
+                    <span class="ec-field__required" aria-hidden="true">*</span>
+                  </label>
+                  <input
+                    class="ec-field__control"
+                    id="contact-name"
+                    name="name"
+                    type="text"
+                    autocomplete="name"
+                    required
+                    aria-describedby="contact-name-error"
+                  />
+                  <p class="ec-field__error" id="contact-name-error"></p>
+                </div>
+
+                <div class="ec-field">
+                  <label class="ec-field__label" for="contact-email">
+                    Email
+                    <span class="ec-field__required" aria-hidden="true">*</span>
+                  </label>
+                  <input
+                    class="ec-field__control"
+                    id="contact-email"
+                    name="email"
+                    type="email"
+                    autocomplete="email"
+                    required
+                    aria-describedby="contact-email-error"
+                  />
+                  <p class="ec-field__error" id="contact-email-error"></p>
+                </div>
+
+                <div class="ec-field">
+                  <label class="ec-field__label" for="contact-message">
+                    Message
+                    <span class="ec-field__required" aria-hidden="true">*</span>
+                  </label>
+                  <textarea
+                    class="ec-field__control"
+                    id="contact-message"
+                    name="message"
+                    rows="6"
+                    required
+                    minlength="10"
+                    aria-describedby="contact-message-error"
+                  ></textarea>
+                  <p class="ec-field__error" id="contact-message-error"></p>
+                </div>
+
+                <!-- Bot trap, replacing the old arithmetic captcha whose
+                     answer shipped in a hidden field next to the question. -->
+                <div class="ec-form__trap" aria-hidden="true">
+                  <label for="contact-website">Leave this field empty</label>
+                  <input
+                    id="contact-website"
+                    name="website"
+                    type="text"
+                    tabindex="-1"
+                    autocomplete="off"
+                  />
+                </div>
+
+                <div class="ec-field">
+                  <span class="ec-field__label" aria-hidden="true"></span>
+                  <button class="ec-button" type="submit">Submit</button>
+                </div>
+              </fieldset>
+            </form>
+          </div>
+
+          <div class="ec-contact-block">
+            <h3>Address and phone</h3>
+            <address>
+              <strong class="ec-highlight ec-underline">John Doe</strong><br />
+              Event Camp, Inc.<br />
+              110 E John Ave STE 305<br />
+              Normandy, IL 61820, US<br />
+              <a class="ec-contact-block__email" href="tel:+11234567890"> (123) 456-7890 </a>
+            </address>
+
+            <h3>Email</h3>
+            <a class="ec-contact-block__email" href="mailto:tickets@example.com">
+              tickets@example.com
+            </a>
+
+            <p class="ec-mt-lg">
+              <a class="ec-download" href="#" download>
+                <svg class="ec-download__icon" aria-hidden="true">
+                  <use href="#ec-i-download" />
+                </svg>
+                <span>Download</span>
+                <span>programme</span>
+              </a>
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Sponsors --------------------------------------------------------- -->
+      <section class="ec-sponsors" aria-labelledby="sponsors-title">
+        <div class="ec-container ec-grid ec-split">
+          <h2 class="ec-sponsors__title" id="sponsors-title">Sponsors</h2>
+
+          <ul class="ec-sponsors__list">
+            <li>
+              <a href="#">
+                <img
+                  src="images/sponsor_01.png"
+                  alt="Sponsor United"
+                  width="440"
+                  height="124"
+                  loading="lazy"
+                />
+              </a>
+            </li>
+            <li>
+              <a href="#">
+                <img
+                  src="images/sponsor_02.png"
+                  alt="Evergreen"
+                  width="440"
+                  height="124"
+                  loading="lazy"
+                />
+              </a>
+            </li>
+            <li>
+              <a href="#">
+                <img
+                  src="images/sponsor_03.png"
+                  alt="Gold Diggers"
+                  width="440"
+                  height="124"
+                  loading="lazy"
+                />
+              </a>
+            </li>
+            <li>
+              <a href="#">
+                <img
+                  src="images/sponsor_04.png"
+                  alt="Redy"
+                  width="440"
+                  height="124"
+                  loading="lazy"
+                />
+              </a>
+            </li>
+          </ul>
+        </div>
+      </section>
+    </main>
+
+    <footer class="ec-footer">
+      <div class="ec-container ec-footer__inner">
+        <p class="ec-footer__copy">Copyright © <a href="#">The Trio</a> 2026</p>
+
+        <ul class="ec-social">
+          <li>
+            <a class="ec-social__link" href="https://www.facebook.com">
+              <svg class="ec-social__icon" aria-hidden="true">
+                <use href="#ec-i-facebook" />
+              </svg>
+              <span class="ec-visually-hidden">Facebook</span>
+            </a>
+          </li>
+          <li>
+            <a class="ec-social__link" href="https://x.com">
+              <svg class="ec-social__icon" aria-hidden="true">
+                <use href="#ec-i-x" />
+              </svg>
+              <span class="ec-visually-hidden">X</span>
+            </a>
+          </li>
+          <li>
+            <a class="ec-social__link" href="https://www.youtube.com">
+              <svg class="ec-social__icon" aria-hidden="true">
+                <use href="#ec-i-youtube" />
+              </svg>
+              <span class="ec-visually-hidden">YouTube</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </footer>
+
+    <script src="js/eventcamp.js" defer></script>
+  </body>
+</html>

@@ -1,0 +1,24 @@
+{
+  // Cloudflare Workers — static assets only.
+  //
+  // There is no `main` here on purpose: with an `assets` directory and no
+  // Worker script, Wrangler uploads the files and Cloudflare serves them
+  // straight from its edge network. Nothing runs per request, so the demo
+  // costs no Worker invocations.
+  //
+  //   npm run build && npx wrangler deploy      deploy
+  //   npx wrangler dev                          preview locally
+  //
+  // The generated *.workers.dev hostname comes from `name`; change it, or
+  // attach your own domain in the Cloudflare dashboard.
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "eventcamp",
+  "compatibility_date": "2026-09-01",
+  "assets": {
+    "directory": "./_site",
+    // Serve /green/ as /green/index.html rather than redirecting.
+    "html_handling": "auto-trailing-slash",
+    // Unknown paths get site/404.html with a 404 status.
+    "not_found_handling": "404-page",
+  },
+}
