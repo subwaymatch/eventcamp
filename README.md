@@ -9,6 +9,11 @@ install.
 | ---------------------------------------------- | ------------------------------------------ | ------------------------------------------------ |
 | ![The green theme](docs/screenshots/green.png) | ![The red theme](docs/screenshots/red.png) | ![The yellow theme](docs/screenshots/yellow.png) |
 
+Live previews, each the template itself running at a width you pick:
+[green](https://subwaymatch.github.io/eventcamp/preview/green/) ·
+[red](https://subwaymatch.github.io/eventcamp/preview/red/) ·
+[yellow](https://subwaymatch.github.io/eventcamp/preview/yellow/).
+
 - **No dependencies.** No jQuery, no CSS framework, no npm packages at
   runtime. About 250 lines of plain JavaScript, all of it optional.
 - **No third-party requests.** Fonts are self-hosted and the map is an
@@ -122,6 +127,14 @@ npm run build     # writes _site/
 npm run dev       # writes _site/ and serves it on http://localhost:8787
 ```
 
+`_site/` is the theme list at `/`, each theme verbatim at `/<theme>/`, and a
+preview page at `/preview/<theme>/` that loads the theme in a frame you can
+narrow to tablet or phone. Narrowing the frame narrows the template's
+viewport, so the layout reflows exactly as it would on a device rather than
+being a scaled picture of a wide page. The preview pages need no JavaScript;
+the theme list uses a little to swap its screenshots for running templates,
+and keeps the screenshots without it.
+
 ### GitHub Pages
 
 The included workflow builds and publishes on every push to `main`. Enable it
@@ -131,6 +144,14 @@ once:
 2. Push to `main`.
 
 The site lands at `https://<user>.github.io/<repo>/`.
+
+> If what you get there is this README, rendered, rather than the theme
+> list, the source is still **Deploy from a branch**: GitHub is running
+> Jekyll over the repository and serving that instead of the workflow's
+> output. The workflow still reports a green deploy in that state, so the
+> setting is the thing to check — a built page answers at
+> `/<repo>/green/`, a Jekyll one 404s there and answers at
+> `/<repo>/templates/green/`.
 
 ### Cloudflare Workers
 

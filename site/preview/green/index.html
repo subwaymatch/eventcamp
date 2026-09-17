@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Green theme — live preview — Eventcamp</title>
+    <meta
+      name="description"
+      content="A live preview of the green Eventcamp theme: a charity relay run. Switch between desktop, tablet and phone widths."
+    />
+    <meta name="color-scheme" content="light dark" />
+
+    <link rel="icon" href="../../green/images/favicon.ico" sizes="any" />
+    <link rel="stylesheet" href="../../style.css" />
+  </head>
+
+  <body class="preview">
+    <header class="bar">
+      <p class="bar__brand"><a href="../../">Eventcamp</a></p>
+
+      <nav class="bar__themes" aria-label="Themes">
+        <ul>
+          <li>
+            <a href="../green/" aria-current="page">Green</a>
+          </li>
+          <li>
+            <a href="../red/">Red</a>
+          </li>
+          <li>
+            <a href="../yellow/">Yellow</a>
+          </li>
+        </ul>
+      </nav>
+
+      <p class="bar__open">
+        <a href="../../green/">Open the page on its own</a>
+      </p>
+    </header>
+
+    <main class="stage">
+      <h1 class="visually-hidden">Live preview of the green theme — Loopathon 2026</h1>
+
+      <!--
+        The width switcher is three radio buttons rather than a script: the
+        checked one sizes the frame through a sibling selector, so the
+        control works with JavaScript disabled. The inputs sit here, ahead
+        of the frame, because that is what the ~ combinator needs; their
+        labels are the visible buttons below.
+      -->
+      <input class="stage__width" type="radio" name="width" id="width-desktop" checked />
+      <input class="stage__width" type="radio" name="width" id="width-tablet" />
+      <input class="stage__width" type="radio" name="width" id="width-phone" />
+
+      <div class="stage__bar">
+        <p class="stage__caption">
+          <strong>Loopathon 2026</strong>
+          <span
+            >Fees, news, a route map, FAQs and a registration form, under a photographic hero.</span
+          >
+        </p>
+
+        <div class="widths">
+          <label for="width-desktop">Desktop</label>
+          <label for="width-tablet">Tablet</label>
+          <label for="width-phone">Phone</label>
+        </div>
+      </div>
+
+      <!--
+        The preview is the template itself, served from ../../green/ — the
+        same files a release archive contains. Narrowing the frame narrows
+        the iframe's viewport, so the layout reflows exactly as it would on
+        a device rather than being a scaled picture of a wide page.
+      -->
+      <div class="stage__frame">
+        <iframe src="../../green/" title="The green Eventcamp theme, running"></iframe>
+      </div>
+    </main>
+  </body>
+</html>

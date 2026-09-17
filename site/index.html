@@ -13,6 +13,11 @@
 
     <link rel="icon" href="green/images/favicon.ico" sizes="any" />
     <link rel="stylesheet" href="style.css" />
+
+    <!-- Swaps the screenshots below for the running templates. Optional:
+         without it the cards keep their screenshots and still link to a
+         live preview. -->
+    <script src="preview.js" defer></script>
   </head>
 
   <body>
@@ -21,7 +26,8 @@
         <h1>Eventcamp</h1>
         <p class="tagline">
           Three free website templates for events and conferences. Pick a theme, edit the HTML, put
-          it on a server — there is no build step and nothing to install.
+          it on a server — there is no build step and nothing to install. Every card below is the
+          template itself, running.
         </p>
 
         <ul class="meta">
@@ -36,47 +42,53 @@
       <main>
         <ul class="themes">
           <li class="card">
-            <img
-              src="previews/green.png"
-              alt="The green theme: a photographic hero with the Loopathon wordmark, an event details bar, and a green about section."
-              width="1200"
-              height="750"
-              loading="lazy"
-            />
+            <div class="card__shot" data-preview="green/">
+              <img
+                src="previews/green.png"
+                alt="The green theme: a photographic hero with the Loopathon wordmark, an event details bar, and a green about section."
+                width="1200"
+                height="750"
+                loading="lazy"
+              />
+            </div>
             <div class="card__body">
-              <h2><a href="green/">Green</a></h2>
+              <h2><a href="preview/green/">Green</a></h2>
               <p>A charity relay run. Fees, news, FAQs and a registration form.</p>
-              <p class="card__cta">View demo →</p>
+              <p class="card__cta">Live preview →</p>
             </div>
           </li>
 
           <li class="card">
-            <img
-              src="previews/red.png"
-              alt="The red theme: a dark hero with the Eventcamp wordmark beside an introduction, over a speakers grid."
-              width="1200"
-              height="750"
-              loading="lazy"
-            />
+            <div class="card__shot" data-preview="red/">
+              <img
+                src="previews/red.png"
+                alt="The red theme: a dark hero with the Eventcamp wordmark beside an introduction, over a speakers grid."
+                width="1200"
+                height="750"
+                loading="lazy"
+              />
+            </div>
             <div class="card__body">
-              <h2><a href="red/">Red</a></h2>
+              <h2><a href="preview/red/">Red</a></h2>
               <p>A one-day conference. Speakers, topics, testimonials and a timetable.</p>
-              <p class="card__cta">View demo →</p>
+              <p class="card__cta">Live preview →</p>
             </div>
           </li>
 
           <li class="card">
-            <img
-              src="previews/yellow.png"
-              alt="The yellow theme: a dark instrument photograph behind The Trio wordmark, above a gold invitation panel."
-              width="1200"
-              height="750"
-              loading="lazy"
-            />
+            <div class="card__shot" data-preview="yellow/">
+              <img
+                src="previews/yellow.png"
+                alt="The yellow theme: a dark instrument photograph behind The Trio wordmark, above a gold invitation panel."
+                width="1200"
+                height="750"
+                loading="lazy"
+              />
+            </div>
             <div class="card__body">
-              <h2><a href="yellow/">Yellow</a></h2>
+              <h2><a href="preview/yellow/">Yellow</a></h2>
               <p>A concert night. Performers, programme, tickets and a contact form.</p>
-              <p class="card__cta">View demo →</p>
+              <p class="card__cta">Live preview →</p>
             </div>
           </li>
         </ul>
