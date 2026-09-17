@@ -5,14 +5,14 @@ one-day conference and a concert night. Pick a theme, edit the HTML, put the
 folder on a server. There is no build step, no framework and nothing to
 install.
 
-| Green                                          | Red                                        | Yellow                                           |
-| ---------------------------------------------- | ------------------------------------------ | ------------------------------------------------ |
-| ![The green theme](docs/screenshots/green.png) | ![The red theme](docs/screenshots/red.png) | ![The yellow theme](docs/screenshots/yellow.png) |
+| Green                                                   | Red                                               | Yellow                                                     |
+| ------------------------------------------------------- | ------------------------------------------------- | ---------------------------------------------------------- |
+| [![The green theme](docs/screenshots/green.png)][green] | [![The red theme](docs/screenshots/red.png)][red] | [![The yellow theme](docs/screenshots/yellow.png)][yellow] |
+| [Live preview][green] · [full page][green-page]         | [Live preview][red] · [full page][red-page]       | [Live preview][yellow] · [full page][yellow-page]          |
 
-Live previews, each the template itself running at a width you pick:
-[green](https://subwaymatch.github.io/eventcamp/preview/green/) ·
-[red](https://subwaymatch.github.io/eventcamp/preview/red/) ·
-[yellow](https://subwaymatch.github.io/eventcamp/preview/yellow/).
+Every screenshot above links to a live preview: the template itself,
+running, at a width you choose — desktop, tablet or phone. [All three are
+listed on the demo site][demo].
 
 - **No dependencies.** No jQuery, no CSS framework, no npm packages at
   runtime. About 250 lines of plain JavaScript, all of it optional.
@@ -26,9 +26,9 @@ Live previews, each the template itself running at a width you pick:
 
 ## Quick start
 
-1. Download a theme from the
+1. Pick a theme from the [live demo][demo], then download it from the
    [Releases](https://github.com/subwaymatch/eventcamp/releases) page, or
-   copy a folder out of `templates/`.
+   copy the folder out of `templates/`.
 2. Open `index.html` and replace the text, images and event details.
 3. Upload the folder to any static host.
 
@@ -205,3 +205,11 @@ still submits.
 [MIT](LICENSE). The bundled fonts are under the SIL Open Font License —
 see [CREDITS.md](CREDITS.md) for the full attribution of everything that
 ships in this repository.
+
+[demo]: https://subwaymatch.github.io/eventcamp/
+[green]: https://subwaymatch.github.io/eventcamp/preview/green/
+[red]: https://subwaymatch.github.io/eventcamp/preview/red/
+[yellow]: https://subwaymatch.github.io/eventcamp/preview/yellow/
+[green-page]: https://subwaymatch.github.io/eventcamp/green/
+[red-page]: https://subwaymatch.github.io/eventcamp/red/
+[yellow-page]: https://subwaymatch.github.io/eventcamp/yellow/
