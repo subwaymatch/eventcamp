@@ -29,19 +29,19 @@
    ------------------------------------------------------------------------- */
 
 @font-face {
-  font-family: 'Open Sans';
+  font-family: 'Inter';
   font-style: normal;
-  font-weight: 400 700;
+  font-weight: 100 900;
   font-display: swap;
-  src: url('../fonts/open-sans-400-700-normal.woff2') format('woff2');
+  src: url('../fonts/inter-100-900-normal.woff2') format('woff2');
 }
 
 @font-face {
-  font-family: 'Open Sans';
+  font-family: 'Inter';
   font-style: italic;
-  font-weight: 400 700;
+  font-weight: 100 900;
   font-display: swap;
-  src: url('../fonts/open-sans-400-700-italic.woff2') format('woff2');
+  src: url('../fonts/inter-100-900-italic.woff2') format('woff2');
 }
 
 @font-face {
@@ -119,9 +119,16 @@
 
   /* Type */
   --ec-font-sans:
-    'Open Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
+    'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
     'Helvetica Neue', Arial, sans-serif;
   --ec-font-serif: 'PT Serif', Georgia, 'Times New Roman', serif;
+
+  /* Inter sets wide by default. These pull it back a little — the values
+     Inter's own notes suggest for screen text — and tighten further as the
+     type gets bigger, where the default spacing reads loosest. Letterspaced
+     uppercase labels set their own positive tracking and are unaffected. */
+  --ec-tracking: -0.011em;
+  --ec-tracking-tight: -0.021em;
 
   --ec-text-xs: 0.6875rem; /* 11px */
   --ec-text-sm: 0.8125rem; /* 13px */
@@ -198,6 +205,7 @@ body {
   font-size: var(--ec-text-md);
   font-weight: 400;
   line-height: 1.75;
+  letter-spacing: var(--ec-tracking);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-rendering: optimizeLegibility;
@@ -211,6 +219,7 @@ h5,
 h6 {
   font-weight: 700;
   line-height: 1.25;
+  letter-spacing: var(--ec-tracking-tight);
   text-wrap: balance;
 }
 

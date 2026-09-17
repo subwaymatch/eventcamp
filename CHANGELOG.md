@@ -23,6 +23,40 @@ adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 - `npm run check:html` validates every page under `site/`, not only the ones
   at its top level.
 
+- Inter replaces Open Sans as the body and heading face, tracked slightly
+  tighter — `-0.011em` on body text and `-0.021em` on headings, set as
+  tokens so a theme can override them. Inter sets wide by default at screen
+  sizes; the letterspaced uppercase labels keep their own positive tracking.
+- The interface icons are now [Lucide](https://lucide.dev/), inlined into
+  each theme's sprite on the same 24×24 grid and the same `currentColor`
+  stroke the old hand-drawn set used, so no CSS changed. This also fixes the
+  "atom" mark in the red theme, which had lost its orbits and was rendering
+  as a bare dot.
+- Every placeholder passage is now real copy. The lorem ipsum is gone from
+  all three themes, along with the placeholder people ("Namq", "Atom Husky"
+  of "Boring CSS"), the aphorisms standing in for attendee testimonials, and
+  the "John Doe / (123) 456-7890" contact block. Phone numbers now sit in
+  the 555-01xx range and mail stays on example.com — both reserved for
+  fiction, so a template cannot route a reader's registration to a real
+  person.
+- The photography is regenerated with OpenAI's `gpt-image-2.5` and composed
+  for the crops it sits in. The hero was a 3:1 panorama in a roughly 2:1
+  frame, so a third of it was being cropped away and what was left was
+  upscaled; it is now 2:1 and dark through the middle where the wordmark
+  sits. The speaker, performer, news and testimonial images had no
+  resolution to spare on a high-density screen and are now two to three
+  times the size they are drawn at. The wordmarks, the loop mark and the
+  sponsor marks are untouched — they carry lettering, which is what an image
+  model mangles.
+
+### Fixed
+
+- `npm run sync` now removes files from a theme's `fonts/` that `shared/`
+  no longer has, and `npm run sync:check` fails on them. Dropping a face
+  previously left every theme carrying the old file, still shipped in the
+  release archives and invisible to the check, which only compared the files
+  shared/ did have.
+
 ## [2.0.0] — 2026-09-17
 
 A rewrite of the front-end code that keeps the original visual design. The
