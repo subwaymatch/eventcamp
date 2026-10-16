@@ -21,6 +21,10 @@
   /* Hero artwork. Swap the file, keep the declaration. */
   --ec-hero-image: url('../images/bg_eventcamp.jpg');
 
-  /* The Trio leans on the serif for display type. */
-  --ec-hero-tracking: 0.08em;
+  /* The Trio leans on the serif for display type: the event name in bold
+     PT Serif, the line above it in italic. */
+  --ec-hero-font: var(--ec-font-serif);
+  --ec-hero-weight: 700;
+  --ec-hero-size: clamp(3.25rem, 0.5rem + 10.5vw, 8.5rem);
+  --ec-hero-tagline-style: italic;
 }

@@ -21,4 +21,9 @@
 
   /* Hero artwork. Swap the file, keep the declaration. */
   --ec-hero-image: url('../images/bg_eventcamp.jpg');
+
+  /* The event name: Inter at its lightest, as the original wordmark was
+     drawn, and large enough to span the hero. */
+  --ec-hero-weight: 200;
+  --ec-hero-size: clamp(2.5rem, 0.5rem + 10vw, 7.5rem);
 }

@@ -29,7 +29,7 @@ Reserved Font Name.
 ## Icons
 
 The interface icons — calendar, clock, map pin, download, the topic marks in
-the red theme — are [Lucide](https://lucide.dev/) icons, inlined into each
+the red theme, the loop in the green theme — are [Lucide](https://lucide.dev/) icons, inlined into each
 theme's SVG sprite rather than loaded from a package, so a theme folder stays
 self-contained. Lucide is under the
 [ISC License](https://github.com/lucide-icons/lucide/blob/main/LICENSE),
@@ -51,7 +51,8 @@ endorsement is not, and each company publishes its own brand guidelines.
 ## Photographs and artwork
 
 The images in `templates/*/images/` are covered by this repository's MIT
-licence. They come from two places:
+licence. Everything that used to be a picture of lettering is now text, an
+icon, or both:
 
 - **The photographs are generated**, with OpenAI's `gpt-image-2.5`, and
   replaced the original template's stock photography. They were regenerated
@@ -60,9 +61,16 @@ licence. They come from two places:
   thumbnails had no resolution to spare on a high-density screen. Each new
   file is composed for the crop it sits in and is two to three times the size
   it is drawn at.
-- **The wordmarks, the loop mark and the sponsor marks are the original
-  artwork**, kept as they are. They carry lettering and brand geometry, which
-  is the one thing an image model reliably mangles.
+- **The sponsor marks are generated**, with `gpt-image-2.5-sunburst` at low
+  quality on a transparent background: four low-poly gems, one per
+  sponsor, trimmed and scaled to 96px for a 40px slot. The sponsor names
+  beside them are text, since lettering is the one thing an image model
+  reliably mangles.
+- **The event names are text**, set in the bundled fonts. They were PNG
+  wordmarks in the original template.
+- **The loop mark is an icon**, Lucide's `infinity` (see Icons above),
+  replacing the original `loop.png` and the loop drawn into the old
+  Loopathon wordmark.
 
 Three practical notes before you publish:
 
@@ -73,8 +81,8 @@ Three practical notes before you publish:
 - **The copy is invented too.** The prices, dates, quotes, attributed
   statements and news items read as though they were real, and none of them
   are.
-- **The sponsor logos are invented brands** ("Sponsor United", "Evergreen",
-  "Gold Diggers", "Redy") drawn for the template. They are not real
+- **The sponsors are invented brands** ("Sponsor United", "Evergreen",
+  "Gold Diggers", "Redy") made up for the template. They are not real
   companies.
 
 ## Maps

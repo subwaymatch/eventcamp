@@ -24,6 +24,11 @@
   /* Hero artwork. Swap the file, keep the declaration. */
   --ec-hero-image: url('../images/bg_eventcamp.jpg');
 
+  /* The event name: heavy Inter, sized to sit beside the intro rather than
+     span the hero. */
+  --ec-hero-weight: 800;
+  --ec-hero-size: clamp(2.75rem, 1rem + 5vw, 4.75rem);
+
   /* Repeating texture behind the timeline, as in the original design. */
   --ec-section-pattern: url('../images/bg_patterns.jpg');
 }

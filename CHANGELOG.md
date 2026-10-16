@@ -24,9 +24,47 @@ adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
   at its top level.
 
 - Inter replaces Open Sans as the body and heading face, tracked slightly
-  tighter — `-0.011em` on body text and `-0.021em` on headings, set as
-  tokens so a theme can override them. Inter sets wide by default at screen
-  sizes; the letterspaced uppercase labels keep their own positive tracking.
+  tighter — `-0.011em` on body text, `-0.021em` on headings and `-0.03em` on
+  display sizes (section titles, prices, the event name), set as tokens so a
+  theme can override them. Inter sets wide by default at screen sizes. Form
+  controls now inherit the tracking too; the UA stylesheet resets
+  `letter-spacing` on them, and `font: inherit` does not cover it.
+- Nothing is set in capitals any more. The navigation, section titles,
+  buttons, fact labels, FAQ group titles, timetable headings and contact
+  headings were all `text-transform: uppercase` with up to `0.2em` of
+  tracking to compensate; they are sentence case now, at the same tight
+  tracking as everything else, with sizes and weights adjusted to hold the
+  hierarchy without the capitals.
+- The event names in the heroes are live text, not PNGs of text: "Loopathon"
+  in Inter 200 beside the loop mark, "Eventcamp" in Inter 800 under a
+  "Web developers' conference" kicker, and "The Trio" in bold PT Serif
+  under an italic strapline. A theme sets the face, weight and size with
+  `--ec-hero-font`, `--ec-hero-weight` and `--ec-hero-size`. Changing the
+  name is now an edit to `index.html` rather than to an image, and the text
+  scales without blurring, translates and can be found by search.
+- The loop mark is Lucide's `infinity` icon in the sprite, replacing
+  `loop.png`.
+- Each sponsor is a mark plus its name as text. The marks are four low-poly
+  gems regenerated with `gpt-image-2.5-sunburst` on a transparent
+  background; the names are set in four type treatments (`--bold`,
+  `--light`, `--serif`, `--black`) so the row still reads as four
+  companies. The sponsor row is a single line on wide screens and a
+  two-column grid on narrow ones.
+- Section titles carry a short accent rule, the same mark the navigation
+  uses for the current section.
+- Price cards are outlined, carry an accent top rule, and pin their buttons
+  to the bottom so a row of them lines up.
+- The red theme's topics stack the icon above the text. Side by side, each
+  description was about twenty characters a line.
+- The timetable's time column shrinks to fit its contents. It took a third
+  of the table's width and pushed every session away from its time.
+- News thumbnails float beside the text on phones too, instead of stacking
+  as lone squares between paragraphs.
+- The download link is one outlined button with a single label, replacing
+  two stacked white boxes.
+- The yellow theme's tickets use the spotlight surface. They followed the
+  concert programme on the same `--dark` surface, so the two sections ran
+  together, and the price cards, also `#111`, disappeared into both.
 - The interface icons are now [Lucide](https://lucide.dev/), inlined into
   each theme's sprite on the same 24×24 grid and the same `currentColor`
   stroke the old hand-drawn set used, so no CSS changed. This also fixes the
@@ -45,12 +83,36 @@ adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
   upscaled; it is now 2:1 and dark through the middle where the wordmark
   sits. The speaker, performer, news and testimonial images had no
   resolution to spare on a high-density screen and are now two to three
-  times the size they are drawn at. The wordmarks, the loop mark and the
-  sponsor marks are untouched — they carry lettering, which is what an image
-  model mangles.
+  times the size they are drawn at.
 
 ### Fixed
 
+- Event details were out of line in every hero. The fact bar's row is as
+  tall as its tallest fact, and the shorter facts spread the extra height
+  between label and value, so "Saturday, 16 May 2026" sat 11px below
+  "Lakeshore". The red theme's testimonials had the same fault, which put
+  the two attributions and bubbles at different heights.
+- The testimonial bubbles pointed away from the people quoted: the
+  attribution was above the bubble and the tail pointed down at nothing.
+  The quote now comes first and the tail points at the avatar.
+- In dark mode the testimonial bubbles vanished: `#121212` on a `#111`
+  section. They use a new `--ec-surface-raised` token, `#222` in dark mode.
+- In dark mode the light sections' accent text switched to the raw display
+  accent rather than the on-dark one, which put the red theme's section
+  leads and timetable headings at 4.10:1. It now uses
+  `--ec-accent-on-dark` (5.46:1), and `npm run check:contrast` asserts the
+  accent against both dark-mode surfaces.
+- The "Sponsors" heading was `#333` on `#111`, 1.49:1. It is now `#999`,
+  6.63:1.
+- The REDY sponsor mark had its name baked in dark grey and was illegible
+  on the sponsor band. The name is now text.
+- The map heading sat bare on the map tiles, which are light and busy, so
+  in dark mode it was white on pale grey. It sits on a plate in the
+  page's surface colour.
+- Button hover put accent ink on white. In dark mode that is the light
+  accent, 2.76:1 in green and 2.12:1 in yellow. Hover is now near-black on
+  white in every scheme.
+- The FAQ chevron overhung the rule beneath it by a couple of pixels.
 - `npm run sync` now removes files from a theme's `fonts/` that `shared/`
   no longer has, and `npm run sync:check` fails on them. Dropping a face
   previously left every theme carrying the old file, still shipped in the

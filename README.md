@@ -99,8 +99,17 @@ byte-identical everywhere.
   --ec-accent-surface: #4f7629; /* accent used as a background behind text */
   --ec-accent-contrast: #fff; /* text sitting on that background */
   --ec-hero-image: url('../images/bg_eventcamp.jpg');
+
+  /* The event name in the hero is text, so its look is three tokens. */
+  --ec-hero-font: var(--ec-font-sans); /* or var(--ec-font-serif) */
+  --ec-hero-weight: 200;
+  --ec-hero-size: clamp(2.5rem, 0.5rem + 10vw, 7.5rem);
 }
 ```
+
+The event name and its strapline are ordinary text in `index.html`, so
+renaming the event is a text edit. If you would rather use an image logo,
+put an `<img>` in the `<h1>`; the stylesheet sizes it.
 
 Four accent roles rather than one, because a single hex cannot both read as
 body text on white and look like the brand. `npm run check:contrast` asserts

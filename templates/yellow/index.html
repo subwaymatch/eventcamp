@@ -119,15 +119,8 @@
       <!-- Hero ------------------------------------------------------------ -->
       <section class="ec-hero" id="event" aria-labelledby="event-title">
         <div class="ec-container ec-hero__body">
-          <h1 class="ec-hero__title" id="event-title">
-            <img
-              src="images/logo_eventcamp.png"
-              alt="The Trio — classical jazz improvisations straight from Europe"
-              width="960"
-              height="230"
-              fetchpriority="high"
-            />
-          </h1>
+          <p class="ec-hero__kicker">Classical jazz improvisations straight from Europe</p>
+          <h1 class="ec-hero__title" id="event-title">The Trio</h1>
         </div>
 
         <div class="ec-factbar">
@@ -305,7 +298,11 @@
       </section>
 
       <!-- Tickets ---------------------------------------------------------- -->
-      <section class="ec-section ec-section--dark" id="tickets" aria-labelledby="tickets-title">
+      <section
+        class="ec-section ec-section--spotlight"
+        id="tickets"
+        aria-labelledby="tickets-title"
+      >
         <div class="ec-container">
           <header class="ec-section__header">
             <h2 class="ec-section__title" id="tickets-title">Tickets</h2>
@@ -495,8 +492,7 @@
                 <svg class="ec-download__icon" aria-hidden="true">
                   <use href="#ec-i-download" />
                 </svg>
-                <span>Download</span>
-                <span>programme</span>
+                <span>Download programme</span>
               </a>
             </p>
           </div>
@@ -505,52 +501,60 @@
 
       <!-- Sponsors --------------------------------------------------------- -->
       <section class="ec-sponsors" aria-labelledby="sponsors-title">
-        <div class="ec-container ec-grid ec-split">
+        <div class="ec-container ec-sponsors__inner">
           <h2 class="ec-sponsors__title" id="sponsors-title">Sponsors</h2>
 
           <ul class="ec-sponsors__list">
             <li>
-              <a href="#">
+              <a class="ec-sponsor" href="#">
                 <img
+                  class="ec-sponsor__mark"
                   src="images/sponsor_01.png"
-                  alt="Sponsor United"
-                  width="440"
-                  height="124"
+                  alt=""
+                  width="96"
+                  height="96"
                   loading="lazy"
                 />
+                <span class="ec-sponsor__name ec-sponsor__name--bold">Sponsor United</span>
               </a>
             </li>
             <li>
-              <a href="#">
+              <a class="ec-sponsor" href="#">
                 <img
+                  class="ec-sponsor__mark"
                   src="images/sponsor_02.png"
-                  alt="Evergreen"
-                  width="440"
-                  height="124"
+                  alt=""
+                  width="96"
+                  height="96"
                   loading="lazy"
                 />
+                <span class="ec-sponsor__name ec-sponsor__name--light">Evergreen</span>
               </a>
             </li>
             <li>
-              <a href="#">
+              <a class="ec-sponsor" href="#">
                 <img
+                  class="ec-sponsor__mark"
                   src="images/sponsor_03.png"
-                  alt="Gold Diggers"
-                  width="440"
-                  height="124"
+                  alt=""
+                  width="96"
+                  height="96"
                   loading="lazy"
                 />
+                <span class="ec-sponsor__name ec-sponsor__name--serif">Gold Diggers</span>
               </a>
             </li>
             <li>
-              <a href="#">
+              <a class="ec-sponsor" href="#">
                 <img
+                  class="ec-sponsor__mark"
                   src="images/sponsor_04.png"
-                  alt="Redy"
-                  width="440"
-                  height="124"
+                  alt=""
+                  width="96"
+                  height="96"
                   loading="lazy"
                 />
+                <span class="ec-sponsor__name ec-sponsor__name--black">Redy</span>
               </a>
             </li>
           </ul>
