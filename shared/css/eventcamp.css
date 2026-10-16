@@ -102,6 +102,9 @@
   --ec-ink-muted: #666;
   --ec-surface: #fff;
   --ec-surface-alt: #fafafa;
+  /* A card that has to stand off whatever section it sits in, light or
+     dark — the testimonial bubbles. */
+  --ec-surface-raised: #fff;
   --ec-border: #e6e6e6;
 
   /* Neutrals — always dark, regardless of colour scheme */
@@ -125,10 +128,12 @@
 
   /* Inter sets wide by default. These pull it back a little — the values
      Inter's own notes suggest for screen text — and tighten further as the
-     type gets bigger, where the default spacing reads loosest. Letterspaced
-     uppercase labels set their own positive tracking and are unaffected. */
+     type gets bigger, where the default spacing reads loosest. Nothing is
+     set in capitals, so nothing needs positive tracking: every sans line on
+     the page uses one of these three. */
   --ec-tracking: -0.011em;
   --ec-tracking-tight: -0.021em;
+  --ec-tracking-display: -0.03em;
 
   --ec-text-xs: 0.6875rem; /* 11px */
   --ec-text-sm: 0.8125rem; /* 13px */
@@ -142,6 +147,12 @@
   --ec-text-hero: clamp(2.5rem, 1rem + 7.6vw, 5.9375rem);
   --ec-text-price: clamp(2.75rem, 1.8rem + 3.2vw, 4.375rem);
 
+  /* The event name in the hero is live text, not a picture of text, so a
+     theme sets its face, weight and size here. */
+  --ec-hero-font: var(--ec-font-sans);
+  --ec-hero-weight: 800;
+  --ec-hero-size: var(--ec-text-hero);
+
   /* Space */
   --ec-gutter: 1.25rem;
   --ec-gap: 2.5rem;
@@ -154,6 +165,9 @@
   --ec-focus: 3px;
 }
 
+/* Accent text on the darkened light sections uses --ec-accent-on-dark, the
+   same value the always-dark sections use: it is the one a theme has
+   already checked against near-black. */
 @media (prefers-color-scheme: dark) {
   :root:not([data-ec-scheme='light']) {
     --ec-ink: #d6d6d6;
@@ -161,8 +175,9 @@
     --ec-ink-muted: #9a9a9a;
     --ec-surface: #121212;
     --ec-surface-alt: #0d0d0d;
+    --ec-surface-raised: #222;
     --ec-border: #2a2a2a;
-    --ec-accent-ink: var(--ec-accent);
+    --ec-accent-ink: var(--ec-accent-on-dark);
   }
 }
 
@@ -172,8 +187,9 @@
   --ec-ink-muted: #9a9a9a;
   --ec-surface: #121212;
   --ec-surface-alt: #0d0d0d;
+  --ec-surface-raised: #222;
   --ec-border: #2a2a2a;
-  --ec-accent-ink: var(--ec-accent);
+  --ec-accent-ink: var(--ec-accent-on-dark);
 }
 
 /* -------------------------------------------------------------------------
@@ -258,12 +274,16 @@ ol {
   list-style: none;
 }
 
+/* `font: inherit` does not cover tracking, and the UA stylesheet resets it
+   to normal on form controls — which would leave the form as the one place
+   Inter is set loose. */
 button,
 input,
 select,
 textarea {
   font: inherit;
   color: inherit;
+  letter-spacing: inherit;
 }
 
 :target {
@@ -284,10 +304,8 @@ textarea {
   padding: 0.75rem 1.25rem;
   color: var(--ec-accent-contrast);
   background: var(--ec-accent-surface);
-  font-size: var(--ec-text-sm);
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
+  font-size: var(--ec-text-base);
+  font-weight: 600;
   transform: translateY(-120%);
 }
 
@@ -407,14 +425,13 @@ textarea {
 
 .ec-nav__link {
   display: block;
-  padding: 0.625rem 1.25rem 0.9375rem;
+  padding: 0.625rem 1rem 0.8125rem;
   color: var(--ec-on-dark);
   border-top: 3px solid transparent;
-  font-size: var(--ec-text-xs);
+  font-size: var(--ec-text-sm);
+  font-weight: 500;
   line-height: 1.6;
-  text-transform: uppercase;
   text-decoration: none;
-  letter-spacing: 0.04em;
   transition:
     border-color 0.15s ease,
     color 0.15s ease;
@@ -439,9 +456,8 @@ textarea {
   background: transparent;
   border: 1px solid rgb(255 255 255 / 0.35);
   border-radius: var(--ec-radius);
-  font-size: var(--ec-text-xs);
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
+  font-size: var(--ec-text-sm);
+  font-weight: 500;
   cursor: pointer;
 }
 
@@ -501,7 +517,7 @@ textarea {
     padding: 0.75rem var(--ec-gutter);
     border-top: 0;
     border-left: 3px solid transparent;
-    font-size: var(--ec-text-sm);
+    font-size: var(--ec-text-md);
   }
 
   .ec-nav__link:hover,
@@ -531,7 +547,7 @@ textarea {
     padding: 0.5rem 0.75rem;
     border-left: 0;
     border-top: 3px solid transparent;
-    font-size: var(--ec-text-xs);
+    font-size: var(--ec-text-sm);
   }
 }
 
@@ -557,12 +573,17 @@ textarea {
   align-items: end;
 }
 
+/* The event name, set as text in the theme's display face. It was a PNG of
+   the same words, which could not be translated, searched, resized without
+   blurring or edited without an image editor. */
 .ec-hero__title {
-  font-size: var(--ec-text-hero);
-  font-weight: 700;
-  line-height: 1.1;
-  text-transform: uppercase;
-  letter-spacing: var(--ec-hero-tracking, 0);
+  font-family: var(--ec-hero-font);
+  font-size: var(--ec-hero-size);
+  font-weight: var(--ec-hero-weight);
+  line-height: 1;
+  letter-spacing: var(--ec-hero-tracking, var(--ec-tracking-display));
+  /* Insurance for wherever the photograph behind it runs bright. */
+  text-shadow: 0 2px 24px rgb(0 0 0 / 0.45);
 }
 
 .ec-hero__title a {
@@ -574,15 +595,53 @@ textarea {
   color: var(--ec-accent);
 }
 
+/* If you would rather use an image logo, put an <img> in the <h1>. */
 .ec-hero__title img {
   width: auto;
   max-width: 100%;
 }
 
-/* A smaller wordmark that sits beside body copy rather than filling the
-   viewport, used by themes whose hero is a two-column split. */
-.ec-hero__title--compact img {
-  max-width: min(100%, 26rem);
+/* An icon set beside the name as part of the lockup — the loop in the
+   green theme. Sized in em so it scales with the title. */
+.ec-hero__logo {
+  display: inline-block;
+  width: 1.55em;
+  height: 0.74em;
+  margin-inline-end: 0.14em;
+  vertical-align: 0;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2.5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+/* One line above the name (.ec-hero__kicker) or below it
+   (.ec-hero__tagline), in the same face. Wrap words in <strong> to set
+   them heavier. */
+.ec-hero__kicker,
+.ec-hero__tagline {
+  color: var(--ec-on-dark);
+  font-family: var(--ec-hero-font);
+  font-size: var(--ec-text-lg);
+  font-style: var(--ec-hero-tagline-style, normal);
+  font-weight: 400;
+  line-height: 1.4;
+  letter-spacing: var(--ec-tracking);
+  text-shadow: 0 1px 12px rgb(0 0 0 / 0.5);
+}
+
+.ec-hero__kicker {
+  margin-block-end: 0.75rem;
+}
+
+.ec-hero__tagline {
+  margin-block-start: 1rem;
+}
+
+.ec-hero__kicker strong,
+.ec-hero__tagline strong {
+  font-weight: 700;
 }
 
 .ec-hero__marks {
@@ -603,22 +662,11 @@ textarea {
   stroke-linejoin: round;
 }
 
-/* Optional: all three shipped themes bake their strapline into the logo
-   artwork, so nothing uses this by default. Drop a
-   <p class="ec-hero__tagline"> under the <h1> if your wordmark is text, or
-   an image without one. */
-.ec-hero__tagline {
-  margin-block-start: 0.75rem;
-  color: var(--ec-on-dark);
-  font-size: var(--ec-text-base);
-  text-transform: uppercase;
-  letter-spacing: 0.35em;
-}
-
 .ec-hero__intro {
   max-width: 34rem;
-  font-size: var(--ec-text-base);
-  line-height: 1.85;
+  font-size: var(--ec-text-md);
+  line-height: 1.75;
+  text-shadow: 0 1px 12px rgb(0 0 0 / 0.6);
 }
 
 .ec-hero__intro strong {
@@ -634,16 +682,19 @@ textarea {
 .ec-factbar__heading {
   align-self: center;
   color: var(--ec-on-dark);
-  font-size: var(--ec-text-md);
-  text-transform: uppercase;
-  letter-spacing: 0.04em;
+  font-size: var(--ec-text-lg);
+  font-weight: 600;
 }
 
 .ec-fact {
   display: grid;
   grid-template-columns: auto 1fr;
-  gap: 0 1rem;
+  gap: 0.125rem 1rem;
   align-items: start;
+  /* The row is as tall as its tallest fact. Without this, a one-line fact
+     beside a two-line one spreads the extra height between its own label
+     and value, and its value drops out of line with its neighbours'. */
+  align-content: start;
 }
 
 .ec-fact__icon {
@@ -661,16 +712,14 @@ textarea {
 .ec-fact__label {
   color: var(--ec-on-dark);
   font-size: var(--ec-text-sm);
-  font-weight: 700;
-  line-height: 1.75;
-  text-transform: uppercase;
-  letter-spacing: 0.15em;
+  font-weight: 600;
+  line-height: 1.6;
 }
 
 .ec-fact__value {
   color: var(--ec-on-dark);
-  font-size: var(--ec-text-sm);
-  line-height: 1.75;
+  font-size: var(--ec-text-base);
+  line-height: 1.6;
 }
 
 /* -------------------------------------------------------------------------
@@ -743,17 +792,44 @@ textarea {
   );
 }
 
+/* In dark mode the light sections turn near-black too, and one would run
+   straight into a dark section beside it with nothing to mark the seam. */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-ec-scheme='light']) .ec-section--light {
+    border-top: 1px solid var(--ec-border);
+  }
+}
+
+:root[data-ec-scheme='dark'] .ec-section--light {
+  border-top: 1px solid var(--ec-border);
+}
+
 .ec-section__title {
   font-size: var(--ec-text-section);
   font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.01em;
+  line-height: 1.15;
+  letter-spacing: var(--ec-tracking-display);
+}
+
+/* A short accent rule above each section heading — the same mark the
+   navigation uses for the current section. */
+.ec-section__header .ec-section__title::before {
+  display: block;
+  width: 2rem;
+  height: 3px;
+  margin-block-end: 1rem;
+  background: var(--ec-accent);
+  content: '';
+}
+
+.ec-section--accent .ec-section__header .ec-section__title::before {
+  background: currentColor;
 }
 
 .ec-section__lead {
-  margin-block-start: 0.3125rem;
-  font-size: var(--ec-text-base);
-  line-height: 1.85;
+  margin-block-start: 0.5rem;
+  font-size: var(--ec-text-md);
+  line-height: 1.6;
 }
 
 .ec-section__header {
@@ -825,70 +901,97 @@ textarea {
   line-height: 1.5;
 }
 
+/* A brand mark set under a short statement — the loop in the green
+   theme's About section. */
+.ec-about__mark {
+  width: 6.25rem;
+  height: 3rem;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2.75;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
 .ec-section--accent .ec-lede,
 .ec-section--dark .ec-lede,
 .ec-section--darker .ec-lede {
   color: inherit;
 }
 
-/* Article figures that the text wraps around on wide screens and stacks
-   under on narrow ones. */
+/* Article thumbnails that the text wraps around. They are small enough to
+   float even on a phone; stacking them put a lone 80px square between
+   every pair of paragraphs. */
 .ec-figure {
-  margin: 0 0 0.625rem;
+  float: left;
+  max-width: 40%;
+  margin: 0.375rem 1.25rem 0.5rem 0;
   padding: 4px;
   background: var(--ec-surface);
   border: 1px solid var(--ec-border);
 }
 
-@media (min-width: 40em) {
+.ec-figure--end {
+  float: right;
+  margin-inline: 1.25rem 0;
+}
+
+@media (max-width: 39.99em) {
   .ec-figure {
-    float: left;
-    margin-inline-end: 1.25rem;
-    max-width: 45%;
+    width: 5.5rem;
+    margin-inline-end: 1rem;
   }
 
   .ec-figure--end {
-    float: right;
-    margin-inline: 1.25rem 0;
+    margin-inline: 1rem 0;
   }
 }
 
 /* --- Price / fee cards -------------------------------------------------- */
 
+/* A column, so that cards in a row share a height and their buttons line
+   up along the bottom however long each card's note runs. */
 .ec-price-card {
-  padding: 1.25rem 1.5625rem;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  padding: 1.5rem 1.5625rem 1.75rem;
   color: var(--ec-on-dark);
   background: var(--ec-dark);
-  height: 100%;
+  border: 1px solid var(--ec-on-dark-border);
+  border-top: 3px solid var(--ec-accent);
+  border-radius: var(--ec-radius);
 }
 
 .ec-price-card__amount {
-  display: block;
-  padding-block-end: 0.625rem;
-  margin-block-end: 0.625rem;
+  padding-block-end: 0.75rem;
+  margin-block-end: 0.875rem;
   color: var(--ec-on-dark);
   border-bottom: 1px solid var(--ec-on-dark-border);
   font-size: var(--ec-text-price);
   font-weight: 700;
-  line-height: 1.15;
+  line-height: 1.1;
+  letter-spacing: var(--ec-tracking-display);
+  font-variant-numeric: tabular-nums;
 }
 
 .ec-price-card__terms {
-  display: block;
   margin-block-end: 0.625rem;
   color: var(--ec-accent-on-dark);
-  font-size: 0.9375rem;
-  line-height: 1.85;
+  font-size: var(--ec-text-md);
+  line-height: 1.6;
 }
 
 .ec-price-card__note {
+  flex-grow: 1;
   color: var(--ec-on-dark-muted);
-  font-size: var(--ec-text-sm);
-  line-height: 2;
+  font-size: var(--ec-text-base);
+  line-height: 1.75;
 }
 
 .ec-price-card .ec-button {
-  margin-block-start: 1.25rem;
+  align-self: flex-start;
+  margin-block-start: 1.5rem;
 }
 
 /* --- People (speakers / performers) ------------------------------------- */
@@ -907,14 +1010,16 @@ textarea {
 
 .ec-person__name {
   font-size: var(--ec-text-lg);
-  font-weight: 400;
+  font-weight: 600;
   line-height: 1.5;
 }
 
 .ec-person__role {
   display: block;
+  margin-block-start: 0.125rem;
   color: var(--ec-accent-ink);
   font-size: var(--ec-text-sm);
+  font-weight: 400;
 }
 
 .ec-section--dark .ec-person__role,
@@ -930,15 +1035,17 @@ textarea {
 
 /* --- Topic grid --------------------------------------------------------- */
 
+/* Icon above the text, not beside it: in a four-column row the side-by-side
+   version left each description about twenty characters a line. */
 .ec-topic {
   display: grid;
-  grid-template-columns: auto 1fr;
-  gap: 0 1rem;
+  gap: 0.875rem;
+  align-content: start;
 }
 
 .ec-topic__icon {
-  width: 2.25rem;
-  height: 2.25rem;
+  width: 2rem;
+  height: 2rem;
   fill: none;
   stroke: currentColor;
   stroke-width: 1.5;
@@ -947,36 +1054,40 @@ textarea {
 }
 
 .ec-topic__text {
-  font-size: var(--ec-text-sm);
-  line-height: 1.85;
+  font-size: var(--ec-text-base);
+  line-height: 1.7;
 }
 
 /* --- Testimonials ------------------------------------------------------- */
 
+/* The quote comes first and the person under it, so the bubble's tail
+   points down at whoever said it. */
 .ec-quote {
   display: grid;
-  gap: 0.9375rem;
+  gap: 1.25rem;
+  align-content: start;
   margin: 0;
 }
 
 .ec-quote__text {
   position: relative;
-  padding: 1.25rem;
+  padding: 1.25rem 1.375rem;
   color: var(--ec-ink);
-  background: var(--ec-surface);
-  font-size: var(--ec-text-sm);
-  line-height: 1.85;
+  background: var(--ec-surface-raised);
+  border-radius: var(--ec-radius);
+  font-size: var(--ec-text-base);
+  line-height: 1.75;
 }
 
-/* Speech-bubble tail. */
+/* Speech-bubble tail, centred over the 3rem avatar below. */
 .ec-quote__text::after {
   position: absolute;
   top: 100%;
-  left: 2rem;
+  left: 0.75rem;
   width: 0;
   height: 0;
   border: 0.75rem solid transparent;
-  border-top-color: var(--ec-surface);
+  border-top-color: var(--ec-surface-raised);
   border-bottom: 0;
   content: '';
 }
@@ -1010,13 +1121,13 @@ textarea {
 
 .ec-faq__group-title {
   display: inline-block;
-  margin-block-end: 1.5625rem;
-  padding: 0.625rem 0.9375rem;
+  margin-block-end: 1rem;
+  padding: 0.375rem 0.75rem;
   color: var(--ec-accent-contrast);
   background: var(--ec-accent-surface);
-  font-size: 1.0625rem;
-  font-weight: 700;
-  text-transform: uppercase;
+  border-radius: var(--ec-radius);
+  font-size: var(--ec-text-md);
+  font-weight: 600;
 }
 
 .ec-faq__item {
@@ -1049,6 +1160,9 @@ textarea {
 .ec-faq__question::after {
   width: 0.75rem;
   height: 0.75rem;
+  /* Rotated, the square's corner reaches past its box; this keeps the
+     chevron inside the rule beneath it. */
+  margin-inline-end: 0.3125rem;
   border-right: 2px solid var(--ec-accent-ink);
   border-bottom: 2px solid var(--ec-accent-ink);
   transform: rotate(45deg) translate(-2px, -2px);
@@ -1125,14 +1239,13 @@ textarea {
   padding: 0.75rem 1rem;
   color: var(--ec-accent-ink);
   border-bottom: 1px solid var(--ec-border);
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
+  font-weight: 600;
 }
 
 .ec-schedule td {
   padding: 0.9375rem 1rem;
   border-bottom: 1px solid var(--ec-border);
+  font-size: var(--ec-text-base);
   vertical-align: top;
 }
 
@@ -1147,7 +1260,11 @@ textarea {
   border-bottom-color: var(--ec-on-dark-border);
 }
 
-.ec-schedule__time {
+/* Shrink-wrapped: left to the table, the time column took a third of the
+   width and pushed every session title away from its time. */
+.ec-schedule .ec-schedule__time {
+  width: 1%;
+  padding-inline-end: 2.5rem;
   white-space: nowrap;
   font-family: var(--ec-font-serif);
   font-style: italic;
@@ -1157,63 +1274,72 @@ textarea {
   margin-block-start: 1.25rem;
   padding: 1.25rem;
   background: var(--ec-surface-alt);
-  font-size: var(--ec-text-sm);
+  border-radius: var(--ec-radius);
+  font-size: var(--ec-text-base);
   text-align: center;
-  text-transform: uppercase;
-  letter-spacing: 0.15em;
 }
 
 /* --- Buttons & links ---------------------------------------------------- */
 
 .ec-button {
   display: inline-block;
-  padding: 1.25rem 1.75rem;
+  padding: 0.9375rem 1.75rem;
   color: var(--ec-accent-contrast);
   background: var(--ec-accent-surface);
   border: 0;
   border-radius: var(--ec-radius);
-  font-size: 1.25rem;
-  font-weight: 700;
+  font-size: var(--ec-text-md);
+  font-weight: 600;
   line-height: 1.5;
   text-align: center;
   text-decoration: none;
-  text-transform: uppercase;
-  letter-spacing: 0.2em;
   cursor: pointer;
   transition:
     color 0.15s ease,
     background-color 0.15s ease;
 }
 
+/* Near-black on white rather than accent on white: buttons sit on dark
+   sections, and in dark mode the accent ink is the light variant, which
+   would all but vanish against the white. */
 .ec-button:hover {
-  color: var(--ec-accent-ink);
+  color: var(--ec-dark);
   background: var(--ec-on-dark);
 }
 
 .ec-button--sm {
-  padding: 0.75rem 1.25rem;
+  padding: 0.625rem 1.125rem;
   font-size: var(--ec-text-base);
-  letter-spacing: 0.15em;
 }
 
 /* Download link with a document glyph, replacing images/icons/icon_pdf.png. */
 .ec-download {
-  display: inline-grid;
-  grid-template-columns: auto 1fr;
-  gap: 0 0.875rem;
+  display: inline-flex;
+  gap: 0.75rem;
   align-items: center;
-  color: var(--ec-accent-on-dark);
+  padding: 0.75rem 1.25rem 0.75rem 1rem;
+  color: var(--ec-on-dark);
+  border: 1px solid rgb(255 255 255 / 0.22);
+  border-radius: var(--ec-radius);
   font-size: var(--ec-text-md);
-  font-weight: 700;
+  font-weight: 600;
   line-height: 1.5;
   text-decoration: none;
-  text-transform: uppercase;
+  transition:
+    border-color 0.15s ease,
+    background-color 0.15s ease;
+}
+
+.ec-download:hover {
+  background: rgb(255 255 255 / 0.06);
+  border-color: var(--ec-accent);
 }
 
 .ec-download__icon {
-  width: 2.75rem;
-  height: 2.75rem;
-  grid-row: span 2;
+  flex: none;
+  width: 1.75rem;
+  height: 1.75rem;
+  color: var(--ec-accent-on-dark);
   fill: none;
   stroke: currentColor;
   stroke-width: 1.5;
@@ -1221,25 +1347,13 @@ textarea {
   stroke-linejoin: round;
 }
 
-.ec-download span:not(.ec-download__icon) {
-  padding: 3px 6px;
-  color: var(--ec-dark);
-  background: var(--ec-on-dark);
-}
-
-.ec-download:hover span:not(.ec-download__icon) {
-  color: var(--ec-on-dark);
-  background: var(--ec-darker);
-}
-
 /* --- Contact block ------------------------------------------------------ */
 
 .ec-contact-block h3 {
-  margin-block-end: 0.9375rem;
+  margin-block-end: 0.75rem;
   color: var(--ec-accent-on-dark);
-  font-size: 0.9375rem;
-  font-weight: 700;
-  text-transform: uppercase;
+  font-size: var(--ec-text-md);
+  font-weight: 600;
 }
 
 .ec-contact-block address {
@@ -1248,6 +1362,13 @@ textarea {
   font-size: var(--ec-text-base);
   font-style: normal;
   line-height: 1.8;
+}
+
+/* The phone number closes the address; give it the same air the email
+   gets under its heading. */
+.ec-contact-block address .ec-contact-block__email {
+  display: inline-block;
+  margin-block-start: 0.5rem;
 }
 
 .ec-contact-block__email {
@@ -1282,10 +1403,8 @@ textarea {
 .ec-form legend {
   padding: 0;
   margin-block-end: 1.25rem;
-  font-size: 0.9375rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
+  font-size: var(--ec-text-md);
+  font-weight: 600;
 }
 
 .ec-field {
@@ -1317,7 +1436,7 @@ textarea {
   color: #eee;
   background: #333;
   border: 1px solid transparent;
-  border-radius: 0;
+  border-radius: var(--ec-radius);
   outline: none;
 }
 
@@ -1421,8 +1540,17 @@ textarea.ec-field__control {
   pointer-events: none;
 }
 
+/* The heading sits on live map tiles: busy, light, and full of street
+   names. A plate in the page's own surface colour keeps it legible in
+   either colour scheme — bare, it was white-on-pale in dark mode. */
 .ec-map__header .ec-section__title {
+  display: inline-block;
+  padding: 0.375rem 1rem 0.5rem;
   color: var(--ec-ink-strong);
+  background: var(--ec-surface);
+  border-radius: var(--ec-radius);
+  box-shadow: 0 2px 10px rgb(0 0 0 / 0.18);
+  font-size: var(--ec-text-xl);
 }
 
 .ec-map__frame {
@@ -1441,30 +1569,82 @@ textarea.ec-field__control {
   background: var(--ec-dark);
 }
 
-.ec-sponsors__title {
-  align-self: center;
-  color: var(--ec-ink);
-  font-size: 1.5rem;
-  font-weight: 700;
-  text-transform: uppercase;
-}
-
-.ec-sponsors__list {
+.ec-sponsors__inner {
   display: flex;
   flex-wrap: wrap;
-  /* Tight enough that four 140px marks stay on one row inside the
-     narrower of the two columns. */
-  gap: 1.5rem;
+  gap: 1.5rem 3rem;
   align-items: center;
 }
 
-.ec-sponsors__list li {
-  flex: 0 1 auto;
+/* Was --ec-ink: #333 on #111 in light mode, 1.6:1, a heading nobody could
+   read. */
+.ec-sponsors__title {
+  color: var(--ec-on-dark-muted);
+  font-size: var(--ec-text-md);
+  font-weight: 600;
 }
 
-.ec-sponsors__list img {
-  width: 8.75rem;
-  max-width: 100%;
+/* Two columns until all four fit on one line, so a wrapped row still
+   lines up. */
+.ec-sponsors__list {
+  display: grid;
+  flex: 1 1 32rem;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1.25rem 2rem;
+  align-items: center;
+}
+
+@media (min-width: 52em) {
+  .ec-sponsors__list {
+    display: flex;
+    justify-content: space-between;
+  }
+}
+
+/* A sponsor is a mark plus its name as text. The names were baked into the
+   PNGs — one of them in dark grey on this near-black band. */
+.ec-sponsor {
+  display: inline-flex;
+  gap: 0.625rem;
+  align-items: center;
+  color: var(--ec-on-dark);
+  font-size: 1.0625rem;
+  line-height: 1.2;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.ec-sponsor:hover .ec-sponsor__name {
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.2em;
+}
+
+.ec-sponsor__mark {
+  flex: none;
+  width: 2.5rem;
+  height: 2.5rem;
+}
+
+/* Four looks, so the row reads as four different companies. Pick one per
+   sponsor, or drop them all and use an <img> of the real logo instead. */
+.ec-sponsor__name--bold {
+  font-weight: 700;
+}
+
+.ec-sponsor__name--light {
+  font-weight: 300;
+}
+
+.ec-sponsor__name--serif {
+  font-family: var(--ec-font-serif);
+  font-size: 1.1875rem;
+  font-style: italic;
+}
+
+.ec-sponsor__name--black {
+  font-weight: 900;
+  letter-spacing: var(--ec-tracking-tight);
 }
 
 .ec-footer {

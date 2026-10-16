@@ -80,6 +80,11 @@
         <path d="M12 18v-6" />
         <path d="m9 15 3 3 3-3" />
       </symbol>
+      <!-- The loop, replacing images/loop.png and the one drawn into the old
+           wordmark. -->
+      <symbol id="ec-i-loop" viewBox="0.5 6.5 23 11">
+        <path d="M6 16c5 0 7-8 12-8a4 4 0 0 1 0 8c-5 0-7-8-12-8a4 4 0 1 0 0 8" />
+      </symbol>
       <symbol id="ec-i-facebook" viewBox="0 0 24 24">
         <path
           d="M13.5 22v-8h2.7l.4-3.1h-3.1V8.9c0-.9.25-1.5 1.54-1.5h1.65V4.6c-.29-.04-1.27-.13-2.4-.13-2.38 0-4.01 1.45-4.01 4.12v2.3H7.5V14h2.78v8h3.22Z"
@@ -128,14 +133,9 @@
       <section class="ec-hero" id="event" aria-labelledby="event-title">
         <div class="ec-container ec-hero__body">
           <h1 class="ec-hero__title" id="event-title">
-            <img
-              src="images/logo_eventcamp.png"
-              alt="Loopathon — relay for life"
-              width="960"
-              height="200"
-              fetchpriority="high"
-            />
+            <svg class="ec-hero__logo" aria-hidden="true"><use href="#ec-i-loop" /></svg>Loopathon
           </h1>
+          <p class="ec-hero__tagline"><strong>Relay for life</strong></p>
         </div>
 
         <div class="ec-factbar">
@@ -182,14 +182,9 @@
             <p class="ec-prose ec-clamp-40">
               Loopathon is an annual series of relay runs to raise awareness for cancer.
             </p>
-            <img
-              src="images/loop.png"
-              alt=""
-              width="100"
-              height="51"
-              loading="lazy"
-              class="ec-mt"
-            />
+            <svg class="ec-about__mark ec-mt" aria-hidden="true">
+              <use href="#ec-i-loop" />
+            </svg>
           </div>
 
           <div class="ec-prose ec-prose--lg">
@@ -610,8 +605,7 @@
                 <svg class="ec-download__icon" aria-hidden="true">
                   <use href="#ec-i-download" />
                 </svg>
-                <span>Download</span>
-                <span>brochure</span>
+                <span>Download brochure</span>
               </a>
             </p>
           </div>
@@ -620,52 +614,60 @@
 
       <!-- Sponsors --------------------------------------------------------- -->
       <section class="ec-sponsors" aria-labelledby="sponsors-title">
-        <div class="ec-container ec-grid ec-split">
+        <div class="ec-container ec-sponsors__inner">
           <h2 class="ec-sponsors__title" id="sponsors-title">Sponsors</h2>
 
           <ul class="ec-sponsors__list">
             <li>
-              <a href="#">
+              <a class="ec-sponsor" href="#">
                 <img
+                  class="ec-sponsor__mark"
                   src="images/sponsor_01.png"
-                  alt="Sponsor United"
-                  width="440"
-                  height="124"
+                  alt=""
+                  width="96"
+                  height="96"
                   loading="lazy"
                 />
+                <span class="ec-sponsor__name ec-sponsor__name--bold">Sponsor United</span>
               </a>
             </li>
             <li>
-              <a href="#">
+              <a class="ec-sponsor" href="#">
                 <img
+                  class="ec-sponsor__mark"
                   src="images/sponsor_02.png"
-                  alt="Evergreen"
-                  width="440"
-                  height="124"
+                  alt=""
+                  width="96"
+                  height="96"
                   loading="lazy"
                 />
+                <span class="ec-sponsor__name ec-sponsor__name--light">Evergreen</span>
               </a>
             </li>
             <li>
-              <a href="#">
+              <a class="ec-sponsor" href="#">
                 <img
+                  class="ec-sponsor__mark"
                   src="images/sponsor_03.png"
-                  alt="Gold Diggers"
-                  width="440"
-                  height="124"
+                  alt=""
+                  width="96"
+                  height="96"
                   loading="lazy"
                 />
+                <span class="ec-sponsor__name ec-sponsor__name--serif">Gold Diggers</span>
               </a>
             </li>
             <li>
-              <a href="#">
+              <a class="ec-sponsor" href="#">
                 <img
+                  class="ec-sponsor__mark"
                   src="images/sponsor_04.png"
-                  alt="Redy"
-                  width="440"
-                  height="124"
+                  alt=""
+                  width="96"
+                  height="96"
                   loading="lazy"
                 />
+                <span class="ec-sponsor__name ec-sponsor__name--black">Redy</span>
               </a>
             </li>
           </ul>

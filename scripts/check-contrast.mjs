@@ -83,6 +83,10 @@ for (const theme of themes) {
     { what: 'accent on dark', fg: onDark, bg: '#111111', min: AA_TEXT },
     { what: 'accent on dark-alt', fg: onDark, bg: '#161616', min: AA_TEXT },
     { what: 'accent on black', fg: onDark, bg: '#000000', min: AA_TEXT },
+    // In dark mode the light sections darken and their accent text switches
+    // to the on-dark value, so it has to clear those surfaces too.
+    { what: 'ink, dark mode', fg: onDark, bg: '#121212', min: AA_TEXT },
+    { what: 'ink, dark mode muted', fg: onDark, bg: '#0d0d0d', min: AA_TEXT },
     // Nav underlines and rules are UI components, not text: 3:1 is enough.
     { what: 'accent rule on dark', fg: accent, bg: '#111111', min: AA_LARGE },
     // Anything sitting on an accent fill: buttons, chips, the accent band.

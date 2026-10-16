@@ -193,15 +193,8 @@
       <section class="ec-hero" id="event" aria-labelledby="event-title">
         <div class="ec-container ec-hero__body ec-grid ec-cols-2">
           <div>
-            <h1 class="ec-hero__title ec-hero__title--compact" id="event-title">
-              <img
-                src="images/logo_eventcamp.png"
-                alt="Eventcamp"
-                width="960"
-                height="200"
-                fetchpriority="high"
-              />
-            </h1>
+            <p class="ec-hero__kicker"><strong>Web developers’</strong> conference</p>
+            <h1 class="ec-hero__title" id="event-title">Eventcamp</h1>
           </div>
 
           <div>
@@ -432,6 +425,13 @@
           </header>
 
           <figure class="ec-quote">
+            <blockquote class="ec-quote__text">
+              <p>
+                I came for one talk about caching and rewrote our whole edge layer on the train
+                home. The single track is the point — everyone is arguing about the same thing at
+                lunch.
+              </p>
+            </blockquote>
             <figcaption class="ec-quote__cite">
               <img
                 class="ec-quote__avatar"
@@ -444,16 +444,15 @@
               <span class="ec-quote__name">Carmen Ruiz</span
               ><span class="ec-quote__role">Staff engineer, Lumen Health</span>
             </figcaption>
-            <blockquote class="ec-quote__text">
-              <p>
-                I came for one talk about caching and rewrote our whole edge layer on the train
-                home. The single track is the point — everyone is arguing about the same thing at
-                lunch.
-              </p>
-            </blockquote>
           </figure>
 
           <figure class="ec-quote">
+            <blockquote class="ec-quote__text">
+              <p>
+                Every speaker showed the thing running and what it cost to run. I have been to
+                conferences four times the price that taught me half as much.
+              </p>
+            </blockquote>
             <figcaption class="ec-quote__cite">
               <img
                 class="ec-quote__avatar"
@@ -466,12 +465,6 @@
               <span class="ec-quote__name">Daniel Osei</span
               ><span class="ec-quote__role">Front-end lead, Marrow &amp; Co.</span>
             </figcaption>
-            <blockquote class="ec-quote__text">
-              <p>
-                Every speaker showed the thing running and what it cost to run. I have been to
-                conferences four times the price that taught me half as much.
-              </p>
-            </blockquote>
           </figure>
         </div>
       </section>
@@ -791,8 +784,7 @@
                 <svg class="ec-download__icon" aria-hidden="true">
                   <use href="#ec-i-download" />
                 </svg>
-                <span>Download</span>
-                <span>invitation</span>
+                <span>Download invitation</span>
               </a>
             </p>
           </div>
@@ -801,52 +793,60 @@
 
       <!-- Sponsors --------------------------------------------------------- -->
       <section class="ec-sponsors" aria-labelledby="sponsors-title">
-        <div class="ec-container ec-grid ec-split">
+        <div class="ec-container ec-sponsors__inner">
           <h2 class="ec-sponsors__title" id="sponsors-title">Sponsors</h2>
 
           <ul class="ec-sponsors__list">
             <li>
-              <a href="#">
+              <a class="ec-sponsor" href="#">
                 <img
+                  class="ec-sponsor__mark"
                   src="images/sponsor_01.png"
-                  alt="Sponsor United"
-                  width="440"
-                  height="124"
+                  alt=""
+                  width="96"
+                  height="96"
                   loading="lazy"
                 />
+                <span class="ec-sponsor__name ec-sponsor__name--bold">Sponsor United</span>
               </a>
             </li>
             <li>
-              <a href="#">
+              <a class="ec-sponsor" href="#">
                 <img
+                  class="ec-sponsor__mark"
                   src="images/sponsor_02.png"
-                  alt="Evergreen"
-                  width="440"
-                  height="124"
+                  alt=""
+                  width="96"
+                  height="96"
                   loading="lazy"
                 />
+                <span class="ec-sponsor__name ec-sponsor__name--light">Evergreen</span>
               </a>
             </li>
             <li>
-              <a href="#">
+              <a class="ec-sponsor" href="#">
                 <img
+                  class="ec-sponsor__mark"
                   src="images/sponsor_03.png"
-                  alt="Gold Diggers"
-                  width="440"
-                  height="124"
+                  alt=""
+                  width="96"
+                  height="96"
                   loading="lazy"
                 />
+                <span class="ec-sponsor__name ec-sponsor__name--serif">Gold Diggers</span>
               </a>
             </li>
             <li>
-              <a href="#">
+              <a class="ec-sponsor" href="#">
                 <img
+                  class="ec-sponsor__mark"
                   src="images/sponsor_04.png"
-                  alt="Redy"
-                  width="440"
-                  height="124"
+                  alt=""
+                  width="96"
+                  height="96"
                   loading="lazy"
                 />
+                <span class="ec-sponsor__name ec-sponsor__name--black">Redy</span>
               </a>
             </li>
           </ul>
